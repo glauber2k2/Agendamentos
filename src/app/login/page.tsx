@@ -10,7 +10,7 @@ const Login: FunctionComponent<LoginProps> = () => {
   return (
     <div className='container'>
       <div className='m-auto justify-center flex flex-col items-center w-2/3 gap-8'>
-        <div className='flex flex-col w-full bg-system-darkness rounded-lg p-20 gap-4'>
+        <div className='flex flex-col w-full bg-system-darkness rounded-3xl p-20 gap-4'>
           <h1 className='text-system-50 font-bold text-4xl'>Fazer login</h1>
           <Input placeholder='Insira seu usuario' icon={AtSign} />
           <Input placeholder='Insira sua senha' type='password' />
@@ -26,7 +26,7 @@ const Login: FunctionComponent<LoginProps> = () => {
             Logar
           </Button>
         </div>
-        <div className='flex justify-between items-center w-full bg-system-darkness m-auto rounded-lg  gap-1 p-12'>
+        <div className='flex justify-between items-center w-full bg-system-darkness m-auto rounded-3xl gap-1 p-12'>
           <div>
             <h1 className='text-xl font-bold text-system-100'>
               Ainda nao possui conta?
@@ -36,7 +36,7 @@ const Login: FunctionComponent<LoginProps> = () => {
               className='mr-auto text-system-300'
               size={'slim'}
             >
-              <Link href={'/'}>Registre-se</Link>
+              <Link href={'/login/registrarempresa'}>Registre-se</Link>
             </Button>
           </div>
           <div

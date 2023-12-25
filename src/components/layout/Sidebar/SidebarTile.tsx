@@ -34,9 +34,10 @@ function SidebarTile({ children, icon: Icon, to, ...rest }: SidebarTileProps) {
       >
         {Icon && <Icon size={24} className='shrink-0' />}
         <motion.p
-          className='flex overflow-hidden items-center'
+          className='flex overflow-hidden items-center opacity-0'
           animate={{
             width: sidebarIsOpen ? '100%' : '0px',
+            opacity: sidebarIsOpen ? '1' : '0',
           }}
         >
           {children}

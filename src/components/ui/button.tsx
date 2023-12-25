@@ -21,7 +21,7 @@ const buttonVariants = cva(
         ghost: 'hover:bg-system-300 dark:hover:bg-system-600',
         link: 'text-primary underline-offset-4 hover:underline',
         inputStyle:
-          'bg-system-50 w-full justify-start text-system-800 text-md px-4 py-2',
+          'bg-system-50 dark:bg-system-950 w-full justify-start text-system-800 text-md px-4 py-2',
       },
       size: {
         default: 'h-10 px-4 py-2',

@@ -6,7 +6,7 @@ function LayoutClienteRoutes({ children }: any) {
     <SidebarProvider>
       <div className='flex'>
         <SidebarCliente />
-        <div className='px-40 py-20 flex flex-1 h-screen overflow-y-auto'>
+        <div className='ml-[100px] p-10 flex flex-1 h-screen overflow-y-auto'>
           {children}
         </div>
       </div>

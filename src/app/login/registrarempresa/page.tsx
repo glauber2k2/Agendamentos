@@ -649,7 +649,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       desejo prosseguir com meu cadastro,
                     </Label>
 
-                    <Button className='ml-auto col-span-4'>
+                    <Button className='ml-auto col-span-4' variant={'default'}>
                       <Rocket />
                       Cadastrar
                     </Button>

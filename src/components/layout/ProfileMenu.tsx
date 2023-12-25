@@ -1,6 +1,7 @@
+import { cn } from '@/lib/utils'
 import { MoreHorizontal } from 'lucide-react'
 import Link from 'next/link'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, HtmlHTMLAttributes } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import {
   DropdownMenu,
@@ -11,13 +12,18 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 
-interface ProfileMenuProps {
+interface ProfileMenuProps extends HtmlHTMLAttributes<HTMLHtmlElement> {
   userName: string
 }
 
-const ProfileMenu: FunctionComponent<ProfileMenuProps> = ({ userName }) => {
+const ProfileMenu: FunctionComponent<ProfileMenuProps> = ({
+  userName,
+  ...rest
+}) => {
   return (
-    <div className='w-full flex justify-between items-start'>
+    <div
+      className={cn('w-full flex justify-between items-start', rest.className)}
+    >
       <div className='w-full flex gap-4 items-center'>
         <Avatar>
           <AvatarImage src='https://github.com/glauber2k2.png' />

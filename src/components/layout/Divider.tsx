@@ -7,8 +7,8 @@ interface DividerProps extends HTMLAttributes<HTMLDivElement> {
 
 const Divider: FunctionComponent<DividerProps> = ({ title, bgTheme }) => {
   const color = {
-    light: 'system-900',
-    dark: 'system-600',
+    light: 'black/50',
+    dark: 'white/50',
   }
 
   return (

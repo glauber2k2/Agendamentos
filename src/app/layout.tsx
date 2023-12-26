@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          'bg-system-50 dark:bg-system-950 text-system-950 dark:text-system-50',
+          'bg-system-50 dark:bg-system-900 text-system-950 dark:text-system-50',
           poppins.className
         )}
       >

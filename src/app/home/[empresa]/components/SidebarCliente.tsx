@@ -28,7 +28,8 @@ function SidebarCliente() {
         <Button
           className={`${
             sidebarIsOpen ? 'justify-start gap-4' : 'justify-center'
-          } w-full`}
+          } w-full hover:bg-transparent dark:hover:bg-transparent`}
+          variant={'ghost'}
         >
           <Avatar>
             <AvatarFallback>BP</AvatarFallback>
@@ -82,7 +83,7 @@ function SidebarCliente() {
           </DropdownMenuContent>
         </DropdownMenu>
         <motion.span
-          className='text-start max-w-full flex flex-col'
+          className='text-start max-w-full flex flex-col w-0 opacity-0'
           animate={{
             width: sidebarIsOpen ? '200px' : '0px',
             opacity: sidebarIsOpen ? '1' : '0',

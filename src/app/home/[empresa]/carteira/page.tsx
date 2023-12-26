@@ -1,69 +1,58 @@
-import HeaderPage from '@/components/layout/HeaderPage'
-import TitleBox from '@/components/layout/TitleBox'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { Coins, CoinsIcon, History } from 'lucide-react'
+//depois passar para o componente
+'use client'
+
+import { Tipografia } from '@/components/tipografia'
+import { Card } from '@/components/ui/card'
+import { Plus } from 'lucide-react'
 import { FunctionComponent } from 'react'
 
 interface PontosProps {}
 
 const Pontos: FunctionComponent<PontosProps> = () => {
-  const saldo = 123
-
   return (
-    <div className='flex flex-col w-full'>
-      <HeaderPage
-        title='Minha carteira'
-        description='Acompanhe por aqui seus pontos de fidelidades obtidos.'
-        icon={Coins}
-      >
-        <div className='flex items-center gap-2'>
-          <Coins size={16} />
-          {saldo}
-        </div>
-      </HeaderPage>
-      <TitleBox title='Extrato de pontos:' icon={History} />
+    <div className='w-full'>
+      <span className='flex flex-col mb-32'>
+        <Tipografia.Title>Minha carteira</Tipografia.Title>
+        <Tipografia.Description>
+          consulte aqui todas as suas carteiras e seus creditos obtidos.
+        </Tipografia.Description>
+      </span>
 
-      <div className='flex flex-col gap-2'>
-        <Alert className='flex items-center justify-between'>
-          <div className='flex gap-2'>
-            <History className='h-4 w-4' />
-            <span>
-              <AlertTitle>Corte Cabelo</AlertTitle>
-              <AlertDescription>Realizado 12/12/2023</AlertDescription>
-            </span>
-          </div>
-          <div className='flex items-center gap-2 text-emerald-500'>
-            <CoinsIcon size={14} />
-            100
-          </div>
-        </Alert>
+      <Card className='flex h-40 justify-center items-center relative mb-10'>
+        <span className='flex flex-col'>
+          <Tipografia.Title>
+            Bem vindo a sua central de carteiras.
+          </Tipografia.Title>
+          <Tipografia.Description>
+            consulte aqui todas as suas carteiras e seus creditos obtidos.
+          </Tipografia.Description>
+        </span>
 
-        <Alert className='flex items-center justify-between'>
-          <div className='flex gap-2'>
-            <History className='h-4 w-4' />
-            <span>
-              <AlertTitle>Corte Grátis</AlertTitle>
-              <AlertDescription>Realizado 12/12/2023</AlertDescription>
-            </span>
-          </div>
-          <div className='flex items-center gap-2 text-rose-500'>
-            <CoinsIcon size={14} />
-            450
-          </div>
-        </Alert>
+        <img
+          src='/mulherAtrasada.png'
+          className='absolute object-scale-down w-40 left-14 bottom-0'
+        />
+      </Card>
 
-        <Alert className='flex items-center justify-between'>
-          <div className='flex gap-2'>
-            <History className='h-4 w-4' />
-            <span>
-              <AlertTitle className='line-through'>Cabelo e Barba</AlertTitle>
-              <AlertDescription>Cancelado</AlertDescription>
-            </span>
-          </div>
-          <div className='flex items-center gap-2 text-zinc-400'>
-            <CoinsIcon size={14} />0
-          </div>
-        </Alert>
+      <div className='grid grid-cols-6 gap-8'>
+        <Card className='border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20'>
+          <Plus className='text-system-500' />
+        </Card>
+        <Card className='border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20 '>
+          <Plus className='text-system-500' />
+        </Card>
+        <Card className='border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20'>
+          <Plus className='text-system-500' />
+        </Card>
+        <Card className='border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20'>
+          <Plus className='text-system-500' />
+        </Card>
+        <Card className='border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20'>
+          <Plus className='text-system-500' />
+        </Card>
+        <Card className='border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20'>
+          <Plus className='text-system-500' />
+        </Card>
       </div>
     </div>
   )

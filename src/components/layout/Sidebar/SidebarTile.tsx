@@ -22,7 +22,7 @@ function SidebarTile({ children, icon: Icon, to, ...rest }: SidebarTileProps) {
     <Link href={to} className=''>
       <Button
         className={cn(
-          `${sidebarIsOpen ? 'justify-start gap-4' : 'justify-center'} 
+          `${sidebarIsOpen ? 'gap-4' : ''} 
           ${
             to == pathname
               ? 'bg-violet-600 hover:bg-violet-700 dark:hover:bg-violet-500 text-system-50'
@@ -34,7 +34,7 @@ function SidebarTile({ children, icon: Icon, to, ...rest }: SidebarTileProps) {
       >
         {Icon && <Icon size={24} className='shrink-0' />}
         <motion.p
-          className='flex overflow-hidden items-center opacity-0'
+          className='flex overflow-hidden items-center opacity-0 w-0'
           animate={{
             width: sidebarIsOpen ? '100%' : '0px',
             opacity: sidebarIsOpen ? '1' : '0',

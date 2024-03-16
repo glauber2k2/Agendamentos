@@ -14,7 +14,7 @@ interface MinhaContaProps {}
 
 const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
   return (
-    <div className='container'>
+    <div className='w-full p-8'>
       <Card>
         <CardHeader>
           <CardTitle>Minha conta</CardTitle>

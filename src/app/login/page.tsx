@@ -8,7 +8,7 @@ interface LoginProps {}
 
 const Login: FunctionComponent<LoginProps> = () => {
   return (
-    <div className='container'>
+    <div className='w-full flex'>
       <div className='m-auto justify-center flex flex-col items-center w-2/3 gap-8'>
         <div className='flex flex-col w-full bg-system-darkness rounded-3xl p-20 gap-4'>
           <h1 className='text-system-50 font-bold text-4xl'>Fazer login</h1>

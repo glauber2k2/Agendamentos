@@ -67,6 +67,7 @@ const formSchema = z.object({
   bairro: z.string(),
   rua: z.string(),
   numero: z.string(),
+  plano: z.string(),
   complemento: z.string(),
   pontoDeRefefencia: z.string(),
   nomeDoPerfil: z.string(),
@@ -119,7 +120,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='w-full p-8 '>
       <Card>
         <CardHeader>
           <CardTitle>
@@ -132,7 +133,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
         </CardHeader>
       </Card>
 
-      <Card className='mt-8 h-full'>
+      <Card className='mt-8'>
         <CardHeader>
           <CardTitle>
             <FileDigit />
@@ -155,7 +156,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                 <TabsTrigger value='plano'>Plano</TabsTrigger>
               </TabsList>
 
-              <TabsContent value='dados'>
+              <TabsContent value='dados' >
                 <Card className='w-full border-none shadow-none'>
                   <CardHeader>
                     <CardTitle>
@@ -553,7 +554,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     />
                     <FormField
                       control={form.control}
-                      name='numeroCartao'
+                      name='plano'
                       render={({ field }) => (
                         <FormItem className='flex justify-center items-center gap-2'>
                           <FormControl>
@@ -646,7 +647,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     <Label className='flex gap-2 items-center col-span-4'>
                       <Checkbox />
                       Declaro que estou de acordo com a forma de pagamento e
-                      desejo prosseguir com meu cadastro,
+                      desejo prosseguir com meu cadastro.
                     </Label>
 
                     <Button className='ml-auto col-span-4' variant={'default'}>

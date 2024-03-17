@@ -40,7 +40,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {hasIcon && <Icon className="text-system-500" />}
         <input
           style={{
-            WebkitBoxShadow: '0 0 0px 1000px transparent inset',
+            WebkitBoxShadow: '0 0 0px 1000px #00000000 inset',
             WebkitTextFillColor: '#D8D8D8',
             transition: 'background-color 5000s ease-in-out 0s',
           }}

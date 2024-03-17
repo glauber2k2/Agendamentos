@@ -12,10 +12,11 @@ import {
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AtSign, Facebook, LogIn } from 'lucide-react'
+import { AtSign, Eye, Facebook, LogIn } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -31,6 +32,7 @@ const formSchema = z.object({
 })
 
 export function Login() {
+  const [typePassword, setTypePassword] = useState(true)
   const { toast } = useToast()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -68,17 +70,17 @@ export function Login() {
   return (
     <div className="w-full flex">
       <div className="m-auto justify-center flex flex-col items-center w-2/3 gap-8">
-        <h1 className="text-system-50 font-bold text-4xl">Fazer login</h1>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-col w-full bg-system-darkness rounded-3xl p-20 gap-4"
           >
+            <h1 className="text-system-50 font-bold text-4xl">Fazer login</h1>
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col gap-2">
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
@@ -96,12 +98,20 @@ export function Login() {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Senha</FormLabel>
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel className="gap-2 flex">
+                    Senha
+                    <button
+                      type="button"
+                      onClick={() => setTypePassword(!typePassword)}
+                    >
+                      <Eye size={16} />
+                    </button>
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Insira sua senha"
-                      type="password"
+                      type={typePassword ? 'password' : 'text'}
                       {...field}
                     />
                   </FormControl>

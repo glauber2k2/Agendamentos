@@ -39,20 +39,20 @@ import {
   User2,
 } from 'lucide-react'
 
-function Home() {
+async function Home() {
   return (
-    <div className='w-full h-screen flex flex-col'>
-      <nav className='flex justify-between items-center gap-8 py-2 px-4 bg-system-900 text-system-50 '>
-        <div className='flex items-center text-xl font-medium'>
-          <img src='myLogo.png' alt='' className='w-16 h-16' />
+    <div className="w-full h-screen flex flex-col">
+      <nav className="flex justify-between items-center gap-8 py-2 px-4 bg-system-900 text-system-50 ">
+        <div className="flex items-center text-xl font-medium">
+          <img src="myLogo.png" alt="" className="w-16 h-16" />
           TimeAlign
         </div>
-        <div className='flex items-center gap-2'>
-          <Input icon={Search} placeholder='Buscar...' />
+        <div className="flex items-center gap-2">
+          <Input icon={Search} placeholder="Buscar..." />
 
           <Sheet>
             <SheetTrigger>
-              <Avatar className='cursor-pointer'>
+              <Avatar className="cursor-pointer">
                 <AvatarFallback>GB</AvatarFallback>
               </Avatar>
             </SheetTrigger>
@@ -67,46 +67,46 @@ function Home() {
           </Sheet>
         </div>
       </nav>
-      <div className='p-12 flex flex-col gap-20'>
-        <div className='flex h-full justify-center items-center'>
-          <div className='flex justify-center items-center'>
-            <img src='/mulherAtrasada.png' />
+      <div className="p-12 flex flex-col gap-20">
+        <div className="flex h-full justify-center items-center">
+          <div className="flex justify-center items-center">
+            <img src="/mulherAtrasada.png" />
           </div>
-          <div className='p-16 w-1/2'>
-            <h1 className='text-4xl font-bold flex items-center gap-2'>
+          <div className="p-16 w-1/2">
+            <h1 className="text-4xl font-bold flex items-center gap-2">
               <Clock size={32} />
               Evite a correria dos atendimentos!
             </h1>
-            <h3 className='font-bold text-xl text-system-600'>
+            <h3 className="font-bold text-xl text-system-600">
               Tenha seus atendimentos todos organizados
             </h3>
-            <p className='mt-10'>
+            <p className="mt-10">
               Com um sistema de agendamentos e gerenciamento de atendimentos
               como o da TimeAlign, você ficaria totalmente no controle de seus
               atendimentos, com nosso aplicativo na palma da sua mão ou
               acessando nosso sistema web.
             </p>
 
-            <p className='mt-4'>
+            <p className="mt-4">
               Cada vez mais as pessoas optam por usar a internet para fazer
               compras e resolverem seus problemas, por que não aproveitar isso
               para deixar seu negocio mais interessante aos olhos dos clientes?
             </p>
           </div>
         </div>
-        <div className='flex h-full gap-8'>
-          <Card className='flex flex-col w-1/3 p-4 bg-system-800 text-system-100'>
+        <div className="flex h-full gap-8">
+          <Card className="flex flex-col w-1/3 p-4 bg-system-800 text-system-100">
             <CardHeader>
               <CardTitle>
                 Sou cliente
-                <Button className=' flex items-center ml-auto bg-emerald-500 text-emerald-50 hover:bg-emerald-400/90 gap-2'>
+                <Button className=" flex items-center ml-auto bg-emerald-500 text-emerald-50 hover:bg-emerald-400/90 gap-2">
                   <User2 />
                   Entre grátis
                 </Button>
               </CardTitle>
             </CardHeader>
-            <CardContent className='gap-2 h-full grid grid-rows-3'>
-              <Card className='bg-system-700 border-system-600 text-system-100'>
+            <CardContent className="gap-2 h-full grid grid-rows-3">
+              <Card className="bg-system-700 border-system-600 text-system-100">
                 <CardHeader>
                   <CardTitle>
                     <Calendar /> Agende onde e quando quiser.
@@ -119,7 +119,7 @@ function Home() {
                 </CardHeader>
               </Card>
 
-              <Card className='bg-system-700 border-system-600 text-system-100'>
+              <Card className="bg-system-700 border-system-600 text-system-100">
                 <CardHeader>
                   <CardTitle>
                     <Coins /> Acomule pontos!
@@ -132,7 +132,7 @@ function Home() {
                 </CardHeader>
               </Card>
 
-              <Card className='bg-system-700 border-system-600 text-system-100'>
+              <Card className="bg-system-700 border-system-600 text-system-100">
                 <CardHeader>
                   <CardTitle>
                     <Gift /> Obtenha prêmios!
@@ -146,7 +146,7 @@ function Home() {
               </Card>
             </CardContent>
           </Card>
-          <Card className='p-4 w-1/3 bg-system-800 text-system-100'>
+          <Card className="p-4 w-1/3 bg-system-800 text-system-100">
             <CardHeader>
               <CardTitle>Plano empresa</CardTitle>
               <CardDescription>
@@ -154,10 +154,10 @@ function Home() {
                 confira nosso planos empresariais.
               </CardDescription>
             </CardHeader>
-            <CardContent className='grid grid-rows-3 gap-2'>
+            <CardContent className="grid grid-rows-3 gap-2">
               <HoverCard>
-                <HoverCardTrigger className='select-none cursor-pointer'>
-                  <Card className='bg-system-700 border-system-600 text-system-100 hover:bg-system-600'>
+                <HoverCardTrigger className="select-none cursor-pointer">
+                  <Card className="bg-system-700 border-system-600 text-system-100 hover:bg-system-600">
                     <CardHeader>
                       <CardTitle>
                         <Badge /> Assinatura Básica
@@ -169,11 +169,11 @@ function Home() {
                     </CardHeader>
                   </Card>
                 </HoverCardTrigger>
-                <HoverCardContent align='start' className='w-80'>
-                  <div className='flex justify-between gap-4'>
-                    <Badge size={44} className='text-violet-500' />
-                    <div className='flex flex-col w-full'>
-                      <h4 className='text-sm font-semibold underline'>
+                <HoverCardContent align="start" className="w-80">
+                  <div className="flex justify-between gap-4">
+                    <Badge size={44} className="text-violet-500" />
+                    <div className="flex flex-col w-full">
+                      <h4 className="text-sm font-semibold underline">
                         Assinatura Básica
                       </h4>
                       <ul>
@@ -181,21 +181,21 @@ function Home() {
                         <li>2. Personalizar empresa</li>
                         <li>3. Acesso a 1 unidade.</li>
                       </ul>
-                      <div className='flex items-center pt-2 text-system-400'>
-                        <CalendarIcon className='mr-2 h-4 w-4' />
-                        <span className='text-xs '>
+                      <div className="flex items-center pt-2 text-system-400">
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        <span className="text-xs ">
                           R$500 após o terceiro mês.
                         </span>
                       </div>
-                      <Button className='mt-4 ml-auto'>Assinar</Button>
+                      <Button className="mt-4 ml-auto">Assinar</Button>
                     </div>
                   </div>
                 </HoverCardContent>
               </HoverCard>
 
               <HoverCard>
-                <HoverCardTrigger className='select-none cursor-pointer'>
-                  <Card className='bg-system-700 border-system-600 text-system-100 hover:bg-system-600'>
+                <HoverCardTrigger className="select-none cursor-pointer">
+                  <Card className="bg-system-700 border-system-600 text-system-100 hover:bg-system-600">
                     <CardHeader>
                       <CardTitle>
                         <BadgePlus /> Assinatura Plus+
@@ -207,11 +207,11 @@ function Home() {
                     </CardHeader>
                   </Card>
                 </HoverCardTrigger>
-                <HoverCardContent align='start' className='w-80'>
-                  <div className='flex justify-between gap-4'>
-                    <BadgePlus size={44} className='text-violet-500' />
-                    <div className='flex flex-col w-full'>
-                      <h4 className='text-sm font-semibold underline'>
+                <HoverCardContent align="start" className="w-80">
+                  <div className="flex justify-between gap-4">
+                    <BadgePlus size={44} className="text-violet-500" />
+                    <div className="flex flex-col w-full">
+                      <h4 className="text-sm font-semibold underline">
                         Assinatura Plus+
                       </h4>
                       <ul>
@@ -221,20 +221,20 @@ function Home() {
                         <li>4. Sistema de pontos.</li>
                         <li>5. Sistema de prêmios.</li>
                       </ul>
-                      <div className='flex items-center pt-2 text-system-400'>
-                        <CalendarIcon className='mr-2 h-4 w-4' />
-                        <span className='text-xs '>
+                      <div className="flex items-center pt-2 text-system-400">
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        <span className="text-xs ">
                           R$700 após o terceiro mês.
                         </span>
                       </div>
-                      <Button className='mt-4 ml-auto'>Assinar</Button>
+                      <Button className="mt-4 ml-auto">Assinar</Button>
                     </div>
                   </div>
                 </HoverCardContent>
               </HoverCard>
               <HoverCard>
-                <HoverCardTrigger className='select-none cursor-pointer'>
-                  <Card className='bg-system-700 border-system-600 text-system-100 hover:bg-system-600'>
+                <HoverCardTrigger className="select-none cursor-pointer">
+                  <Card className="bg-system-700 border-system-600 text-system-100 hover:bg-system-600">
                     <CardHeader>
                       <CardTitle>
                         <BadgeCheck /> Assinatura Tripla
@@ -246,11 +246,11 @@ function Home() {
                     </CardHeader>
                   </Card>
                 </HoverCardTrigger>
-                <HoverCardContent align='start' className='w-80'>
-                  <div className='flex justify-between gap-4'>
-                    <BadgeCheck size={44} className='text-violet-500' />
-                    <div className='flex flex-col w-full'>
-                      <h4 className='text-sm font-semibold underline'>
+                <HoverCardContent align="start" className="w-80">
+                  <div className="flex justify-between gap-4">
+                    <BadgeCheck size={44} className="text-violet-500" />
+                    <div className="flex flex-col w-full">
+                      <h4 className="text-sm font-semibold underline">
                         Assinatura Tripla
                       </h4>
                       <ul>
@@ -260,20 +260,20 @@ function Home() {
                         <li>4. Sistema de pontos.</li>
                         <li>5. Sistema de prêmios.</li>
                       </ul>
-                      <div className='flex items-center pt-2 text-system-400'>
-                        <CalendarIcon className='mr-2 h-4 w-4' />
-                        <span className='text-xs '>
+                      <div className="flex items-center pt-2 text-system-400">
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        <span className="text-xs ">
                           R$900 após o terceiro mês.
                         </span>
                       </div>
-                      <Button className='mt-4 ml-auto'>Assinar</Button>
+                      <Button className="mt-4 ml-auto">Assinar</Button>
                     </div>
                   </div>
                 </HoverCardContent>
               </HoverCard>
             </CardContent>
           </Card>
-          <Card className='p-4  w-1/3 flex flex-col bg-system-800 text-system-50'>
+          <Card className="p-4  w-1/3 flex flex-col bg-system-800 text-system-50">
             <CardHeader>
               <CardTitle>Sou empreendedor</CardTitle>
               <CardDescription>
@@ -281,8 +281,8 @@ function Home() {
                 atendimento e agendamentos.
               </CardDescription>
             </CardHeader>
-            <CardContent className='grid grid-rows-4 h-full gap-2'>
-              <Card className='bg-system-700 border-system-600 text-system-100'>
+            <CardContent className="grid grid-rows-4 h-full gap-2">
+              <Card className="bg-system-700 border-system-600 text-system-100">
                 <CardHeader>
                   <CardTitle>
                     <Paintbrush /> Personalize sua empresa.
@@ -293,35 +293,35 @@ function Home() {
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className='bg-system-700 border-system-600 text-system-100'>
+              <Card className="bg-system-700 border-system-600 text-system-100">
                 <CardHeader>
                   <CardTitle>
                     <Rocket /> Aumente seu faturamento.
                   </CardTitle>
-                  <CardDescription className='flex flex-col h-full'>
+                  <CardDescription className="flex flex-col h-full">
                     Aumente seu faturamento organizando com nosso sistema de
                     gerenciamento de agendamentos, e fidelize clientes com
                     pontuações.
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className='bg-system-700 border-system-600 text-system-100'>
+              <Card className="bg-system-700 border-system-600 text-system-100">
                 <CardHeader>
                   <CardTitle>
                     <PlusCircleIcon /> Integre varias unidades.
                   </CardTitle>
-                  <CardDescription className='flex flex-col h-full'>
+                  <CardDescription className="flex flex-col h-full">
                     Como nosso sistema, você pode ter sua empresa com todas
                     unidades na palma da sua mão.
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className='bg-system-700 border-system-600 text-system-100'>
+              <Card className="bg-system-700 border-system-600 text-system-100">
                 <CardHeader>
                   <CardTitle>
                     <CloudLightningIcon /> Tenha velocidade
                   </CardTitle>
-                  <CardDescription className='flex flex-col h-full'>
+                  <CardDescription className="flex flex-col h-full">
                     Agilize o processo de agendamento do cliente, com apenas um
                     clique ele terá um agendamento com sua empresa.
                   </CardDescription>

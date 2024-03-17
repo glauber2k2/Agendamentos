@@ -18,36 +18,41 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       icon: Icon = type === 'number'
         ? Binary
         : type === 'email'
-        ? AtSign
-        : type === 'password'
-        ? Asterisk
-        : type === 'file'
-        ? File
-        : CaseSensitive,
+          ? AtSign
+          : type === 'password'
+            ? Asterisk
+            : type === 'file'
+              ? File
+              : CaseSensitive,
       hasIcon = true,
       beforeElement,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <div
         className={cn(
           'bg-system-50 dark:bg-system-950  rounded-lg py-2 px-4 w-full flex items-center gap-2',
-          className
+          className,
         )}
       >
-        {hasIcon && <Icon className='text-system-500' />}
+        {hasIcon && <Icon className="text-system-500" />}
         <input
+          style={{
+            WebkitBoxShadow: '0 0 0px 1000px transparent inset',
+            WebkitTextFillColor: '#D8D8D8',
+            transition: 'background-color 5000s ease-in-out 0s',
+          }}
           type={type}
-          className='bg-transparent w-full outline-none placeholder:text-system-300 text-system-800 dark:text-system-50 font-medium'
+          className="bg-transparent w-full outline-none placeholder:text-system-300 text-system-800 dark:text-system-50 font-medium"
           ref={ref}
           {...props}
         />
         {beforeElement}
       </div>
     )
-  }
+  },
 )
 Input.displayName = 'Input'
 

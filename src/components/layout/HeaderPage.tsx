@@ -15,16 +15,16 @@ const HeaderPage: FunctionComponent<HeaderPageProps> = ({
   children,
 }) => {
   return (
-    <div className='flex w-full flex-col gap-8 mb-8'>
-      <Card className='p-4 flex justify-between'>
+    <div className="flex w-full flex-col gap-8 mb-8">
+      <Card className="p-4 flex justify-between">
         <CardHeader>
-          <CardTitle className='flex items-center gap-2'>
+          <CardTitle className="flex items-center gap-2">
             {Icon && <Icon />}
             {title}
           </CardTitle>
           <CardDescription>{description}</CardDescription>
         </CardHeader>
-        <div className='flex items-center p-4'>{children}</div>
+        <div className="flex items-center p-4">{children}</div>
       </Card>
     </div>
   )

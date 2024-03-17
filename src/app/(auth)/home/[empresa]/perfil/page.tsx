@@ -4,10 +4,10 @@ import { UserCog } from 'lucide-react'
 
 function Empresa() {
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <HeaderPage
-        title='Editar Empresa'
-        description='Altere aqui suas informações de usuário.'
+        title="Editar Empresa"
+        description="Altere aqui suas informações de usuário."
         icon={UserCog}
       />
     </div>

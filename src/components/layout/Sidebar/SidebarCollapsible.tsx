@@ -34,9 +34,9 @@ const SidebarCollapsible: FunctionComponent<SidebarCollapsibleProps> = ({
             sidebarIsOpen ? 'justify-start gap-4' : 'justify-center'
           } w-full`}
         >
-          <Icon size={24} className='shrink-0' />
+          <Icon size={24} className="shrink-0" />
           <motion.p
-            className='flex overflow-hidden'
+            className="flex overflow-hidden"
             animate={{
               width: sidebarIsOpen ? '100%' : '0px',
             }}
@@ -45,7 +45,7 @@ const SidebarCollapsible: FunctionComponent<SidebarCollapsibleProps> = ({
           </motion.p>
         </Button>
       </CollapsibleTrigger>
-      <CollapsibleContent className='px-2 pb-2 pt-2 '>
+      <CollapsibleContent className="px-2 pb-2 pt-2 ">
         {children}
       </CollapsibleContent>
     </Collapsible>

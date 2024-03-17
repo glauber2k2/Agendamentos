@@ -120,7 +120,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
   }
 
   return (
-    <div className='w-full p-8 '>
+    <div className="w-full p-8 ">
       <Card>
         <CardHeader>
           <CardTitle>
@@ -133,7 +133,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
         </CardHeader>
       </Card>
 
-      <Card className='mt-8'>
+      <Card className="mt-8">
         <CardHeader>
           <CardTitle>
             <FileDigit />
@@ -144,20 +144,20 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
             TimeAlign!
           </CardDescription>
         </CardHeader>
-        <CardContent className=''>
+        <CardContent className="">
           <Form {...form}>
             <Tabs
-              defaultValue='dados'
-              className='flex flex-col justify-center items-center'
+              defaultValue="dados"
+              className="flex flex-col justify-center items-center"
             >
-              <TabsList className='gap-2'>
-                <TabsTrigger value='dados'>Dados</TabsTrigger>
-                <TabsTrigger value='perfil'>Perfil</TabsTrigger>
-                <TabsTrigger value='plano'>Plano</TabsTrigger>
+              <TabsList className="gap-2">
+                <TabsTrigger value="dados">Dados</TabsTrigger>
+                <TabsTrigger value="perfil">Perfil</TabsTrigger>
+                <TabsTrigger value="plano">Plano</TabsTrigger>
               </TabsList>
 
-              <TabsContent value='dados' >
-                <Card className='w-full border-none shadow-none'>
+              <TabsContent value="dados">
+                <Card className="w-full border-none shadow-none">
                   <CardHeader>
                     <CardTitle>
                       <Building2 />
@@ -167,19 +167,19 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       Preencha os dados da sua empresa.
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className='w-full grid grid-cols-4 gap-4'>
+                  <CardContent className="w-full grid grid-cols-4 gap-4">
                     <TitleBox
-                      title='Dados Empresa'
+                      title="Dados Empresa"
                       icon={Building2}
-                      className='col-span-4 mb-0 mt-6'
+                      className="col-span-4 mb-0 mt-6"
                     />
                     <FormField
                       control={form.control}
-                      name='nomeEmpresa'
+                      name="nomeEmpresa"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Nome Empresa' {...field} />
+                            <Input placeholder="Nome Empresa" {...field} />
                           </FormControl>
 
                           <FormMessage />
@@ -189,11 +189,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='nomeFantasia'
+                      name="nomeFantasia"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Nome Fantasia' {...field} />
+                            <Input placeholder="Nome Fantasia" {...field} />
                           </FormControl>
 
                           <FormMessage />
@@ -202,12 +202,12 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     />
                     <FormField
                       control={form.control}
-                      name='cnpj'
+                      name="cnpj"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
                             <Input
-                              placeholder='CNPJ'
+                              placeholder="CNPJ"
                               {...field}
                               icon={Binary}
                             />
@@ -220,11 +220,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='segmento'
+                      name="segmento"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Segmento' {...field} />
+                            <Input placeholder="Segmento" {...field} />
                           </FormControl>
 
                           <FormMessage />
@@ -233,18 +233,18 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     />
 
                     <TitleBox
-                      title='Endereço'
+                      title="Endereço"
                       icon={MapPin}
-                      className='col-span-4 mb-0 mt-2'
+                      className="col-span-4 mb-0 mt-2"
                     />
 
                     <FormField
                       control={form.control}
-                      name='cep'
+                      name="cep"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='CEP' {...field} icon={Binary} />
+                            <Input placeholder="CEP" {...field} icon={Binary} />
                           </FormControl>
 
                           <FormMessage />
@@ -254,11 +254,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='estado'
+                      name="estado"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Estado' {...field} />
+                            <Input placeholder="Estado" {...field} />
                           </FormControl>
 
                           <FormMessage />
@@ -268,11 +268,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='cidade'
+                      name="cidade"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Cidade' {...field} />
+                            <Input placeholder="Cidade" {...field} />
                           </FormControl>
 
                           <FormMessage />
@@ -282,11 +282,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='bairro'
+                      name="bairro"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Bairro' {...field} />
+                            <Input placeholder="Bairro" {...field} />
                           </FormControl>
 
                           <FormMessage />
@@ -296,11 +296,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='rua'
+                      name="rua"
                       render={({ field }) => (
-                        <FormItem className='col-span-2'>
+                        <FormItem className="col-span-2">
                           <FormControl>
-                            <Input placeholder='Rua' {...field} />
+                            <Input placeholder="Rua" {...field} />
                           </FormControl>
 
                           <FormMessage />
@@ -310,12 +310,12 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='numero'
+                      name="numero"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
                             <Input
-                              placeholder='Numero'
+                              placeholder="Numero"
                               {...field}
                               icon={Binary}
                             />
@@ -328,11 +328,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='complemento'
+                      name="complemento"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Complemento' {...field} />
+                            <Input placeholder="Complemento" {...field} />
                           </FormControl>
 
                           <FormMessage />
@@ -342,12 +342,12 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='pontoDeRefefencia'
+                      name="pontoDeRefefencia"
                       render={({ field }) => (
-                        <FormItem className='col-span-4'>
+                        <FormItem className="col-span-4">
                           <FormControl>
                             <Textarea
-                              placeholder='Ponto de referencia'
+                              placeholder="Ponto de referencia"
                               {...field}
                             />
                           </FormControl>
@@ -360,8 +360,8 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                 </Card>
               </TabsContent>
 
-              <TabsContent value='perfil'>
-                <Card className='w-full border-none shadow-none'>
+              <TabsContent value="perfil">
+                <Card className="w-full border-none shadow-none">
                   <CardHeader>
                     <CardTitle>
                       <User2 />
@@ -371,19 +371,19 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       Configure como seu perfil irá aparacer para seus clientes.
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className='w-full grid grid-cols-4 gap-4'>
+                  <CardContent className="w-full grid grid-cols-4 gap-4">
                     <TitleBox
-                      title='Dados visuais'
+                      title="Dados visuais"
                       icon={Eye}
-                      className='col-span-4 mb-0 mt-6'
+                      className="col-span-4 mb-0 mt-6"
                     />
                     <FormField
                       control={form.control}
-                      name='nomeDoPerfil'
+                      name="nomeDoPerfil"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Nome do perfil' {...field} />
+                            <Input placeholder="Nome do perfil" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -392,7 +392,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='corDoPerfil'
+                      name="corDoPerfil"
                       render={() => (
                         <FormItem>
                           <FormControl>
@@ -400,19 +400,19 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                               <PopoverTrigger asChild>
                                 <Button
                                   variant={'inputStyle'}
-                                  className='gap-2'
+                                  className="gap-2"
                                 >
                                   <Input
                                     value={color}
                                     onChange={(e) => setColor(e.target.value)}
-                                    placeholder='Cor do perfil'
+                                    placeholder="Cor do perfil"
                                     icon={Paintbrush}
                                   />
                                 </Button>
                               </PopoverTrigger>
                               <PopoverContent
-                                className='mt-2 flex flex-col justify-center items-center'
-                                align='start'
+                                className="mt-2 flex flex-col justify-center items-center"
+                                align="start"
                               >
                                 <HexColorPicker
                                   color={color}
@@ -429,12 +429,12 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='descricaoDoPerfil'
+                      name="descricaoDoPerfil"
                       render={({ field }) => (
-                        <FormItem className='col-span-2'>
+                        <FormItem className="col-span-2">
                           <FormControl>
                             <Input
-                              placeholder='Descrição do perfil'
+                              placeholder="Descrição do perfil"
                               {...field}
                             />
                           </FormControl>
@@ -445,19 +445,19 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     />
 
                     <TitleBox
-                      title='Dados perfil'
+                      title="Dados perfil"
                       icon={Database}
-                      className='col-span-4 mb-0 mt-6'
+                      className="col-span-4 mb-0 mt-6"
                     />
 
                     <FormField
                       control={form.control}
-                      name='usuario'
+                      name="usuario"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
                             <Input
-                              placeholder='Usuário'
+                              placeholder="Usuário"
                               {...field}
                               icon={AtSign}
                             />
@@ -470,12 +470,12 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='telefone'
+                      name="telefone"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
                             <Input
-                              placeholder='Telefone empresa'
+                              placeholder="Telefone empresa"
                               {...field}
                               icon={Phone}
                             />
@@ -487,21 +487,21 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     />
 
                     <TitleBox
-                      title='Dados de login'
+                      title="Dados de login"
                       icon={LogIn}
-                      className='col-span-4 mb-0 mt-6'
+                      className="col-span-4 mb-0 mt-6"
                     />
 
                     <FormField
                       control={form.control}
-                      name='email'
+                      name="email"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
                             <Input
-                              placeholder='Email'
+                              placeholder="Email"
                               {...field}
-                              type='email'
+                              type="email"
                             />
                           </FormControl>
 
@@ -510,18 +510,18 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       )}
                     />
 
-                    <Input placeholder='Confirmar email' type='email' />
+                    <Input placeholder="Confirmar email" type="email" />
 
                     <FormField
                       control={form.control}
-                      name='senha'
+                      name="senha"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
                             <Input
-                              placeholder='Senha'
+                              placeholder="Senha"
                               {...field}
-                              type='password'
+                              type="password"
                             />
                           </FormControl>
 
@@ -530,13 +530,13 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       )}
                     />
 
-                    <Input placeholder='Confirmar senha' type='password' />
+                    <Input placeholder="Confirmar senha" type="password" />
                   </CardContent>
                 </Card>
               </TabsContent>
 
-              <TabsContent value='plano'>
-                <Card className='w-full border-none shadow-none'>
+              <TabsContent value="plano">
+                <Card className="w-full border-none shadow-none">
                   <CardHeader>
                     <CardTitle>
                       <LayoutGrid />
@@ -546,21 +546,21 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       Preencha seu plano e sua forma de pagamento.
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className='w-full grid grid-cols-4 gap-4'>
+                  <CardContent className="w-full grid grid-cols-4 gap-4">
                     <TitleBox
-                      title='Selecionar plano'
+                      title="Selecionar plano"
                       icon={Shield}
-                      className='col-span-4 mb-0 mt-6'
+                      className="col-span-4 mb-0 mt-6"
                     />
                     <FormField
                       control={form.control}
-                      name='plano'
+                      name="plano"
                       render={({ field }) => (
-                        <FormItem className='flex justify-center items-center gap-2'>
+                        <FormItem className="flex justify-center items-center gap-2">
                           <FormControl>
                             <Input
                               hasIcon={false}
-                              placeholder='Plano'
+                              placeholder="Plano"
                               {...field}
                               beforeElement={<ChevronDown />}
                             />
@@ -569,19 +569,19 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       )}
                     />
                     <TitleBox
-                      title='Selecionar pagamento'
+                      title="Selecionar pagamento"
                       icon={CreditCard}
-                      className='col-span-4 mb-0 mt-6'
+                      className="col-span-4 mb-0 mt-6"
                     />
                     <FormField
                       control={form.control}
-                      name='numeroCartao'
+                      name="numeroCartao"
                       render={({ field }) => (
-                        <FormItem className='flex justify-center items-center gap-2'>
+                        <FormItem className="flex justify-center items-center gap-2">
                           <FormControl>
                             <Input
                               icon={Binary}
-                              placeholder='Numero do cartão'
+                              placeholder="Numero do cartão"
                               {...field}
                               beforeElement={
                                 <CardFlag
@@ -596,11 +596,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='nomeCartao'
+                      name="nomeCartao"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder='Nome no cartão' {...field} />
+                            <Input placeholder="Nome no cartão" {...field} />
                           </FormControl>
                         </FormItem>
                       )}
@@ -608,11 +608,11 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='cvv'
+                      name="cvv"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input icon={Binary} placeholder='CVV' {...field} />
+                            <Input icon={Binary} placeholder="CVV" {...field} />
                           </FormControl>
                         </FormItem>
                       )}
@@ -620,13 +620,13 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
 
                     <FormField
                       control={form.control}
-                      name='vencimento'
+                      name="vencimento"
                       render={({}) => (
                         <FormItem>
                           <FormControl>
                             <Input
                               icon={CalendarIcon}
-                              placeholder='Vencimento'
+                              placeholder="Vencimento"
                               value={vencimento}
                               onChange={handleInputChange}
                             />
@@ -636,21 +636,21 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     />
 
                     <TitleBox
-                      title='Leia os termos'
+                      title="Leia os termos"
                       icon={Text}
-                      className='col-span-4 mb-0 mt-6'
+                      className="col-span-4 mb-0 mt-6"
                     />
-                    <Label className='flex gap-2 items-center col-span-4'>
+                    <Label className="flex gap-2 items-center col-span-4">
                       <Checkbox />
                       Declaro que li e estou ciente com os termos da TimeAlign.
                     </Label>
-                    <Label className='flex gap-2 items-center col-span-4'>
+                    <Label className="flex gap-2 items-center col-span-4">
                       <Checkbox />
                       Declaro que estou de acordo com a forma de pagamento e
                       desejo prosseguir com meu cadastro.
                     </Label>
 
-                    <Button className='ml-auto col-span-4' variant={'default'}>
+                    <Button className="ml-auto col-span-4" variant={'default'}>
                       <Rocket />
                       Cadastrar
                     </Button>

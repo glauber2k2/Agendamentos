@@ -12,7 +12,7 @@ function TitleBox({ title, icon: Icon, ...rest }: TitleBoxProps) {
       {...rest}
       className={cn('flex items-center gap-2 font-medium mb-2', rest.className)}
     >
-      {Icon && <Icon className='w-6 h-6' />}
+      {Icon && <Icon className="w-6 h-6" />}
       {title}
     </div>
   )

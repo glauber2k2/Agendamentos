@@ -24,25 +24,25 @@ const ProfileMenu: FunctionComponent<ProfileMenuProps> = ({
     <div
       className={cn('w-full flex justify-between items-start', rest.className)}
     >
-      <div className='w-full flex gap-4 items-center'>
+      <div className="w-full flex gap-4 items-center">
         <Avatar>
-          <AvatarImage src='https://github.com/glauber2k2.png' />
+          <AvatarImage src="https://github.com/glauber2k2.png" />
           <AvatarFallback>
             {userName
               .split('')
               .filter(
                 (letters: string) =>
-                  letters === letters.toUpperCase() && letters.trim() !== ''
+                  letters === letters.toUpperCase() && letters.trim() !== '',
               )
               .join('')}
           </AvatarFallback>
         </Avatar>
-        <div className='text-ellipsis w-3/5 overflow-hidden truncate font-bold flex-col text-sm'>
+        <div className="text-ellipsis w-3/5 overflow-hidden truncate font-bold flex-col text-sm">
           Glauber Monteiro
-          <p className='text-xs font-light'>@glauber.sm</p>
+          <p className="text-xs font-light">@glauber.sm</p>
         </div>
       </div>
-      <div className='' />
+      <div className="" />
       <DropdownMenu>
         <DropdownMenuTrigger>
           <MoreHorizontal />
@@ -53,7 +53,7 @@ const ProfileMenu: FunctionComponent<ProfileMenuProps> = ({
           <DropdownMenuItem>
             <Link href={'/cliente/perfil'}>Perfil</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className='text-red-600 hover:text-red-800'>
+          <DropdownMenuItem className="text-red-600 hover:text-red-800">
             <Link href={''}>Sair</Link>
           </DropdownMenuItem>
         </DropdownMenuContent>

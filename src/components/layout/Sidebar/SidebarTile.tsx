@@ -38,6 +38,7 @@ function SidebarTile({ children, icon: Icon, to, ...rest }: SidebarTileProps) {
           animate={{
             width: sidebarIsOpen ? '100%' : '0px',
             opacity: sidebarIsOpen ? '1' : '0',
+            display: sidebarIsOpen ? 'flex' : 'none',
           }}
         >
           {children}

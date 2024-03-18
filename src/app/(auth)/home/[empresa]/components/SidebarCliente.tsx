@@ -73,7 +73,13 @@ function SidebarCliente({ userData }: { userData: string }) {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Avatar>
-              <AvatarFallback>GM</AvatarFallback>
+              <AvatarFallback>
+                {userData.name
+                  .toUpperCase()
+                  .split(' ')
+                  .map((word: string) => word.charAt(0))
+                  .join('')}
+              </AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
@@ -90,8 +96,8 @@ function SidebarCliente({ userData }: { userData: string }) {
             opacity: sidebarIsOpen ? '1' : '0',
           }}
         >
-          <p className="truncate max-w-2xl">Glauber Monteiro</p>
-          <p className="text-xs opacity-70 font-light">{userData.email}</p>
+          <p className="truncate max-w-2xl capitalize">{userData.name}</p>
+          <p className="text-xs opacity-70 font-light">@{userData.username}</p>
         </motion.span>
       </div>
     </Sidebar.Root>

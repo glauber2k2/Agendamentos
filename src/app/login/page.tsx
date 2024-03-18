@@ -12,7 +12,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AtSign, Eye, Facebook, LogIn } from 'lucide-react'
+import { Asterisk, AtSign, Eye, EyeOff, Facebook, LogIn } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -105,7 +105,7 @@ export function Login() {
                       type="button"
                       onClick={() => setTypePassword(!typePassword)}
                     >
-                      <Eye size={16} />
+                      {typePassword ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
                   </FormLabel>
                   <FormControl>
@@ -113,6 +113,7 @@ export function Login() {
                       placeholder="Insira sua senha"
                       type={typePassword ? 'password' : 'text'}
                       {...field}
+                      icon={Asterisk}
                     />
                   </FormControl>
 

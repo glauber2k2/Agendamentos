@@ -56,7 +56,7 @@ const nextAuthOptions: NextAuthOptions = {
         session.accessToken = token.accessToken
         session.user = token.user // Salvando os dados do usuário na sessão
       }
-      console.log(session)
+
       return session
     },
   },

@@ -64,7 +64,7 @@ export function Login() {
       return
     }
 
-    router.replace('/home/home')
+    router.replace('/GlauberCorp/home')
   }
 
   return (

@@ -21,7 +21,7 @@ import { usePathname } from 'next/navigation'
 function SidebarCliente({ userData }: { userData: string }) {
   const { sidebarIsOpen } = useSidebarContext()
   const pathname = usePathname()
-  const rota = pathname.split('/')[2]
+  const rota = pathname.split('/')[1]
 
   return (
     <Sidebar.Root>
@@ -50,16 +50,16 @@ function SidebarCliente({ userData }: { userData: string }) {
 
       <span className="w-full h-0.5 bg-black/10 dark:bg-white/10 my-4" />
 
-      <Sidebar.Tile icon={Home} to={`/home/${rota}`}>
+      <Sidebar.Tile icon={Home} to={`/${rota}/home`}>
         Home
       </Sidebar.Tile>
-      <Sidebar.Tile icon={Calendar} to={`/home/${rota}/agendar`}>
+      <Sidebar.Tile icon={Calendar} to={`/${rota}/agendar`}>
         Agendar
       </Sidebar.Tile>
-      <Sidebar.Tile icon={History} to={`/home/${rota}/historico`}>
+      <Sidebar.Tile icon={History} to={`/${rota}/historico`}>
         Historico
       </Sidebar.Tile>
-      <Sidebar.Tile icon={Wallet2} to={`/home/${rota}/carteira`}>
+      <Sidebar.Tile icon={Wallet2} to={`/${rota}/carteira`}>
         Carteira
       </Sidebar.Tile>
 
@@ -86,7 +86,12 @@ function SidebarCliente({ userData }: { userData: string }) {
             <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Perfil</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => signOut()}>Sair</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => signOut()}
+              className="cursor-pointer"
+            >
+              Sair
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         <motion.span

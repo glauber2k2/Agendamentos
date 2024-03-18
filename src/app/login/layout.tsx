@@ -1,12 +1,13 @@
-import { getServerSession } from 'next-auth'
+'use client'
+
 import { redirect } from 'next/navigation'
-import { nextAuthOptions } from '../api/auth/[...nextauth]/route'
+import { parseCookies } from 'nookies'
 
-async function LayoutAuthRoutes({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(nextAuthOptions)
+function LayoutAuthRoutes({ children }: { children: React.ReactNode }) {
+  const { ['nextauth.token']: token } = parseCookies()
 
-  if (session) {
-    redirect('/home/home')
+  if (token) {
+    redirect('/GlauberCorp/home')
   }
 
   return (

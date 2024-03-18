@@ -11,17 +11,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { AuthContext } from '@/contexts/AuthContext'
 import { useSidebarContext } from '@/contexts/SidebarContext'
 import { motion } from 'framer-motion'
 import { Calendar, History, Home, Wallet2 } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useContext } from 'react'
 
-function SidebarCliente({ userData }: { userData: string }) {
+function SidebarCliente() {
   const { sidebarIsOpen } = useSidebarContext()
   const pathname = usePathname()
   const rota = pathname.split('/')[1]
+  const { user } = useContext(AuthContext)
 
   return (
     <Sidebar.Root>
@@ -74,7 +77,7 @@ function SidebarCliente({ userData }: { userData: string }) {
           <DropdownMenuTrigger>
             <Avatar>
               <AvatarFallback>
-                {userData.name
+                {user.name
                   .toUpperCase()
                   .split(' ')
                   .map((word: string) => word.charAt(0))
@@ -101,8 +104,8 @@ function SidebarCliente({ userData }: { userData: string }) {
             opacity: sidebarIsOpen ? '1' : '0',
           }}
         >
-          <p className="truncate max-w-2xl capitalize">{userData.name}</p>
-          <p className="text-xs opacity-70 font-light">@{userData.username}</p>
+          <p className="truncate max-w-2xl capitalize">{user.name}</p>
+          <p className="text-xs opacity-70 font-light">@{user.username}</p>
         </motion.span>
       </div>
     </Sidebar.Root>

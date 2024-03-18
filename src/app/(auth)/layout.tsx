@@ -1,14 +1,16 @@
-import { getServerSession } from 'next-auth'
+'use client'
+
 import { ReactNode } from 'react'
-import { nextAuthOptions } from '../api/auth/[...nextauth]/route'
 import { redirect } from 'next/navigation'
+import { parseCookies } from 'nookies'
 
-async function LayoutAuth({ children }: { children: ReactNode }) {
-  const session = await getServerSession(nextAuthOptions)
+function LayoutAuth({ children }: { children: ReactNode }) {
+  const { ['nextauth.token']: token } = parseCookies()
 
-  if (!session) {
+  if (!token) {
     redirect('/login')
   }
+
   return <>{children}</>
 }
 

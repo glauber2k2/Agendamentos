@@ -2,8 +2,8 @@ import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import NextAuthSessionProvider from '@/providers/sessionProvider'
 import { Toaster } from '@/components/ui/toaster'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -28,7 +28,7 @@ export default function RootLayout({
           poppins.className,
         )}
       >
-        <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
+        <AuthProvider>{children}</AuthProvider>
         <Toaster />
       </body>
     </html>

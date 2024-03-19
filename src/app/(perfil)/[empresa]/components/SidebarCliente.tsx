@@ -55,13 +55,13 @@ function SidebarCliente() {
       <Sidebar.Tile icon={Home} to={`/${rota}/home`}>
         Home
       </Sidebar.Tile>
-      <Sidebar.Tile icon={Calendar} to={`/${rota}/agendar`}>
+      <Sidebar.Tile icon={Calendar} to={`/${rota}/agendar`} needAuth>
         Agendar
       </Sidebar.Tile>
-      <Sidebar.Tile icon={History} to={`/${rota}/historico`}>
+      <Sidebar.Tile icon={History} to={`/${rota}/historico`} needAuth>
         Historico
       </Sidebar.Tile>
-      <Sidebar.Tile icon={Wallet2} to={`/${rota}/carteira`}>
+      <Sidebar.Tile icon={Wallet2} to={`/${rota}/carteira`} needAuth>
         Carteira
       </Sidebar.Tile>
 

@@ -14,8 +14,7 @@ import {
 import { AuthContext } from '@/contexts/AuthContext'
 import { useSidebarContext } from '@/contexts/SidebarContext'
 import { motion } from 'framer-motion'
-import { Calendar, History, Home, Wallet2 } from 'lucide-react'
-import { signOut } from 'next-auth/react'
+import { Calendar, History, Home, LogIn, Wallet2 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useContext } from 'react'
@@ -24,11 +23,7 @@ function SidebarCliente() {
   const { sidebarIsOpen } = useSidebarContext()
   const pathname = usePathname()
   const rota = pathname.split('/')[1]
-  // const { user } = useContext(AuthContext)
-  const user = {
-    username: 'teste',
-    name: 'tste',
-  }
+  const { user, signOut, isAuthenticated } = useContext(AuthContext)
 
   return (
     <Sidebar.Root>
@@ -77,40 +72,53 @@ function SidebarCliente() {
           sidebarIsOpen ? 'justify-between gap-4' : 'justify-center'
         } w-full flex items-center px-2`}
       >
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Avatar>
-              <AvatarFallback>
-                {user.name
-                  .toUpperCase()
-                  .split(' ')
-                  .map((word: string) => word.charAt(0))
-                  .join('')}
-              </AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Perfil</DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => signOut()}
-              className="cursor-pointer"
+        {isAuthenticated ? (
+          <>
+            {' '}
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar>
+                  <AvatarFallback>
+                    {user.name
+                      .toUpperCase()
+                      .split(' ')
+                      .map((word: string) => word.charAt(0))
+                      .join('')}
+                  </AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Perfil</DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => signOut()}
+                  className="cursor-pointer"
+                >
+                  Sair
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <motion.span
+              className="text-start max-w-full flex flex-col w-0 opacity-0"
+              animate={{
+                width: sidebarIsOpen ? '200px' : '0px',
+                opacity: sidebarIsOpen ? '1' : '0',
+              }}
             >
-              Sair
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <motion.span
-          className="text-start max-w-full flex flex-col w-0 opacity-0"
-          animate={{
-            width: sidebarIsOpen ? '200px' : '0px',
-            opacity: sidebarIsOpen ? '1' : '0',
-          }}
-        >
-          <p className="truncate max-w-2xl capitalize">{user.name}</p>
-          <p className="text-xs opacity-70 font-light">@{user.username}</p>
-        </motion.span>
+              <p className="truncate max-w-2xl capitalize">{user.name}</p>
+              <p className="text-xs opacity-70 font-light">@{user.username}</p>
+            </motion.span>
+          </>
+        ) : (
+          <Link
+            href={'/login'}
+            className="flex items-center gap-2 px-4 py-2 w-full justify-start hover:bg-white/10 rounded-lg"
+          >
+            <LogIn />
+            fazer login
+          </Link>
+        )}
       </div>
     </Sidebar.Root>
   )

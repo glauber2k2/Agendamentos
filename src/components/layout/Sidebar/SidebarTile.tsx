@@ -32,7 +32,7 @@ function SidebarTile({
   return (
     <>
       {print && (
-        <Link href={to} className="">
+        <Link href={to} className="w-full">
           <Button
             className={cn(
               `${sidebarIsOpen ? 'gap-4' : ''} 

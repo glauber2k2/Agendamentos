@@ -14,7 +14,7 @@ import {
 import { AuthContext } from '@/contexts/AuthContext'
 import { useSidebarContext } from '@/contexts/SidebarContext'
 import { motion } from 'framer-motion'
-import { Calendar, History, Home, LogIn, Wallet2 } from 'lucide-react'
+import { Calendar, History, Home, Info, LogIn, Wallet2 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useContext } from 'react'
@@ -65,6 +65,13 @@ function SidebarCliente() {
         Carteira
       </Sidebar.Tile>
 
+      {!user && (
+        <span className="flex overflow-hidden items-center text-sm gap-2 truncate justify-center my-auto opacity-60">
+          <Info size={18} className="shrink-0" />
+          {sidebarIsOpen ? <p>Logar para agendar</p> : null}
+        </span>
+      )}
+
       <span className="w-full h-0.5 bg-black/10 dark:bg-white/10  mt-auto" />
 
       <div
@@ -111,13 +118,9 @@ function SidebarCliente() {
             </motion.span>
           </>
         ) : (
-          <Link
-            href={'/login'}
-            className="flex items-center gap-2 px-4 py-2 w-full justify-start hover:bg-white/10 rounded-lg"
-          >
-            <LogIn />
-            fazer login
-          </Link>
+          <Sidebar.Tile icon={LogIn} to={`/login`}>
+            Logar
+          </Sidebar.Tile>
         )}
       </div>
     </Sidebar.Root>

@@ -23,7 +23,7 @@ function SidebarCliente() {
   const { sidebarIsOpen } = useSidebarContext()
   const pathname = usePathname()
   const rota = pathname.split('/')[1]
-  const { user, signOut, isAuthenticated } = useContext(AuthContext)
+  const { user, signOut } = useContext(AuthContext)
 
   return (
     <Sidebar.Root>
@@ -72,7 +72,7 @@ function SidebarCliente() {
           sidebarIsOpen ? 'justify-between gap-4' : 'justify-center'
         } w-full flex items-center px-2`}
       >
-        {isAuthenticated ? (
+        {user ? (
           <>
             {' '}
             <DropdownMenu>

@@ -31,13 +31,10 @@ type AuthContextType = {
 export const AuthContext = createContext({} as AuthContextType)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User>({
-    name: '',
-    email: '',
-    username: '',
-  })
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const [user, setUser] = useState<User | null>()
   const router = useRouter()
+
+  const isAuthenticated = !!user
 
   useEffect(() => {
     const { 'nextauth.token': token } = parseCookies()
@@ -49,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         })
         .then((response) => setUser(response.data))
     } else {
-      setIsAuthenticated(false)
+      setUser(null)
     }
   }, [])
 
@@ -70,6 +67,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setCookie(undefined, 'nextauth.token', token, {
         maxAge: 60 * 60 * 1, // 1 hour
       })
+      setCookie(undefined, 'nextauth.user', user, {
+        maxAge: 60 * 60 * 1, // 1 hour
+      })
       console.log('log de user', user)
       setUser(user)
 
@@ -84,9 +84,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const signOut = () => {
-    destroyCookie(null, 'nextauth.token', {
+  async function signOut() {
+    await destroyCookie(undefined, 'nextauth.token', {
+      path: '/testando',
+    })
+    await destroyCookie(undefined, 'nextauth.token', {
       path: '/',
+    })
+    await destroyCookie(undefined, 'nextauth.token', {
+      path: '/GlauberCorp',
     })
 
     router.push('/login')

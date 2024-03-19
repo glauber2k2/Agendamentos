@@ -6,7 +6,7 @@ export default function middleware(request: NextRequest) {
 
   const signInURL = new URL('/login', request.url)
   const companyHomeURL = new URL(`/${pathname.split('/')[1]}/home`, request.url)
-  const searchCompanyURL = new URL('/teste/home', request.url)
+  const searchCompanyURL = new URL('/testando/home', request.url)
 
   if (pathname.includes('/login') && token) {
     return NextResponse.redirect(searchCompanyURL)

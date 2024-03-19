@@ -1,15 +1,6 @@
 'use client'
 
-import { redirect } from 'next/navigation'
-import { parseCookies } from 'nookies'
-
 function LayoutAuthRoutes({ children }: { children: React.ReactNode }) {
-  const { ['nextauth.token']: token } = parseCookies()
-
-  if (token) {
-    redirect('/GlauberCorp/home')
-  }
-
   return (
     <div className="flex h-screen">
       <div className="bg-system-darkness flex flex-col items-center justify-center w-1/3">

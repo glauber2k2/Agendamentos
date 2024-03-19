@@ -24,7 +24,11 @@ function SidebarCliente() {
   const { sidebarIsOpen } = useSidebarContext()
   const pathname = usePathname()
   const rota = pathname.split('/')[1]
-  const { user } = useContext(AuthContext)
+  // const { user } = useContext(AuthContext)
+  const user = {
+    username: 'teste',
+    name: 'tste',
+  }
 
   return (
     <Sidebar.Root>

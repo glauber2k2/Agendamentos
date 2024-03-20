@@ -4,9 +4,11 @@ import UserSidebar from '@/components/layout/UserSidebar'
 import { SidebarProvider } from '@/contexts/SidebarContext'
 
 import SidebarCliente from './components/SidebarCliente'
-import { ReactNode } from 'react'
+import { ReactNode, useContext } from 'react'
+import { AuthContext } from '@/contexts/AuthContext'
 
-async function LayoutClienteRoutes({ children }: { children: ReactNode }) {
+function LayoutClienteRoutes({ children }: { children: ReactNode }) {
+  const { user } = useContext(AuthContext)
   return (
     <SidebarProvider>
       <div className="flex">
@@ -14,7 +16,7 @@ async function LayoutClienteRoutes({ children }: { children: ReactNode }) {
         <div className="ml-[100px] p-10 flex flex-1 h-screen overflow-y-auto">
           {children}
         </div>
-        <UserSidebar />
+        {user && <UserSidebar />}
       </div>
     </SidebarProvider>
   )

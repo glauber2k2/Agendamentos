@@ -45,6 +45,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => setUser(response.data))
+        .catch(() => {
+          destroyCookie(undefined, 'nextauth.token', {
+            path: '/',
+          })
+
+          router.replace('/login')
+        })
     } else {
       setUser(null)
     }
@@ -66,11 +73,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { token, user } = response.data
       setCookie(undefined, 'nextauth.token', token, {
         maxAge: 60 * 60 * 1, // 1 hour
+        path: '/',
       })
-      setCookie(undefined, 'nextauth.user', user, {
-        maxAge: 60 * 60 * 1, // 1 hour
-      })
-      console.log('log de user', user)
+
       setUser(user)
 
       router.replace('/GlauberCorp/home')
@@ -84,17 +89,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  async function signOut() {
-    await destroyCookie(undefined, 'nextauth.token', {
-      path: '/testando',
-    })
-    await destroyCookie(undefined, 'nextauth.token', {
+  function signOut() {
+    destroyCookie(undefined, 'nextauth.token', {
       path: '/',
     })
-    await destroyCookie(undefined, 'nextauth.token', {
-      path: '/GlauberCorp',
-    })
-
+    setUser(null)
     router.push('/login')
   }
 

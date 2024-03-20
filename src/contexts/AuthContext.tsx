@@ -94,7 +94,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       path: '/',
     })
     setUser(null)
-    router.push('/login')
+    router.replace('/login')
   }
 
   return (

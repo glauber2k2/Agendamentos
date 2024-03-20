@@ -16,7 +16,7 @@ export default function middleware(request: NextRequest) {
     !token &&
     (pathname.includes('/agendar') ||
       pathname.includes('/historico') ||
-      pathname.includes('/historico'))
+      pathname.includes('/carteira'))
   ) {
     return NextResponse.redirect(companyHomeURL)
   }

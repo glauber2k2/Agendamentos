@@ -1,14 +1,6 @@
-import { getServerSession } from 'next-auth'
-import { redirect } from 'next/navigation'
-import { nextAuthOptions } from '../api/auth/[...nextauth]/route'
+'use client'
 
-async function LayoutAuthRoutes({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(nextAuthOptions)
-
-  if (session) {
-    redirect('/home/home')
-  }
-
+function LayoutAuthRoutes({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen">
       <div className="bg-system-darkness flex flex-col items-center justify-center w-1/3">

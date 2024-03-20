@@ -1,14 +1,17 @@
 'use client'
 
 import { BellDot } from 'lucide-react'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useContext } from 'react'
 import { Tipografia } from '../tipografia'
 import { Avatar, AvatarFallback } from '../ui/avatar'
 import { Button } from '../ui/button'
+import { AuthContext } from '@/contexts/AuthContext'
 
 interface UserSidebarProps {}
 
 const UserSidebar: FunctionComponent<UserSidebarProps> = () => {
+  const { user } = useContext(AuthContext)
+
   return (
     <div className="p-12 bg-system-950 shadow-lg shadow-system-darkness rounded-s-3xl flex flex-col items-center relative">
       <span className="mb-10">
@@ -18,7 +21,15 @@ const UserSidebar: FunctionComponent<UserSidebarProps> = () => {
         </Tipografia.Description>
       </span>
       <Avatar className="h-40 w-40 text-6xl mb-8">
-        <AvatarFallback>GB</AvatarFallback>
+        <AvatarFallback>
+          {user
+            ? user.name
+                .toUpperCase()
+                .split(' ')
+                .map((word: string) => word.charAt(0))
+                .join('')
+            : ''}
+        </AvatarFallback>
       </Avatar>
       <Button className="absolute top-8 right-8 rounded-full">
         <BellDot />

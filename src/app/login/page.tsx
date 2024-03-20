@@ -11,12 +11,11 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
+import { AuthContext } from '@/contexts/AuthContext'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Asterisk, AtSign, Eye, EyeOff, Facebook, LogIn } from 'lucide-react'
-import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -32,6 +31,7 @@ const formSchema = z.object({
 })
 
 export function Login() {
+  const { signIn } = useContext(AuthContext)
   const [typePassword, setTypePassword] = useState(true)
   const { toast } = useToast()
   const form = useForm<z.infer<typeof formSchema>>({
@@ -42,29 +42,17 @@ export function Login() {
     },
   })
 
-  const router = useRouter()
-
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { email, password } = values
-    const result = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-    })
+    const data = await signIn(values)
 
-    if (result?.error) {
-      console.log(result)
-      if (result.status == 401) {
-        toast({
-          title: 'Login invalido.',
-          description: 'Verifique seu email e senha.',
-          variant: 'destructive',
-        })
-      }
-      return
+    if (!data.user) {
+      toast({
+        title: 'Erro ao fazer login.',
+        description:
+          'Por favor, verifique seu email e senha e tente novamente.',
+        variant: 'destructive',
+      })
     }
-
-    router.replace('/GlauberCorp/home')
   }
 
   return (

@@ -11,9 +11,9 @@ function LayoutClienteRoutes({ children }: { children: ReactNode }) {
   const { user } = useContext(AuthContext)
   return (
     <SidebarProvider>
-      <div className="flex">
+      <div className="flex h-dvh">
         <SidebarCliente />
-        <div className="ml-[100px] p-10 flex flex-1 h-dvh overflow-y-auto">
+        <div className="ml-[100px] p-10 flex flex-1 h-full overflow-y-auto">
           {children}
         </div>
         {user && <UserSidebar />}

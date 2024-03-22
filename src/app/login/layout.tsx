@@ -3,7 +3,7 @@
 function LayoutAuthRoutes({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen">
-      <div className="hidden md:flex bg-system-darkness flex-col items-center justify-center w-1/3">
+      <div className="hidden lg:flex bg-system-darkness flex-col items-center justify-center w-1/3">
         <div className="flex items-center text-4xl font-medium text-system-50">
           <img src="/myLogo.png" alt="" className="w-16 h-16" />
           TimeAlign

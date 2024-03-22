@@ -41,7 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (token) {
       axios
-        .get('http://localhost:8000/users', {
+        .get('https://agendamentos-api-umsz.onrender.com/users', {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => setUser(response.data))
@@ -65,10 +65,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     password: string
   }) {
     try {
-      const response = await axios.post('http://localhost:8000/auth', {
-        email,
-        password,
-      })
+      const response = await axios.post(
+        'https://agendamentos-api-umsz.onrender.com/auth',
+        {
+          email,
+          password,
+        },
+      )
 
       const { token, user } = response.data
       setCookie(undefined, 'nextauth.token', token, {

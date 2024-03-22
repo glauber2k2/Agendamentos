@@ -68,7 +68,7 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
     axios
-      .post('http://localhost:8000/users', values)
+      .post('https://agendamentos-api-umsz.onrender.com/users', values)
       .then(() => {
         toast({
           title: 'Parabéns!',

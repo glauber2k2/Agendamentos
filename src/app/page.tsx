@@ -1,3 +1,5 @@
+'use client'
+
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import {
@@ -8,19 +10,19 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from '@/components/ui/hover-card'
-import { Input } from '@/components/ui/input'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+import { AuthContext } from '@/contexts/AuthContext'
 
 import {
   Badge,
@@ -32,14 +34,18 @@ import {
   CloudLightningIcon,
   Coins,
   Gift,
+  LogIn,
   Paintbrush,
   PlusCircleIcon,
   Rocket,
-  Search,
   User2,
 } from 'lucide-react'
+import Link from 'next/link'
+import { useContext } from 'react'
 
-async function Home() {
+function Home() {
+  const { user } = useContext(AuthContext)
+
   return (
     <div className="w-full h-screen flex flex-col">
       <nav className="flex justify-between items-center gap-8 py-2 px-4 bg-system-900 text-system-50 ">
@@ -48,23 +54,29 @@ async function Home() {
           TimeAlign
         </div>
         <div className="flex items-center gap-2">
-          <Input icon={Search} placeholder="Buscar..." />
-
-          <Sheet>
-            <SheetTrigger>
-              <Avatar className="cursor-pointer">
-                <AvatarFallback>GB</AvatarFallback>
-              </Avatar>
-            </SheetTrigger>
-            <SheetContent>
-              <SheetHeader>
-                <SheetTitle>Meu menu</SheetTitle>
-                <SheetDescription>
-                  Navegue entre nossos serviços
-                </SheetDescription>
-              </SheetHeader>
-            </SheetContent>
-          </Sheet>
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar className="cursor-pointer">
+                  <AvatarFallback>GB</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <Link href={'/glauber/home'}>
+                  <DropdownMenuItem className="cursor-pointer">
+                    Home
+                  </DropdownMenuItem>
+                </Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Link href={'/login'}>
+              <Button variant={'ghost'}>
+                <LogIn />
+                Entrar
+              </Button>
+            </Link>
+          )}
         </div>
       </nav>
       <div className="p-12 flex flex-col gap-20">

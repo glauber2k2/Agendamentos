@@ -30,7 +30,7 @@ const formSchema = z.object({
     .max(30, { message: 'Sua senha não pode ter mais de 30 characters' }),
 })
 
-export function Login() {
+export default function Login() {
   const { signIn } = useContext(AuthContext)
   const [typePassword, setTypePassword] = useState(true)
   const { toast } = useToast()
@@ -153,5 +153,3 @@ export function Login() {
     </div>
   )
 }
-
-export default Login

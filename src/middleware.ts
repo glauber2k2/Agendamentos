@@ -4,7 +4,6 @@ export default function middleware(request: NextRequest) {
   const token = request.cookies.get('nextauth.token')?.value
   const pathname = request.nextUrl.pathname
 
-  const signInURL = new URL('/login', request.url)
   const companyHomeURL = new URL(`/${pathname.split('/')[1]}/home`, request.url)
   const searchCompanyURL = new URL('/testando/home', request.url)
 

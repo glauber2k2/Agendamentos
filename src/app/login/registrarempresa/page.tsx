@@ -49,7 +49,7 @@ import {
   User2,
   UserPlus2,
 } from 'lucide-react'
-import { FunctionComponent, useState } from 'react'
+import { ChangeEvent, FunctionComponent, useState } from 'react'
 import { HexColorPicker } from 'react-colorful'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -100,14 +100,14 @@ const formSchema = z.object({
 
 const Registrar: FunctionComponent<RegistrarProps> = () => {
   const [color, setColor] = useState('')
-  const [vencimento, setVencimento] = useState()
+  const [vencimento, setVencimento] = useState<string | undefined>(undefined)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
   })
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     let inputValue = e.target.value.replace(/\D/g, '') // Remove caracteres não numéricos
     inputValue = inputValue.slice(0, 4) // Limita o comprimento para MM/YY
 
@@ -621,7 +621,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     <FormField
                       control={form.control}
                       name="vencimento"
-                      render={({}) => (
+                      render={() => (
                         <FormItem>
                           <FormControl>
                             <Input

@@ -185,7 +185,7 @@ function Agendar() {
                 <FormField
                   control={form.control}
                   name="username"
-                  render={({ field }) => (
+                  render={() => (
                     <FormItem className="col-span-3">
                       <FormLabel>Unidade de Atendimento:</FormLabel>
                       <FormControl>
@@ -208,7 +208,7 @@ function Agendar() {
                 <FormField
                   control={form.control}
                   name="username"
-                  render={({ field }) => (
+                  render={() => (
                     <FormItem className="col-span-3">
                       <FormLabel>Tipo serviço:</FormLabel>
                       <FormControl>
@@ -231,7 +231,7 @@ function Agendar() {
                 <FormField
                   control={form.control}
                   name="username"
-                  render={({ field }) => (
+                  render={() => (
                     <FormItem className="col-span-3">
                       <FormLabel>Horario:</FormLabel>
                       <FormControl>

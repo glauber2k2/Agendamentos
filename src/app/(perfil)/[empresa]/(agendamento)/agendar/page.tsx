@@ -109,7 +109,7 @@ function Agendar() {
 
       <Form {...form}>
         <form
-          className="grid grid-cols-2 w-full gap-4"
+          className="flex flex-col xl:grid grid-cols-2 w-full gap-4"
           id="formulariodeagendamento"
         >
           <Card className=" p-8 flex flex-col">
@@ -117,17 +117,17 @@ function Agendar() {
             <CardDescription>
               clique no profissional de sua escolha.
             </CardDescription>
-            <CardContent className="mt-8">
+            <CardContent className="mt-8 p-2">
               <ScrollArea className="h-96">
                 <ToggleGroup
                   type="single"
-                  className="grid w-full grid-cols-5 place-items-center"
+                  className="grid w-full grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 place-items-center"
                 >
                   {items.map((item) => (
                     <ToggleGroupItem
                       key={item}
                       value={item.toString()}
-                      className="w-28 h-28 p-1 group"
+                      className="flex w-full h-full p-1 group"
                     >
                       <HoverCard>
                         <HoverCardTrigger className="w-full h-full rounded-lg overflow-hidden">

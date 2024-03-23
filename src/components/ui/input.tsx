@@ -41,7 +41,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           style={{
             WebkitBoxShadow: '0 0 0px 1000px #00000000 inset',
-            WebkitTextFillColor: '#D8D8D8',
+            WebkitTextFillColor: '#828282',
             transition: 'background-color 5000s ease-in-out 0s',
           }}
           type={type}

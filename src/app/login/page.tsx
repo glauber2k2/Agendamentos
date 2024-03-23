@@ -61,9 +61,11 @@ export default function Login() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className=" flex flex-col w-full bg-system-darkness rounded-3xl py-20 px-10 lg:px-20 gap-4"
+            className=" flex flex-col w-full bg-system-200 dark:bg-system-darkness rounded-3xl py-20 px-10 lg:px-20 gap-4"
           >
-            <h1 className="text-system-50 font-bold text-4xl">Fazer login</h1>
+            <h1 className="dark:text-system-50 text-system-600 font-bold text-4xl">
+              Fazer login
+            </h1>
             <FormField
               control={form.control}
               name="email"
@@ -112,7 +114,7 @@ export default function Login() {
 
             <Button
               variant={'link'}
-              className="ml-auto text-system-300"
+              className="ml-auto text-red-400"
               size={'slim'}
             >
               <Link href={'/'}> Esqueci minha senha.</Link>
@@ -124,14 +126,14 @@ export default function Login() {
           </form>
         </Form>
 
-        <div className="flex justify-between items-center w-full bg-system-darkness m-auto rounded-3xl gap-1 p-12">
+        <div className="flex justify-between items-center w-full dark:bg-system-darkness bg-system-200 m-auto rounded-3xl gap-1 p-12">
           <div>
-            <h1 className="text-xl font-bold text-system-100">
+            <h1 className="text-xl font-bold dark:text-system-100 text-system-600">
               Ainda nao possui conta?
             </h1>
             <Button
               variant={'link'}
-              className="mr-auto text-system-300"
+              className="mr-auto text-violet-500"
               size={'slim'}
             >
               <Link href={'/login/registrarempresa'}>Registre-se</Link>

@@ -13,7 +13,7 @@ function LayoutClienteRoutes({ children }: { children: ReactNode }) {
     <SidebarProvider>
       <div className="flex h-dvh">
         <SidebarCliente />
-        <div className="ml-[100px] p-10 flex flex-1 h-full overflow-y-auto">
+        <div className="sm:ml-[100px] p-10 flex flex-1 h-full overflow-y-auto">
           {children}
         </div>
         {user && <UserSidebar />}

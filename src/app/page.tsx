@@ -1,6 +1,4 @@
-'use client'
-
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import AuthButton from '@/components/AuthButton'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -9,18 +7,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from '@/components/ui/hover-card'
-import { AuthContext } from '@/contexts/AuthContext'
 import {
   Badge,
   BadgeCheck,
@@ -31,59 +23,36 @@ import {
   CloudLightningIcon,
   Coins,
   Gift,
-  LogIn,
   Paintbrush,
   PlusCircleIcon,
   Rocket,
   User2,
 } from 'lucide-react'
-import Link from 'next/link'
-import { useContext } from 'react'
 
 function Home() {
-  const { user } = useContext(AuthContext)
-
   return (
-    <div className="w-full h-screen flex flex-col">
-      <nav className="flex justify-between items-center gap-8 py-2 px-4 bg-system-900 text-system-50 ">
+    <div className="w-full h-svh flex flex-col">
+      <nav className="flex justify-between items-center gap-8 py-2 px-4 ">
         <div className="flex items-center text-xl font-medium">
-          <img src="myLogo.png" alt="" className="w-16 h-16" />
+          <img
+            src="myLogo.png"
+            alt=""
+            className="w-16 h-16 invert dark:invert-0"
+          />
           TimeAlign
         </div>
         <div className="flex items-center gap-2">
-          {user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <Avatar className="cursor-pointer">
-                  <AvatarFallback>GB</AvatarFallback>
-                </Avatar>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <Link href={'/glauber/home'}>
-                  <DropdownMenuItem className="cursor-pointer">
-                    Home
-                  </DropdownMenuItem>
-                </Link>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <Link href={'/login'}>
-              <Button variant={'ghost'}>
-                <LogIn />
-                Entrar
-              </Button>
-            </Link>
-          )}
+          <AuthButton />
         </div>
       </nav>
-      <div className="p-12 flex flex-col gap-20">
-        <div className="flex h-full justify-center items-center">
+      <div className="p-6 md:p-12 flex flex-col gap-20">
+        <div className="flex h-full justify-center md:items-center flex-col md:flex-row md: gap-10">
           <div className="flex justify-center items-center">
             <img src="/mulherAtrasada.png" />
           </div>
-          <div className="p-16 w-1/2">
-            <h1 className="text-4xl font-bold flex items-center gap-2">
-              <Clock size={32} />
+          <div className="md:p-16 md:w-1/2">
+            <h1 className="text-2xl sm:text-4xl font-bold flex items-center gap-4 ">
+              <Clock size={32} className="hidden xl:block shrink-0" />
               Evite a correria dos atendimentos!
             </h1>
             <h3 className="font-bold text-xl text-system-600">
@@ -103,8 +72,8 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className="flex h-full gap-8">
-          <Card className="flex flex-col w-1/3 p-4 bg-system-800 text-system-100">
+        <div className="h-full gap-8 flex-col md:flex-row grid xl:grid-cols-3">
+          <Card className="flex flex-col p-4 bg-system-200 dark:bg-system-darkness ">
             <CardHeader>
               <CardTitle>
                 Sou cliente
@@ -115,7 +84,7 @@ function Home() {
               </CardTitle>
             </CardHeader>
             <CardContent className="gap-2 h-full grid grid-rows-3">
-              <Card className="bg-system-700 border-system-600 text-system-100">
+              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
                 <CardHeader>
                   <CardTitle>
                     <Calendar /> Agende onde e quando quiser.
@@ -128,7 +97,7 @@ function Home() {
                 </CardHeader>
               </Card>
 
-              <Card className="bg-system-700 border-system-600 text-system-100">
+              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
                 <CardHeader>
                   <CardTitle>
                     <Coins /> Acomule pontos!
@@ -141,7 +110,7 @@ function Home() {
                 </CardHeader>
               </Card>
 
-              <Card className="bg-system-700 border-system-600 text-system-100">
+              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
                 <CardHeader>
                   <CardTitle>
                     <Gift /> Obtenha prêmios!
@@ -155,7 +124,7 @@ function Home() {
               </Card>
             </CardContent>
           </Card>
-          <Card className="p-4 w-1/3 bg-system-800 text-system-100">
+          <Card className="p-4 bg-system-200 dark:bg-system-darkness ">
             <CardHeader>
               <CardTitle>Plano empresa</CardTitle>
               <CardDescription>
@@ -166,7 +135,7 @@ function Home() {
             <CardContent className="grid grid-rows-3 gap-2">
               <HoverCard>
                 <HoverCardTrigger className="select-none cursor-pointer">
-                  <Card className="bg-system-700 border-system-600 text-system-100 hover:bg-system-600">
+                  <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200 hover:bg-black/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle>
                         <Badge /> Assinatura Básica
@@ -204,7 +173,7 @@ function Home() {
 
               <HoverCard>
                 <HoverCardTrigger className="select-none cursor-pointer">
-                  <Card className="bg-system-700 border-system-600 text-system-100 hover:bg-system-600">
+                  <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200 hover:bg-black/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle>
                         <BadgePlus /> Assinatura Plus+
@@ -243,7 +212,7 @@ function Home() {
               </HoverCard>
               <HoverCard>
                 <HoverCardTrigger className="select-none cursor-pointer">
-                  <Card className="bg-system-700 border-system-600 text-system-100 hover:bg-system-600">
+                  <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200 hover:bg-black/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle>
                         <BadgeCheck /> Assinatura Tripla
@@ -282,7 +251,7 @@ function Home() {
               </HoverCard>
             </CardContent>
           </Card>
-          <Card className="p-4  w-1/3 flex flex-col bg-system-800 text-system-50">
+          <Card className="p-4  flex flex-col bg-system-200 dark:bg-system-darkness">
             <CardHeader>
               <CardTitle>Sou empreendedor</CardTitle>
               <CardDescription>
@@ -291,7 +260,7 @@ function Home() {
               </CardDescription>
             </CardHeader>
             <CardContent className="grid grid-rows-4 h-full gap-2">
-              <Card className="bg-system-700 border-system-600 text-system-100">
+              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
                 <CardHeader>
                   <CardTitle>
                     <Paintbrush /> Personalize sua empresa.
@@ -302,7 +271,7 @@ function Home() {
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-system-700 border-system-600 text-system-100">
+              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
                 <CardHeader>
                   <CardTitle>
                     <Rocket /> Aumente seu faturamento.
@@ -314,7 +283,7 @@ function Home() {
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-system-700 border-system-600 text-system-100">
+              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
                 <CardHeader>
                   <CardTitle>
                     <PlusCircleIcon /> Integre varias unidades.
@@ -325,7 +294,7 @@ function Home() {
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-system-700 border-system-600 text-system-100">
+              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
                 <CardHeader>
                   <CardTitle>
                     <CloudLightningIcon /> Tenha velocidade

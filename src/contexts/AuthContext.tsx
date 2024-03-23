@@ -41,9 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (token) {
       restApi
-        .get('users', {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .get('users')
         .then((response) => setUser(response.data))
         .catch(() => {
           destroyCookie(undefined, 'nextauth.token', {
@@ -75,7 +73,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       const { token, user } = response.data
       setCookie(undefined, 'nextauth.token', token, {
-        maxAge: 60 * 60 * 1, // 1 hour
+        maxAge: 60 * 60 * 24, // 24 hours
         path: '/',
       })
 

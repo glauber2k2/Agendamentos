@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { FunctionComponent } from 'react'
 
 interface CardFlagProps {

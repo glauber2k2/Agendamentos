@@ -13,7 +13,7 @@ const UserSidebar: FunctionComponent<UserSidebarProps> = () => {
   const { user } = useContext(AuthContext)
 
   return (
-    <div className="hidden p-12 bg-system-200 dark:bg-system-950 shadow-lg shadow-system-darkness rounded-s-3xl lg:flex flex-col items-center relative">
+    <div className="hidden p-12 h-dvh bg-system-200 dark:bg-system-950 shadow-lg shadow-system-darkness rounded-s-3xl lg:flex flex-col items-center fixed right-0">
       <span className="mb-10">
         <Tipografia.Title>Status</Tipografia.Title>
         <Tipografia.Description>

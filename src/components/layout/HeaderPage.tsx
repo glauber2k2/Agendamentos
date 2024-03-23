@@ -16,7 +16,7 @@ const HeaderPage: FunctionComponent<HeaderPageProps> = ({
 }) => {
   return (
     <div className="flex w-full flex-col gap-8 mb-8">
-      <Card className="p-4 flex justify-between">
+      <Card className="p-4 flex-col md:flex-row flex justify-between">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 capitalize">
             {Icon && <Icon />}

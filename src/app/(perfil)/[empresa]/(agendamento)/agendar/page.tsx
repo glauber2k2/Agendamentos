@@ -72,7 +72,7 @@ function Agendar() {
     { from: new Date(2023, 4, 18), to: new Date(2023, 4, 29) },
   ]
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full h-full">
       <HeaderPage
         title="Agendar"
         description="Realize seu agendamento conosco!"
@@ -112,16 +112,16 @@ function Agendar() {
           className="flex flex-col xl:grid grid-cols-2 w-full gap-4"
           id="formulariodeagendamento"
         >
-          <Card className=" p-8 flex flex-col">
+          <Card className=" px-4 md:px-8 py-8 flex flex-col ">
             <CardTitle>Escolha o Profissional</CardTitle>
             <CardDescription>
               clique no profissional de sua escolha.
             </CardDescription>
-            <CardContent className="mt-8 p-2">
-              <ScrollArea className="h-96">
+            <CardContent className="mt-8 p-2 ">
+              <ScrollArea className="h-96 ">
                 <ToggleGroup
                   type="single"
-                  className="grid w-full grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 place-items-center"
+                  className="grid w-full grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 place-items-center "
                 >
                   {items.map((item) => (
                     <ToggleGroupItem
@@ -167,19 +167,19 @@ function Agendar() {
             </CardContent>
           </Card>
 
-          <Card className="p-8 flex flex-col">
+          <Card className="md:px-8 py-8 px-4 flex flex-col">
             <CardTitle>Preencha o agendamento</CardTitle>
             <CardDescription>
               Preencha os campos de agendamento.
             </CardDescription>
-            <CardContent className="w-full grid-cols-2 grid mt-4 gap-4">
+            <CardContent className="w-full md:grid-cols-2 grid mt-4 gap-4">
               <Calendar
                 fixedWeeks
                 disabled={disabledDays}
                 mode="single"
                 selected={date}
                 onSelect={setDate}
-                className="border dark:border-system-950 col-span-1 flex justify-center min-h-[350px] items-start"
+                className="border dark:border-system-950 col-span-1 flex justify-center w-1/2 min-h-[350px] items-start"
               />
               <Card className="p-4 flex flex-col justify-between">
                 <FormField

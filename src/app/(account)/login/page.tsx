@@ -13,7 +13,15 @@ import { Input } from '@/components/ui/input'
 import { useToast } from '@/components/ui/use-toast'
 import { AuthContext } from '@/contexts/AuthContext'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Asterisk, AtSign, Eye, EyeOff, Facebook, LogIn } from 'lucide-react'
+import {
+  Asterisk,
+  AtSign,
+  Eye,
+  EyeOff,
+  Facebook,
+  Loader2Icon,
+  LogIn,
+} from 'lucide-react'
 import Link from 'next/link'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -32,8 +40,12 @@ const formSchema = z.object({
 
 export default function Login() {
   const { signIn } = useContext(AuthContext)
+
   const [typePassword, setTypePassword] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+
   const { toast } = useToast()
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,7 +55,9 @@ export default function Login() {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true)
     const data = await signIn(values)
+    setIsLoading(false)
 
     if (!data.user) {
       toast({
@@ -119,8 +133,8 @@ export default function Login() {
             >
               <Link href={'/'}> Esqueci minha senha.</Link>
             </Button>
-            <Button>
-              <LogIn />
+            <Button disabled={isLoading}>
+              {isLoading ? <Loader2Icon className="animate-spin" /> : <LogIn />}
               Logar
             </Button>
           </form>

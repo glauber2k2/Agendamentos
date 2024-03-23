@@ -1,3 +1,6 @@
+'use client'
+
+import ChangeInput from '@/components/ChangeInput'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -8,11 +11,18 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Map, PenBox } from 'lucide-react'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useState } from 'react'
 
 interface MinhaContaProps {}
 
 const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
+  const [isEditableInput, setIsEditableInput] = useState(true)
+
+  async function editDataUser() {
+    //exec change name and username value
+    await new Promise((resolve) => setTimeout(resolve, 5000))
+    setIsEditableInput(false)
+  }
   return (
     <div className="w-full p-8">
       <Card>
@@ -26,10 +36,15 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
             <div className="p-10 flex items-center gap-4">
               <span className="h-16 w-16 bg-system-500 flex rounded-full " />
               <span>
-                <p className="text-2xl">Glauber Monteiro</p>
+                <ChangeInput isEditable={isEditableInput} />
                 <p className="text-sm opacity-70">@glaubersm</p>
               </span>
-              <Button variant={'ghost'} size={'icon'} className="mb-auto">
+              <Button
+                variant={'ghost'}
+                size={'icon'}
+                className="mb-auto"
+                onClick={editDataUser}
+              >
                 <PenBox />
               </Button>
             </div>

@@ -181,12 +181,12 @@ function Agendar() {
                 onSelect={setDate}
                 className="border dark:border-system-950 col-span-1 flex justify-center min-h-[350px] items-start"
               />
-              <Card className="p-4 flex flex-col justify-between">
+              <Card className="p-4 flex flex-col gap-4">
                 <FormField
                   control={form.control}
                   name="username"
                   render={() => (
-                    <FormItem className="col-span-3">
+                    <FormItem className="space-y-2">
                       <FormLabel>Unidade de Atendimento:</FormLabel>
                       <FormControl>
                         <Select>
@@ -209,7 +209,7 @@ function Agendar() {
                   control={form.control}
                   name="username"
                   render={() => (
-                    <FormItem className="col-span-3">
+                    <FormItem className="space-y-2">
                       <FormLabel>Tipo serviço:</FormLabel>
                       <FormControl>
                         <Select>
@@ -232,7 +232,7 @@ function Agendar() {
                   control={form.control}
                   name="username"
                   render={() => (
-                    <FormItem className="col-span-3">
+                    <FormItem className="space-y-2">
                       <FormLabel>Horario:</FormLabel>
                       <FormControl>
                         <Select>

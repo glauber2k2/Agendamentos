@@ -136,7 +136,7 @@ export default function Login() {
               className="mr-auto text-violet-500"
               size={'slim'}
             >
-              <Link href={'/login/registrarempresa'}>Registre-se</Link>
+              <Link href={'/login/registrarusuario'}>Registre-se</Link>
             </Button>
           </div>
           <div

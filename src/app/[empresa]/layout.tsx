@@ -3,7 +3,7 @@
 import UserSidebar from '@/components/layout/UserSidebar'
 import { SidebarProvider } from '@/contexts/SidebarContext'
 
-import SidebarCliente from './components/SidebarCliente'
+import SidebarCliente from '@/components/SidebarCliente'
 import { ReactNode, useContext } from 'react'
 import { AuthContext } from '@/contexts/AuthContext'
 

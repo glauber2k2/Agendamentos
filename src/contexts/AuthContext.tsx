@@ -3,8 +3,8 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 import { setCookie, parseCookies, destroyCookie } from 'nookies'
 
-import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { restApi } from '../../services/api'
 
 type User = {
   name: string
@@ -40,8 +40,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { 'nextauth.token': token } = parseCookies()
 
     if (token) {
-      axios
-        .get('https://agendamentos-api-umsz.onrender.com/users', {
+      restApi
+        .get('users', {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => setUser(response.data))
@@ -65,7 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     password: string
   }) {
     try {
-      const response = await axios.post(
+      const response = await restApi.post(
         'https://agendamentos-api-umsz.onrender.com/auth',
         {
           email,

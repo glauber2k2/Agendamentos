@@ -1,13 +1,13 @@
 import HeaderPage from '@/components/layout/HeaderPage'
 import { Home } from 'lucide-react'
 import { FunctionComponent } from 'react'
-import PlayerVideo from '../components/PlayerVideo'
+import PlayerVideo from './components/PlayerVideo'
 
-interface ClientHomeProps {
+interface CompanyHomeProps {
   params: { empresa: string }
 }
 
-const ClientHome: FunctionComponent<ClientHomeProps> = async ({ params }) => {
+const CompanyHome: FunctionComponent<CompanyHomeProps> = async ({ params }) => {
   return (
     <div className="flex flex-col w-full">
       <HeaderPage
@@ -21,4 +21,4 @@ const ClientHome: FunctionComponent<ClientHomeProps> = async ({ params }) => {
   )
 }
 
-export default ClientHome
+export default CompanyHome

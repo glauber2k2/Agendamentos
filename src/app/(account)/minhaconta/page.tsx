@@ -10,19 +10,66 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Map, PenBox } from 'lucide-react'
-import { FunctionComponent, useState } from 'react'
+import { Loader2, Map, PenBox } from 'lucide-react'
+import { FunctionComponent, useEffect, useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from '@/components/ui/form'
+import { restApi } from '../../../../services/api'
+import { useContext } from 'react'
+import { AuthContext } from '@/contexts/AuthContext'
 
 interface MinhaContaProps {}
 
-const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
-  const [isEditableInput, setIsEditableInput] = useState(true)
+const formSchema = z.object({
+  username: z.string().min(2, {
+    message: 'Seu nome deverá ter no minimo 2 characters',
+  }),
+  name: z.string().min(2, {
+    message: 'Seu nome deverá ter no minimo 2 characters',
+  }),
+})
 
-  async function editDataUser() {
-    //exec change name and username value
-    await new Promise((resolve) => setTimeout(resolve, 5000))
-    setIsEditableInput(false)
+const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
+  const [isEditableInput, setIsEditableInput] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { user } = useContext(AuthContext)
+
+  useEffect(() => {
+    form.setValue('name', user?.name || '')
+    form.setValue('username', user?.username || '')
+  }, [user])
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: user?.name,
+      username: user?.username,
+    },
+  })
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!isEditableInput) {
+      setIsEditableInput(true)
+      return
+    }
+    if (isEditableInput) {
+      setIsLoading(true)
+      await restApi.put('users', values)
+      setIsLoading(false)
+      setIsEditableInput(false)
+      return
+    }
   }
+
   return (
     <div className="w-full p-8">
       <Card>
@@ -35,17 +82,54 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
           <CardContent>
             <div className="p-10 flex items-center gap-4">
               <span className="h-16 w-16 bg-system-500 flex rounded-full " />
-              <span>
-                <ChangeInput isEditable={isEditableInput} />
-                <p className="text-sm opacity-70">@glaubersm</p>
-              </span>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} id="edituser">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <ChangeInput
+                            isEditable={isEditableInput}
+                            {...field}
+                            autoComplete="off"
+                          />
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="username"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <ChangeInput
+                            isEditable={isEditableInput}
+                            {...field}
+                            autoComplete="off"
+                          />
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </form>
+              </Form>
+
               <Button
                 variant={'ghost'}
                 size={'icon'}
                 className="mb-auto"
-                onClick={editDataUser}
+                type="submit"
+                form="edituser"
               >
-                <PenBox />
+                {isLoading ? <Loader2 className="animate-spin" /> : <PenBox />}
               </Button>
             </div>
 

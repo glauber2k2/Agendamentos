@@ -44,6 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .get('users')
         .then((response) => setUser(response.data))
         .catch(() => {
+          console.log('erro ao buscar dados com token e excluindo cookie')
           destroyCookie(undefined, 'nextauth.token', {
             path: '/',
           })

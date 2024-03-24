@@ -97,10 +97,12 @@ function SidebarCliente() {
               <DropdownMenuContent>
                 <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Perfil</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href={'/minhaconta'}>Perfil</Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => signOut()}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-red-500"
                 >
                   Sair
                 </DropdownMenuItem>

@@ -7,8 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { UserPlus2 } from 'lucide-react'
-import { FunctionComponent } from 'react'
+import { Loader2Icon, Rocket, UserPlus2 } from 'lucide-react'
+import { FunctionComponent, useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -51,8 +51,9 @@ const formSchema = z.object({
 })
 
 const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
-  const { toast } = useToast()
+  const [isLoading, setIsLoading] = useState(false)
 
+  const { toast } = useToast()
   const router = useRouter()
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -65,16 +66,17 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    axios
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true)
+    await axios
       .post('https://agendamentos-api-umsz.onrender.com/users', values)
       .then(() => {
         toast({
           title: 'Parabéns!',
           description: `${values.username} criado com sucesso!`,
-          variant: 'default',
+          variant: 'success',
         })
+        setIsLoading(false)
         router.replace('/login')
       })
       .catch((error) => {
@@ -151,7 +153,7 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="flex flex-col gap-2">
-                    <FormLabel>Senha</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Digite seu email"
@@ -182,7 +184,14 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit">Cadastrar</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? (
+                  <Loader2Icon className="animate-spin" />
+                ) : (
+                  <Rocket />
+                )}
+                Cadastrar
+              </Button>
             </form>
           </Form>
         </CardContent>

@@ -11,6 +11,10 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(searchCompanyURL)
   }
 
+  if (pathname.includes('/minhaconta') && !token) {
+    return NextResponse.redirect(new URL('/login', request.url))
+  }
+
   if (
     !token &&
     (pathname.includes('/agendar') ||

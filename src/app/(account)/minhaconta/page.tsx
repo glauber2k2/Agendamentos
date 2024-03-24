@@ -114,7 +114,8 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
                     control={form.control}
                     name="username"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="text-sm flex items-center gap-1">
+                        @
                         <FormControl>
                           <ChangeInput
                             isEditable={isEditableInput}
@@ -122,7 +123,6 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
                             autoComplete="off"
                           />
                         </FormControl>
-
                         <FormMessage />
                       </FormItem>
                     )}

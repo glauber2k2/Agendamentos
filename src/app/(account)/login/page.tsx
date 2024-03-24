@@ -28,10 +28,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const formSchema = z.object({
-  email: z
-    .string()
-    .email({ message: 'Digite um email válido.' })
-    .max(50, { message: 'Digite um email válido.' }),
+  username: z.string().max(20, { message: 'Digite um email válido.' }),
   password: z
     .string()
     .min(6, { message: 'Sua senha precisa ter no minimo 6 characters' })
@@ -49,7 +46,7 @@ export default function Login() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
+      username: '',
       password: '',
     },
   })
@@ -82,7 +79,7 @@ export default function Login() {
             </h1>
             <FormField
               control={form.control}
-              name="email"
+              name="username"
               render={({ field }) => (
                 <FormItem className="flex flex-col gap-2">
                   <FormLabel>Email</FormLabel>

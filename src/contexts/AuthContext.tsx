@@ -13,7 +13,7 @@ type User = {
 }
 
 type SignInData = {
-  email: string
+  username: string
   password: string
 }
 
@@ -57,17 +57,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   async function signIn({
-    email,
+    username,
     password,
   }: {
-    email: string
+    username: string
     password: string
   }) {
     try {
       const response = await restApi.post(
         'https://agendamentos-api-umsz.onrender.com/auth',
         {
-          email,
+          username,
           password,
         },
       )

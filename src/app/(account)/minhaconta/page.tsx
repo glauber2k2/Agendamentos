@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Loader2, Map, PenBox, User2 } from 'lucide-react'
+import { Loader2, Map, PenBox } from 'lucide-react'
 import { FunctionComponent, useEffect, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'

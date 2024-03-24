@@ -14,7 +14,6 @@ restApi.interceptors.request.use((config) => {
   if (token && config.headers) {
     config.headers.Authorization = `Bearer ${token}`
   }
-  console.log(config.headers) // Verifique se Authorization está presente
   return config
 })
 

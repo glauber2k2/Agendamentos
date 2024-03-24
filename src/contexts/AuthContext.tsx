@@ -45,9 +45,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .then((response) => setUser(response.data))
         .catch(() => {
           console.log('erro ao buscar dados de usuário')
-          // destroyCookie(undefined, 'nextauth.token', {
-          //   path: '/',
-          // })
+          //remover o cookie caso não consiga achar um usuario com o jwt.
+          destroyCookie(undefined, 'nextauth.token', {
+            path: '/',
+          })
 
           router.replace('/login')
         })

@@ -79,11 +79,17 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
             Altere aqui os seu dados cadastrais.
           </CardDescription>
 
-          <CardContent>
-            <div className="p-10 flex items-center gap-4">
-              <span className="h-16 w-16 bg-violet-700 flex rounded-full items-center justify-center">
-                <User2 size={32} />
-              </span>
+          <CardContent className="p-0 sm:p-6">
+            <div className="sm:px-10 py-10 flex items-center gap-4">
+              <Button
+                variant={'ghost'}
+                size={'icon'}
+                className="mb-auto"
+                type="submit"
+                form="edituser"
+              >
+                {isLoading ? <Loader2 className="animate-spin" /> : <PenBox />}
+              </Button>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} id="edituser">
                   <FormField
@@ -123,16 +129,6 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
                   />
                 </form>
               </Form>
-
-              <Button
-                variant={'ghost'}
-                size={'icon'}
-                className="mb-auto"
-                type="submit"
-                form="edituser"
-              >
-                {isLoading ? <Loader2 className="animate-spin" /> : <PenBox />}
-              </Button>
             </div>
 
             <span className="flex gap-2 items-center my-8">

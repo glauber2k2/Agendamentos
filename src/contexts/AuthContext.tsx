@@ -64,13 +64,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     password: string
   }) {
     try {
-      const response = await restApi.post(
-        'https://agendamentos-api-umsz.onrender.com/auth',
-        {
-          username,
-          password,
-        },
-      )
+      const response = await restApi.post('auth', {
+        username,
+        password,
+      })
 
       const { token, user } = response.data
       setCookie(undefined, 'nextauth.token', token, {

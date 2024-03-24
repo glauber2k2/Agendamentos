@@ -82,7 +82,7 @@ export default function Login() {
               name="username"
               render={({ field }) => (
                 <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Username</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Insira seu usuario"

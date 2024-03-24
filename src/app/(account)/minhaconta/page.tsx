@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Loader2, Map, PenBox } from 'lucide-react'
+import { Loader2, Map, PenBox, User2 } from 'lucide-react'
 import { FunctionComponent, useEffect, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -81,7 +81,9 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
 
           <CardContent>
             <div className="p-10 flex items-center gap-4">
-              <span className="h-16 w-16 bg-system-500 flex rounded-full " />
+              <span className="h-16 w-16 bg-violet-700 flex rounded-full items-center justify-center">
+                <User2 size={32} />
+              </span>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} id="edituser">
                   <FormField

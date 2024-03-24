@@ -11,7 +11,6 @@ const restApi = axios.create({
 })
 restApi.interceptors.request.use((config) => {
   const { 'nextauth.token': Token } = parseCookies()
-  console.log(Token)
   if (config.headers) config.headers.Authorization = `Bearer ${Token}`
   return config
 })

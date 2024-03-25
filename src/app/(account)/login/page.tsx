@@ -128,7 +128,7 @@ export default function Login() {
               className="ml-auto text-red-400"
               size={'slim'}
             >
-              <Link href={'/'}> Esqueci minha senha.</Link>
+              <Link href={'/recuperar-senha'}> Esqueci minha senha.</Link>
             </Button>
             <Button disabled={isLoading}>
               {isLoading ? <Loader2Icon className="animate-spin" /> : <LogIn />}

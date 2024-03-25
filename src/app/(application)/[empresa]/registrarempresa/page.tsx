@@ -1,7 +1,6 @@
 'use client'
 
 import CardFlag from '@/components/CardFlag'
-import TitleBox from '@/components/layout/TitleBox'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -34,18 +33,11 @@ import {
   Building2,
   CalendarIcon,
   ChevronDown,
-  CreditCard,
-  Database,
-  Eye,
   FileDigit,
   LayoutGrid,
-  LogIn,
-  MapPin,
   Paintbrush,
   Phone,
   Rocket,
-  Shield,
-  Text,
   User2,
   UserPlus2,
 } from 'lucide-react'
@@ -168,11 +160,6 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="w-full grid grid-cols-4 gap-4">
-                    <TitleBox
-                      title="Dados Empresa"
-                      icon={Building2}
-                      className="col-span-4 mb-0 mt-6"
-                    />
                     <FormField
                       control={form.control}
                       name="nomeEmpresa"
@@ -230,12 +217,6 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                           <FormMessage />
                         </FormItem>
                       )}
-                    />
-
-                    <TitleBox
-                      title="Endereço"
-                      icon={MapPin}
-                      className="col-span-4 mb-0 mt-2"
                     />
 
                     <FormField
@@ -372,11 +353,6 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="w-full grid grid-cols-4 gap-4">
-                    <TitleBox
-                      title="Dados visuais"
-                      icon={Eye}
-                      className="col-span-4 mb-0 mt-6"
-                    />
                     <FormField
                       control={form.control}
                       name="nomeDoPerfil"
@@ -444,12 +420,6 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       )}
                     />
 
-                    <TitleBox
-                      title="Dados perfil"
-                      icon={Database}
-                      className="col-span-4 mb-0 mt-6"
-                    />
-
                     <FormField
                       control={form.control}
                       name="usuario"
@@ -484,12 +454,6 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                           <FormMessage />
                         </FormItem>
                       )}
-                    />
-
-                    <TitleBox
-                      title="Dados de login"
-                      icon={LogIn}
-                      className="col-span-4 mb-0 mt-6"
                     />
 
                     <FormField
@@ -547,11 +511,6 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="w-full grid grid-cols-4 gap-4">
-                    <TitleBox
-                      title="Selecionar plano"
-                      icon={Shield}
-                      className="col-span-4 mb-0 mt-6"
-                    />
                     <FormField
                       control={form.control}
                       name="plano"
@@ -568,11 +527,7 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                         </FormItem>
                       )}
                     />
-                    <TitleBox
-                      title="Selecionar pagamento"
-                      icon={CreditCard}
-                      className="col-span-4 mb-0 mt-6"
-                    />
+
                     <FormField
                       control={form.control}
                       name="numeroCartao"
@@ -635,11 +590,6 @@ const Registrar: FunctionComponent<RegistrarProps> = () => {
                       )}
                     />
 
-                    <TitleBox
-                      title="Leia os termos"
-                      icon={Text}
-                      className="col-span-4 mb-0 mt-6"
-                    />
                     <Label className="flex gap-2 items-center col-span-4">
                       <Checkbox />
                       Declaro que li e estou ciente com os termos da TimeAlign.

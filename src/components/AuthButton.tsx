@@ -11,14 +11,7 @@ import {
   DropdownMenuSeparator,
 } from './ui/dropdown-menu'
 import { Avatar, AvatarFallback } from './ui/avatar'
-import {
-  Calendar,
-  History,
-  LogIn,
-  LogOut,
-  User2,
-  Wallet2Icon,
-} from 'lucide-react'
+import { Calendar, LogIn, LogOut, User2, Wallet2Icon } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from './ui/button'
 

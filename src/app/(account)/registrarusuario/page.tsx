@@ -1,13 +1,13 @@
 'use client'
 
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Loader2Icon, Rocket, UserPlus2 } from 'lucide-react'
+  Asterisk,
+  AtSign,
+  Eye,
+  EyeOff,
+  Loader2Icon,
+  Rocket,
+} from 'lucide-react'
 import { FunctionComponent, useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -52,6 +52,7 @@ const formSchema = z.object({
 
 const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const [typePassword, setTypePassword] = useState(true)
 
   const { toast } = useToast()
   const router = useRouter()
@@ -90,112 +91,101 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
   }
 
   return (
-    <div className="p-8 w-full">
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            <UserPlus2 />
-            Criar Conta
-          </CardTitle>
-          <CardDescription>
-            Crie sua conta e dê o proximo passo para economizar e facilitar seu
-            dia.
-          </CardDescription>
-        </CardHeader>
-      </Card>
+    <div className="w-full flex">
+      <div className="m-auto sm:w-4/5 justify-center flex flex-col items-center p-4 lg:w-2/3 gap-8">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className=" flex flex-col w-full bg-system-200 dark:bg-system-darkness rounded-3xl py-20 px-10 lg:px-20 gap-4"
+          >
+            <h1 className="dark:text-system-50 text-system-600 font-bold text-4xl">
+              Registrar-se
+            </h1>
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel>Nome</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Insira seu nome" {...field} />
+                  </FormControl>
 
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>
-            <UserPlus2 />
-            Novo usuário
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col gap-4"
-              noValidate
-            >
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col gap-2">
-                    <FormLabel>Nome</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Digite seu nome" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="username"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col gap-2">
-                    <FormLabel>Usuário</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Digite sua nome de usuário"
-                        {...field}
-                      />
-                    </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel>Usuário</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Insira seu usuário" {...field} />
+                  </FormControl>
 
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col gap-2">
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Digite seu email"
-                        {...field}
-                        type="email"
-                      />
-                    </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Insira seu email"
+                      icon={AtSign}
+                      {...field}
+                    />
+                  </FormControl>
 
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col gap-2">
-                    <FormLabel>Senha</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Digite sua senha"
-                        {...field}
-                        type="password"
-                      />
-                    </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel className="gap-2 flex">
+                    Senha
+                    <button
+                      type="button"
+                      onClick={() => setTypePassword(!typePassword)}
+                    >
+                      {typePassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Insira sua senha"
+                      type={typePassword ? 'password' : 'text'}
+                      {...field}
+                      icon={Asterisk}
+                    />
+                  </FormControl>
 
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" disabled={isLoading}>
-                {isLoading ? (
-                  <Loader2Icon className="animate-spin" />
-                ) : (
-                  <Rocket />
-                )}
-                Cadastrar
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <Button disabled={isLoading}>
+              {isLoading ? (
+                <Loader2Icon className="animate-spin" />
+              ) : (
+                <Rocket />
+              )}
+              Registrar-se
+            </Button>
+          </form>
+        </Form>
+      </div>
     </div>
   )
 }

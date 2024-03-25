@@ -25,6 +25,7 @@ import {
 import { restApi } from '../../../../services/api'
 import { useContext } from 'react'
 import { AuthContext } from '@/contexts/AuthContext'
+import { useToast } from '@/components/ui/use-toast'
 
 interface MinhaContaProps {}
 
@@ -40,6 +41,8 @@ const formSchema = z.object({
 const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
   const [isEditableInput, setIsEditableInput] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+
+  const { toast } = useToast()
 
   const { user } = useContext(AuthContext)
 
@@ -66,6 +69,11 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
       await restApi.put('users', values)
       setIsLoading(false)
       setIsEditableInput(false)
+      toast({
+        title: 'Parabéns!',
+        description: `${values.username} editado com sucesso!`,
+        variant: 'success',
+      })
       return
     }
   }
@@ -84,9 +92,9 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
               <Button
                 variant={'ghost'}
                 size={'icon'}
-                className="mb-auto"
                 type="submit"
                 form="edituser"
+                className=""
               >
                 {isLoading ? <Loader2 className="animate-spin" /> : <PenBox />}
               </Button>

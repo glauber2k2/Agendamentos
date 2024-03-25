@@ -1,17 +1,5 @@
 'use client'
 
-import HeaderPage from '@/components/layout/HeaderPage'
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { Calendar } from '@/components/ui/calendar'
 import {
@@ -44,7 +32,7 @@ import {
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AvatarFallback } from '@radix-ui/react-avatar'
-import { CalendarIcon, Calendar as LuCalendar } from 'lucide-react'
+import { CalendarIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -72,44 +60,10 @@ function Agendar() {
     { from: new Date(2023, 4, 18), to: new Date(2023, 4, 29) },
   ]
   return (
-    <div className="flex flex-col w-full h-full">
-      <HeaderPage
-        title="Agendar"
-        description="Realize seu agendamento conosco!"
-        icon={LuCalendar}
-      >
-        <AlertDialog>
-          <AlertDialogTrigger className="flex items-center gap-2 rounded-lg bg-system-800 text-system-100 py-2 px-4">
-            <CalendarIcon />
-            Agendar
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle className="text-system-600">
-                Confirmar agendamento?
-              </AlertDialogTitle>
-              <AlertDialogDescription>
-                Deseja realmente confirmar o agendamento de Cabelo e barba, com
-                Antonio Miguel, dia 10/03/2024 no horario 19:30?
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancelar</AlertDialogCancel>
-              <AlertDialogAction
-                type="submit"
-                form="formulariodeagendamento"
-                className="bg-system-950 hover:bg-system-800"
-              >
-                Sim, agendar
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      </HeaderPage>
-
+    <div className="flex flex-col w-full h-full p-8">
       <Form {...form}>
         <form
-          className="flex flex-col w-full gap-4"
+          className="grid md:grid-cols-2 w-full gap-4"
           id="formulariodeagendamento"
         >
           <Card className=" px-4 md:px-8 py-8 flex flex-col ">

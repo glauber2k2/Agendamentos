@@ -19,7 +19,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useContext } from 'react'
 
-function SidebarCliente() {
+function SidebarEmpresa() {
   const { sidebarIsOpen } = useSidebarContext()
   const pathname = usePathname()
   const rota = pathname.split('/')[1]
@@ -129,4 +129,4 @@ function SidebarCliente() {
   )
 }
 
-export default SidebarCliente
+export default SidebarEmpresa

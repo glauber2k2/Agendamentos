@@ -7,16 +7,25 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
 } from './ui/dropdown-menu'
 import { Avatar, AvatarFallback } from './ui/avatar'
-import { LogIn } from 'lucide-react'
+import {
+  Calendar,
+  History,
+  LogIn,
+  LogOut,
+  User2,
+  Wallet2Icon,
+} from 'lucide-react'
 import Link from 'next/link'
 import { Button } from './ui/button'
 
 interface AuthButtonProps {}
 
 const AuthButton: FunctionComponent<AuthButtonProps> = () => {
-  const { user } = useContext(AuthContext)
+  const { user, signOut } = useContext(AuthContext)
   return (
     <>
       {user ? (
@@ -28,11 +37,31 @@ const AuthButton: FunctionComponent<AuthButtonProps> = () => {
             <span className="hidden sm:block">{user.name}</span>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <Link href={'/glauber/home'}>
+            <DropdownMenuLabel>Opções</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <Link href={'/minha-conta'}>
               <DropdownMenuItem className="cursor-pointer">
-                Home
+                <User2 size={16} />
+                Perfil
               </DropdownMenuItem>
             </Link>
+            <Link href={'/'}>
+              <DropdownMenuItem className="cursor-pointer">
+                <Wallet2Icon size={16} />
+                Carteira
+              </DropdownMenuItem>
+            </Link>
+            <Link href={'/'}>
+              <DropdownMenuItem className="cursor-pointer">
+                <Calendar size={16} />
+                Agenda
+              </DropdownMenuItem>
+            </Link>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="text-red-500" onClick={signOut}>
+              <LogOut size={16} />
+              Sair
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (

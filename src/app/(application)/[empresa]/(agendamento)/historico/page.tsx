@@ -1,17 +1,8 @@
-import HeaderPage from '@/components/layout/HeaderPage'
-import { Timeline } from '@/components/layout/Timeline'
-import TitleBox from '@/components/layout/TitleBox'
-import { History } from 'lucide-react'
+import { Timeline } from '@/components/Timeline'
 
 function Historico() {
   return (
-    <div className="flex w-full flex-col">
-      <HeaderPage
-        icon={History}
-        title="Historico agendamento"
-        description="Acompanhe por aqui todo seu historico de agendamentos."
-      />
-      <TitleBox title="Historico de agendamentos:" icon={History} />
+    <div className="flex w-full flex-col p-8">
       <div className="flex pl-4 mt-4">
         <Timeline.Root>
           <Timeline.Item

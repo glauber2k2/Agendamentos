@@ -28,7 +28,10 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const formSchema = z.object({
-  username: z.string().max(20, { message: 'Digite um email válido.' }),
+  username: z
+    .string()
+    .max(20, { message: 'Digite um email válido.' })
+    .toLowerCase(),
   password: z
     .string()
     .min(6, { message: 'Sua senha precisa ter no minimo 6 characters' })

@@ -25,6 +25,7 @@ import { Button } from '@/components/ui/button'
 import axios from 'axios'
 import { useToast } from '@/components/ui/use-toast'
 import { useRouter } from 'next/navigation'
+import { restApi } from '../../../../services/api'
 
 interface RegistrarUsuarioProps {}
 
@@ -69,8 +70,8 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
-    await axios
-      .post('https://agendamentos-api-umsz.onrender.com/users', values)
+    await restApi
+      .post('/users', values)
       .then(() => {
         toast({
           title: 'Parabéns!',

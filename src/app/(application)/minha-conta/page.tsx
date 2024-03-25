@@ -66,7 +66,7 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
     }
     if (isEditableInput) {
       setIsLoading(true)
-      await restApi.put('users', values)
+      await restApi.put('/users', values)
       setIsLoading(false)
       setIsEditableInput(false)
       toast({

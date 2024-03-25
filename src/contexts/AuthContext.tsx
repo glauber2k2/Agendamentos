@@ -41,7 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (token) {
       restApi
-        .get('users')
+        .get('/users')
         .then((response) => setUser(response.data))
         .catch(() => {
           console.log('erro ao buscar dados de usuário')
@@ -65,7 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     password: string
   }) {
     try {
-      const response = await restApi.post('auth', {
+      const response = await restApi.post('/auth', {
         username,
         password,
       })

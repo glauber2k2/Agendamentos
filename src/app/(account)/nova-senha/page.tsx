@@ -34,10 +34,7 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
   const { toast } = useToast()
   const router = useRouter()
   const searchParams = useSearchParams()
-
   const token = searchParams.get('token')
-
-  console.log(token)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

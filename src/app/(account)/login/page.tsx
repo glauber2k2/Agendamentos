@@ -15,12 +15,12 @@ import { AuthContext } from '@/contexts/AuthContext'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Asterisk,
-  AtSign,
   Eye,
   EyeOff,
   Facebook,
   Loader2Icon,
   LogIn,
+  User2,
 } from 'lucide-react'
 import Link from 'next/link'
 import { useContext, useState } from 'react'
@@ -89,7 +89,7 @@ export default function Login() {
                   <FormControl>
                     <Input
                       placeholder="Insira seu usuario"
-                      icon={AtSign}
+                      icon={User2}
                       {...field}
                     />
                   </FormControl>

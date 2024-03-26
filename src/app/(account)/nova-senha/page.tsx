@@ -1,6 +1,6 @@
 'use client'
 
-import { Loader2Icon, Rocket } from 'lucide-react'
+import { Asterisk, Eye, EyeOff, Loader2Icon, Rocket } from 'lucide-react'
 import { FunctionComponent, useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -26,10 +26,14 @@ const formSchema = z.object({
   newPassword: z
     .string()
     .min(6, { message: 'sua senha deve ter mais de 6 characters' }),
+  confirmNewPassword: z
+    .string()
+    .min(6, { message: 'sua senha deve ter mais de 6 characters' }),
 })
 
 const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const [typePassword, setTypePassword] = useState(true)
 
   const { toast } = useToast()
   const router = useRouter()
@@ -40,30 +44,40 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       newPassword: '',
+      confirmNewPassword: '',
     },
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true)
-    await restApi
-      .post('/change_pass', { ...values, token })
-      .then(() => {
-        toast({
-          title: 'Senha alterada com sucesso',
-          description: `Você já pode testar sua nova senha.`,
-          variant: 'success',
+    if (values.newPassword === values.confirmNewPassword) {
+      setIsLoading(true)
+      await restApi
+        .post('/change_pass', { ...values, token })
+        .then(() => {
+          toast({
+            title: 'Senha alterada com sucesso',
+            description: `Você já pode testar sua nova senha.`,
+            variant: 'success',
+          })
+          setIsLoading(false)
+          router.replace('/login')
         })
-        setIsLoading(false)
-        router.replace('/login')
-      })
-      .catch((error) => {
-        toast({
-          title: 'Desculpe, algo deu errado.',
-          description: `Tente novamente mais tarde.`,
-          variant: 'destructive',
+        .catch((error) => {
+          toast({
+            title: 'Não foi possivel redefinir sua senha.',
+            description: error.response.data.message,
+            variant: 'destructive',
+          })
+          setIsLoading(false)
+          console.error('Erro:', error)
         })
-        console.error('Erro:', error)
+    } else {
+      toast({
+        title: 'Verifique a confirmação da senha.',
+        description: `Senha e confirmar senha devem ser iguais.`,
+        variant: 'destructive',
       })
+    }
   }
 
   return (
@@ -75,7 +89,7 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
             className=" flex flex-col w-full bg-system-200 dark:bg-system-darkness sm:rounded-3xl py-20 px-10 lg:px-20 gap-4 h-dvh sm:h-auto"
           >
             <h1 className="dark:text-system-50 text-system-600 font-bold text-4xl">
-              Recuperar senha
+              Criar senha
             </h1>
 
             <FormField
@@ -83,12 +97,40 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
               name="newPassword"
               render={({ field }) => (
                 <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Nova senha</FormLabel>
+                  <FormLabel className="gap-2 flex">
+                    Senha
+                    <button
+                      type="button"
+                      onClick={() => setTypePassword(!typePassword)}
+                    >
+                      {typePassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
+                  </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Insira seu nova senha."
+                      placeholder="Insira sua senha"
+                      type={typePassword ? 'password' : 'text'}
                       {...field}
-                      type="password"
+                      icon={Asterisk}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="confirmNewPassword"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel>Confirmar senha</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Confirme sua senha"
+                      type={typePassword ? 'password' : 'text'}
+                      {...field}
+                      icon={Asterisk}
                     />
                   </FormControl>
 

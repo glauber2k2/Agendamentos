@@ -7,6 +7,7 @@ import {
   EyeOff,
   Loader2Icon,
   Rocket,
+  User2,
 } from 'lucide-react'
 import { FunctionComponent, useState } from 'react'
 import { z } from 'zod'
@@ -122,7 +123,11 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
                 <FormItem className="flex flex-col gap-2">
                   <FormLabel>Usuário</FormLabel>
                   <FormControl>
-                    <Input placeholder="Insira seu usuário" {...field} />
+                    <Input
+                      placeholder="Insira seu usuário"
+                      {...field}
+                      icon={User2}
+                    />
                   </FormControl>
 
                   <FormMessage />

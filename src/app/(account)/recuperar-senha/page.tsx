@@ -45,7 +45,7 @@ const RecuperarSenha: FunctionComponent<RecuperarSenhaProps> = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     await restApi
-      .post('/forgot_pass', values)
+      .post('/recover_password', values)
       .then(() => {
         toast({
           title: 'Confira seu email.',

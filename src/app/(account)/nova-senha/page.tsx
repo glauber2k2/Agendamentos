@@ -52,7 +52,7 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
     if (values.newPassword === values.confirmNewPassword) {
       setIsLoading(true)
       await restApi
-        .post('/change_pass', { ...values, token })
+        .post('/new_password', { ...values, token })
         .then(() => {
           toast({
             title: 'Senha alterada com sucesso',

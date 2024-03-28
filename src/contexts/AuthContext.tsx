@@ -78,7 +78,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       setUser(user)
 
-      router.replace('/GlauberCorp')
+      router.replace('/feed')
 
       return { user, error: null }
     } catch (error) {

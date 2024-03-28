@@ -25,7 +25,13 @@ const AuthButton: FunctionComponent<AuthButtonProps> = () => {
         <DropdownMenu>
           <DropdownMenuTrigger className="flex items-center gap-2 outline-none">
             <Avatar className="cursor-pointer">
-              <AvatarFallback>GB</AvatarFallback>
+              <AvatarFallback>
+                {user.name
+                  .toUpperCase()
+                  .split(' ')
+                  .map((word: string) => word.charAt(0))
+                  .join('')}
+              </AvatarFallback>
             </Avatar>
             <span className="hidden sm:block">{user.name}</span>
           </DropdownMenuTrigger>

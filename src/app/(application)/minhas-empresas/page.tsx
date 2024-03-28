@@ -3,7 +3,8 @@
 import { FunctionComponent, useEffect, useState } from 'react'
 import { restApi } from '../../../../services/api'
 import { Button } from '@/components/ui/button'
-import { PenLine, Plus } from 'lucide-react'
+import { PenLine } from 'lucide-react'
+import ModalAdicionarEmpresa from './components/ModalAdicionarEmpresa'
 
 interface MinhasEmpresasProps {}
 
@@ -14,11 +15,8 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
   }, [])
   return (
     <div className="p-10 flex flex-col gap-8 items-end">
-      <Button variant={'ghost'}>
-        <Plus size={16} />
-        Adicionar empresa
-      </Button>
-      <div className="grid md:grid-cols-4 gap-10 w-full ">
+      <ModalAdicionarEmpresa />
+      <div className="grid md:grid-cols-4 gap-4 w-full ">
         {companies.map((company) => (
           <div
             key={company.id}

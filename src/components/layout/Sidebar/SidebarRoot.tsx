@@ -23,7 +23,7 @@ function Sidebar({ children }: ThemeContextProps) {
       }}
       transition={{ ease: 'backInOut' }}
       data-sidebar={sidebarIsOpen}
-      className={`fixed z-40 w-[100px] dark:bg-system-darkness dark:text-system-50 flex flex-col p-4 gap-4 shadow-xl shadow-black px-4 bg-system-100 text-system-600`}
+      className={`fixed z-40 w-[100px] max-h-dvh dark:bg-system-darkness dark:text-system-50 flex flex-col p-4 gap-4 shadow-xl shadow-black px-4 bg-system-100 text-system-600`}
     >
       <Button
         className={` ${

@@ -19,8 +19,8 @@ const NavBreadcumb: FunctionComponent<NavBreadcumbProps> = () => {
     <Breadcrumb>
       <BreadcrumbList>
         {pathname.map((path, index) => (
-          <>
-            <BreadcrumbItem key={path}>
+          <div key={path}>
+            <BreadcrumbItem>
               <BreadcrumbLink href={`/${path}`}>
                 {path.charAt(0).toUpperCase() +
                   path.slice(1).replace(/-/g, ' ')}
@@ -29,7 +29,7 @@ const NavBreadcumb: FunctionComponent<NavBreadcumbProps> = () => {
             {index !== pathname.length - 1 && path !== '' && (
               <BreadcrumbSeparator />
             )}
-          </>
+          </div>
         ))}
       </BreadcrumbList>
     </Breadcrumb>

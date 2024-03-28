@@ -25,7 +25,7 @@ const Feed: FunctionComponent<FeedProps> = () => {
       {companies.map((company) => (
         <Link
           href={`/${company.identifier}`}
-          className="bg-system-darkness p-8 rounded-md flex flex-col gap-4 hover:opacity-80 transition-all duration-300"
+          className="dark:bg-system-darkness bg-system-200 p-8 rounded-md flex flex-col gap-4 hover:opacity-80 transition-all duration-300"
           key={company.id}
         >
           <div className="flex items-center justify-between">

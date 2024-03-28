@@ -6,7 +6,7 @@ export default function middleware(request: NextRequest) {
   const tokenpass = request.nextUrl.searchParams.get('token')
 
   const companyHomeURL = new URL(`/${pathname.split('/')[1]}`, request.url)
-  const searchCompanyURL = new URL('/testando/home', request.url)
+  const searchCompanyURL = new URL('/feed', request.url)
 
   if (pathname.includes('/login') && token) {
     return NextResponse.redirect(searchCompanyURL)
@@ -24,6 +24,7 @@ export default function middleware(request: NextRequest) {
     !token &&
     (pathname.includes('/agendar') ||
       pathname.includes('/historico') ||
+      pathname.includes('/minhas-empresas') ||
       pathname.includes('/carteira'))
   ) {
     return NextResponse.redirect(companyHomeURL)

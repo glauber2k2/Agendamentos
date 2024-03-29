@@ -17,7 +17,9 @@ const Feed: FunctionComponent<FeedProps> = () => {
   const [companies, setCompanies] = useState<Company[]>([])
 
   useEffect(() => {
-    restApi.get('/companies').then((res) => setCompanies(res.data))
+    restApi
+      .get('/companies?visibleCompanies=true')
+      .then((res) => setCompanies(res.data))
   }, [])
 
   return (

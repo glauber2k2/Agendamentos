@@ -1,6 +1,12 @@
 'use client'
 
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import {
+  ReactNode,
+  createContext,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react'
 import { setCookie, parseCookies, destroyCookie } from 'nookies'
 
 import { useRouter } from 'next/navigation'
@@ -36,7 +42,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const isAuthenticated = !!user
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { 'nextauth.token': token } = parseCookies()
 
     if (token) {

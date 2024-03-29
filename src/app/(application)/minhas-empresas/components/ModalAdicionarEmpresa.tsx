@@ -14,7 +14,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { Plus } from 'lucide-react'
+import { Loader2Icon, Plus, Rocket } from 'lucide-react'
 import {
   Form,
   FormControl,
@@ -25,6 +25,7 @@ import {
 } from '@/components/ui/form'
 import { restApi } from '../../../../../services/api'
 import { useState } from 'react'
+import { useToast } from '@/components/ui/use-toast'
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -42,6 +43,7 @@ const formSchema = z.object({
   identifier: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
+  main_company_id: z.string().optional(),
 })
 
 export default function ModalAdicionarEmpresa({
@@ -51,7 +53,10 @@ export default function ModalAdicionarEmpresa({
     React.SetStateAction<z.infer<typeof formSchema>[]>
   >
 }) {
+  const { toast } = useToast()
+
   const [openModal, setOpenModal] = useState<boolean>()
+  const [loading, setLoading] = useState(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -64,9 +69,16 @@ export default function ModalAdicionarEmpresa({
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true)
     await restApi.post('companies', values).then((res) => {
       delete res.data.user
       setCompanies((companies) => [...companies, res.data])
+    })
+    setLoading(false)
+    toast({
+      title: 'Parabéns!',
+      description: `${values.name} criado com sucesso!`,
+      variant: 'success',
     })
     setOpenModal(false)
   }
@@ -93,7 +105,7 @@ export default function ModalAdicionarEmpresa({
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Nome oficial</FormLabel>
                     <FormControl>
                       <Input placeholder="Nome da empresa" {...field} />
                     </FormControl>
@@ -106,7 +118,7 @@ export default function ModalAdicionarEmpresa({
                 name="business_name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Nome Fantasia</FormLabel>
                     <FormControl>
                       <Input placeholder="Nome fantasia" {...field} />
                     </FormControl>
@@ -119,7 +131,7 @@ export default function ModalAdicionarEmpresa({
                 name="cnpj"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>CNPJ</FormLabel>
                     <FormControl>
                       <Input placeholder="CNPJ da empresa" {...field} />
                     </FormControl>
@@ -132,9 +144,9 @@ export default function ModalAdicionarEmpresa({
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Descrição</FormLabel>
                     <FormControl>
-                      <Input placeholder="descricao da empresa" {...field} />
+                      <Input placeholder="Descrição da empresa" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -145,12 +157,30 @@ export default function ModalAdicionarEmpresa({
                 name="identifier"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>
+                      Identificador
+                      <span
+                        title="O identificador se trata do @ da empresa, na qual o usuário podera buscar diretamente pela url"
+                        className="text-blue-500 cursor-pointer ml-2"
+                      >
+                        ?
+                      </span>
+                    </FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="indentificador da empresa"
-                        {...field}
-                      />
+                      <Input placeholder="Identificador" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="main_company_id"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Id empresa principal</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Opcional" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -159,7 +189,14 @@ export default function ModalAdicionarEmpresa({
             </div>
 
             <DialogFooter>
-              <Button type="submit">Cadastrar</Button>
+              <Button type="submit" disabled={loading}>
+                {loading ? (
+                  <Loader2Icon className="animate-spin" size={16} />
+                ) : (
+                  <Rocket size={16} />
+                )}
+                Cadastrar
+              </Button>
             </DialogFooter>
           </form>
         </Form>

@@ -23,44 +23,55 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { restApi } from '../../../../../services/api'
+import { useState } from 'react'
 
 const formSchema = z.object({
-  nome: z.string().min(2, {
+  name: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
-  nome_fantasia: z.string().min(2, {
+  business_name: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
   cnpj: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
-  descricao: z.string().min(2, {
+  description: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
-  identificador: z.string().min(2, {
+  identifier: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
 })
 
-export default function ModalAdicionarEmpresa() {
+export default function ModalAdicionarEmpresa({
+  setCompanies,
+}: {
+  setCompanies: React.Dispatch<
+    React.SetStateAction<z.infer<typeof formSchema>[]>
+  >
+}) {
+  const [openModal, setOpenModal] = useState<boolean>()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nome: '',
-      nome_fantasia: '',
+      name: '',
+      business_name: '',
       cnpj: '',
-      descricao: '',
-      identificador: '',
+      description: '',
+      identifier: '',
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    await restApi.post('companies', values).then((res) => {
+      delete res.data.user
+      setCompanies((companies) => [...companies, res.data])
+    })
+    setOpenModal(false)
   }
   return (
-    <Dialog>
+    <Dialog open={openModal}>
       <DialogTrigger asChild>
         <Button variant={'ghost'}>
           <Plus size={16} />
@@ -79,7 +90,7 @@ export default function ModalAdicionarEmpresa() {
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
-                name="nome"
+                name="name"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Username</FormLabel>
@@ -92,7 +103,7 @@ export default function ModalAdicionarEmpresa() {
               />
               <FormField
                 control={form.control}
-                name="nome_fantasia"
+                name="business_name"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Username</FormLabel>
@@ -118,7 +129,7 @@ export default function ModalAdicionarEmpresa() {
               />
               <FormField
                 control={form.control}
-                name="descricao"
+                name="description"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Username</FormLabel>
@@ -131,7 +142,7 @@ export default function ModalAdicionarEmpresa() {
               />
               <FormField
                 control={form.control}
-                name="identificador"
+                name="identifier"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Username</FormLabel>

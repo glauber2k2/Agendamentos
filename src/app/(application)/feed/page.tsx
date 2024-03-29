@@ -6,8 +6,8 @@ import Link from 'next/link'
 
 interface Company {
   id: string
-  nome: string
-  descricao: string
+  name: string
+  description: string
   identifier: string
 }
 
@@ -25,13 +25,13 @@ const Feed: FunctionComponent<FeedProps> = () => {
       {companies.map((company) => (
         <Link
           href={`/${company.identifier}`}
-          className="dark:bg-system-darkness bg-system-200 p-8 rounded-md flex flex-col gap-4 hover:opacity-80 transition-all duration-300"
+          className="dark:bg-system-darkness bg-system-200 p-8 rounded-md flex flex-col gap-4 hover:opacity-90 transition-all duration-300"
           key={company.id}
         >
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-2">
               <Building2 />
-              {company.nome}
+              {company.name}
             </span>
 
             <div className="w-10 h-10 bg-violet-400 rounded-full" />
@@ -39,7 +39,7 @@ const Feed: FunctionComponent<FeedProps> = () => {
 
           <span className="h-0.5 bg-system-800" />
 
-          {company.descricao}
+          {company.description}
         </Link>
       ))}
     </div>

@@ -1,5 +1,3 @@
-'use client'
-
 import { SidebarProvider } from '@/contexts/SidebarContext'
 import { ReactNode } from 'react'
 

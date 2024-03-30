@@ -10,22 +10,12 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useToast } from '@/components/ui/use-toast'
-import { AuthContext } from '@/contexts/AuthContext'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  Asterisk,
-  Eye,
-  EyeOff,
-  Facebook,
-  Loader2Icon,
-  LogIn,
-  User2,
-} from 'lucide-react'
+import { Asterisk, Facebook, User2 } from 'lucide-react'
 import Link from 'next/link'
-import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import loginAction from './action'
 
 const formSchema = z.object({
   username: z
@@ -39,13 +29,6 @@ const formSchema = z.object({
 })
 
 export default function Login() {
-  const { signIn } = useContext(AuthContext)
-
-  const [typePassword, setTypePassword] = useState(true)
-  const [isLoading, setIsLoading] = useState(false)
-
-  const { toast } = useToast()
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -55,18 +38,7 @@ export default function Login() {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true)
-    const data = await signIn(values)
-    setIsLoading(false)
-
-    if (!data.user) {
-      toast({
-        title: 'Erro ao fazer login.',
-        description:
-          'Por favor, verifique seu email e senha e tente novamente.',
-        variant: 'destructive',
-      })
-    }
+    loginAction(values)
   }
 
   return (
@@ -103,19 +75,10 @@ export default function Login() {
               name="password"
               render={({ field }) => (
                 <FormItem className="flex flex-col gap-2">
-                  <FormLabel className="gap-2 flex">
-                    Senha
-                    <button
-                      type="button"
-                      onClick={() => setTypePassword(!typePassword)}
-                    >
-                      {typePassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                    </button>
-                  </FormLabel>
+                  <FormLabel className="gap-2 flex">Senha</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Insira sua senha"
-                      type={typePassword ? 'password' : 'text'}
                       {...field}
                       icon={Asterisk}
                     />
@@ -133,10 +96,8 @@ export default function Login() {
             >
               <Link href={'/recuperar-senha'}> Esqueci minha senha.</Link>
             </Button>
-            <Button disabled={isLoading}>
-              {isLoading ? <Loader2Icon className="animate-spin" /> : <LogIn />}
-              Logar
-            </Button>
+
+            <Button type="submit">Enviar</Button>
           </form>
         </Form>
 

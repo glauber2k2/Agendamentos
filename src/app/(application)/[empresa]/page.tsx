@@ -15,12 +15,12 @@ interface CompanyHomeProps {
 
 const CompanyHome: FunctionComponent<CompanyHomeProps> = ({ params }) => {
   const { user } = useContext(AuthContext)
-  const [empresa, setEmpresa] = useState({ nome: '', descricao: '' })
+  const [empresa, setEmpresa] = useState({ name: '', description: '' })
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    restApi.get(`/company/${params.empresa}`).then((res) => {
-      setEmpresa(res.data)
+    restApi.get(`/companies?identifier=${params.empresa}`).then((res) => {
+      setEmpresa(res.data[0])
       setLoading(false)
     })
   }, [])
@@ -31,7 +31,7 @@ const CompanyHome: FunctionComponent<CompanyHomeProps> = ({ params }) => {
           <div className="dark:bg-system-950 bg-system-200 p-8 md:w-96">
             <span className="flex  flex-col mb-10">
               <h1 className="font-semibold text-2xl tracking-widest">
-                {empresa.nome}
+                {empresa.name}
               </h1>
 
               <p className="flex items-center gap-1 text-sm opacity-80">
@@ -40,7 +40,7 @@ const CompanyHome: FunctionComponent<CompanyHomeProps> = ({ params }) => {
               </p>
 
               <p className="text-xs mt-4 border-l-2 border-violet-600 pl-2">
-                {empresa.descricao}
+                {empresa.description}
               </p>
             </span>
 

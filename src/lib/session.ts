@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { cookies } from 'next/headers'
 
 export async function getSession() {
@@ -7,42 +8,27 @@ export async function getSession() {
 }
 
 export async function logout() {
-  console.log('teste')
   cookies().set('nextauth.user', '', { expires: new Date(0) })
   cookies().set('nextauth.token', '', { expires: new Date(0) })
 }
 
-export async function login(formData: FormData) {
+export async function login(values: { username: string; password: string }) {
+  console.log(values)
   try {
-    // Convertendo FormData para JSON
-    const formDataObj = Object.fromEntries(formData.entries())
-    const response = await fetch('https://api-agendamentos.onrender.com/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formDataObj),
-    })
+    const response = await axios.post(
+      'https://api-agendamentos.onrender.com/auth',
+      values,
+    )
+    const { token, user } = response.data
 
-    if (!response.ok) {
-      throw new Error('Falha na autenticação')
+    if (token && user) {
+      console.log('chegou aqui')
+      cookies().set('nextauth.token', token, { maxAge: 60 * 60 * 24 })
+      cookies().set('nextauth.user', JSON.stringify(user), {
+        maxAge: 60 * 60 * 24,
+      })
     }
-
-    // Extrair os dados da resposta
-    const data = await response.json()
-    const { user, token } = data
-
-    // Configurar a data de expiração
-    const expires = new Date(Date.now() + 10 * 1000) // Ajuste conforme necessário
-
-    // Salvar os dados recebidos nos cookies
-    cookies().set('nextauth.user', JSON.stringify(user), {
-      expires,
-      httpOnly: true,
-    })
-    cookies().set('nextauth.token', token, { expires, httpOnly: true })
   } catch (error) {
-    console.error('Erro ao logar:', error)
-    throw error // Lançar o erro novamente para ser tratado por quem chama a função
+    console.log('algo deu errado')
   }
 }

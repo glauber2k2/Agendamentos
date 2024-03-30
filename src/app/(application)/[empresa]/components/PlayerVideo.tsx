@@ -14,15 +14,23 @@ const PlayerVideo: FunctionComponent<PlayerVideoProps> = () => {
     }
   }, [])
   return (
-    <div className="overflow-hidden flex w-full rounded-2xl">
+    <div
+      className="max-w-screen-lg mx-auto relative"
+      style={{ maxWidth: '800px', height: '400px' }}
+    >
       {hasWindow && (
         <ReactPlayer
           url="https://www.youtube.com/watch?v=kqVjVfAjU4E"
           controls={false}
           playing={true}
           loop
-          height={720}
-          width={'100%'}
+          width="100%"
+          height="100%"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
         />
       )}
     </div>

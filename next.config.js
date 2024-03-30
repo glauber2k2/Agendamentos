@@ -3,7 +3,7 @@
 const nextConfig = {
   experimental: {
     serverActions: {
-      allowedOrigins: [process.env.BASE_URL],
+      allowedOrigins: ['https://agendamentos-8yoq.onrender.com'],
     },
   },
   logging: {

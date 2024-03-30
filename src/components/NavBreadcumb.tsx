@@ -14,7 +14,6 @@ interface NavBreadcumbProps {}
 
 const NavBreadcumb: FunctionComponent<NavBreadcumbProps> = () => {
   const pathname = usePathname().split('/')
-  console.log(pathname)
   return (
     <Breadcrumb>
       <BreadcrumbList>

@@ -29,7 +29,7 @@ import {
   User2,
 } from 'lucide-react'
 
-function Home() {
+async function Home() {
   return (
     <div className="w-full h-svh flex flex-col">
       <nav className="flex justify-between items-center gap-8 py-2 px-4 ">

@@ -1,7 +1,4 @@
-'use client'
-
-import { AuthContext } from '@/contexts/AuthContext'
-import { FunctionComponent, useContext } from 'react'
+import { FunctionComponent } from 'react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,26 +11,28 @@ import { Avatar, AvatarFallback } from './ui/avatar'
 import { Calendar, LogIn, LogOut, User2, Wallet2Icon } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from './ui/button'
+import { getSession, logout } from '@/lib/session'
+import { redirect } from 'next/navigation'
 
 interface AuthButtonProps {}
 
-const AuthButton: FunctionComponent<AuthButtonProps> = () => {
-  const { user, signOut } = useContext(AuthContext)
+const AuthButton: FunctionComponent<AuthButtonProps> = async () => {
+  const session = await getSession()
   return (
     <>
-      {user ? (
+      {session ? (
         <DropdownMenu>
           <DropdownMenuTrigger className="flex items-center gap-2 outline-none">
             <Avatar className="cursor-pointer">
               <AvatarFallback>
-                {user.name
+                {session.name
                   .toUpperCase()
                   .split(' ')
                   .map((word: string) => word.charAt(0))
                   .join('')}
               </AvatarFallback>
             </Avatar>
-            <span className="hidden sm:block">{user.name}</span>
+            <span className="hidden sm:block">{session.name}</span>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>Opções</DropdownMenuLabel>
@@ -57,9 +56,19 @@ const AuthButton: FunctionComponent<AuthButtonProps> = () => {
               </DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-red-500" onClick={signOut}>
-              <LogOut size={16} />
-              Sair
+            <DropdownMenuItem className="text-red-500">
+              <form
+                action={async () => {
+                  'use server'
+                  await logout()
+                  redirect('/')
+                }}
+              >
+                <button className="flex items-center gap-2">
+                  <LogOut size={16} />
+                  Sair
+                </button>
+              </form>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

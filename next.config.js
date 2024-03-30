@@ -1,5 +1,11 @@
+/* eslint-disable no-undef */
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverActions: {
+      allowedOrigins: [process.env.BASE_URL],
+    },
+  },
   logging: {
     fetches: {
       fullUrl: true,
@@ -7,5 +13,4 @@ const nextConfig = {
   },
 }
 
-// eslint-disable-next-line no-undef
 module.exports = nextConfig

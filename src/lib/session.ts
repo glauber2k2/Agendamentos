@@ -13,7 +13,6 @@ export async function logout() {
 }
 
 export async function login(values: { username: string; password: string }) {
-  console.log(values)
   try {
     const response = await axios.post(
       'https://api-agendamentos.onrender.com/auth',
@@ -22,13 +21,12 @@ export async function login(values: { username: string; password: string }) {
     const { token, user } = response.data
 
     if (token && user) {
-      console.log('chegou aqui')
       cookies().set('nextauth.token', token, { maxAge: 60 * 60 * 24 })
       cookies().set('nextauth.user', JSON.stringify(user), {
         maxAge: 60 * 60 * 24,
       })
     }
   } catch (error) {
-    console.log('algo deu errado')
+    console.log(error)
   }
 }

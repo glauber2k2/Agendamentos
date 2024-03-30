@@ -2,6 +2,7 @@ import { FunctionComponent } from 'react'
 import AuthButton from '../AuthButton'
 import NavBreadcumb from '../NavBreadcumb'
 import Link from 'next/link'
+import { Building2 } from 'lucide-react'
 
 interface TopBarProps {}
 
@@ -19,6 +20,9 @@ const TopBar: FunctionComponent<TopBarProps> = () => {
         </span>
       </Link>
       <div className="flex items-center gap-4">
+        <Link href={'/minhas-empresas'}>
+          <Building2 />
+        </Link>
         <div className="hidden md:block">
           <NavBreadcumb />
         </div>

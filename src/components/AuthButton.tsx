@@ -61,7 +61,7 @@ const AuthButton: FunctionComponent<AuthButtonProps> = async () => {
                 action={async () => {
                   'use server'
                   await logout()
-                  redirect('/')
+                  redirect('/login')
                 }}
               >
                 <button className="flex items-center gap-2">

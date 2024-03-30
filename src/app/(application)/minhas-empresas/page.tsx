@@ -5,6 +5,7 @@ import { restApi } from '../../../../services/api'
 import { Button } from '@/components/ui/button'
 import { PenLine } from 'lucide-react'
 import ModalAdicionarEmpresa from './components/ModalAdicionarEmpresa'
+import { Switch } from '@/components/ui/switch'
 
 interface MinhasEmpresasProps {}
 
@@ -14,6 +15,7 @@ type Company = {
   cnpj: string
   description: string
   identifier: string
+  isVisible?: boolean
 }
 
 const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
@@ -29,14 +31,23 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
         {companies.map((company) => (
           <div
             key={company.identifier}
-            className="p-4 bg-system-200 dark:bg-system-darkness rounded-md"
+            className="p-4 bg-system-200 dark:bg-system-darkness rounded-md flex flex-col gap-4"
           >
             <div className="flex items-center justify-between">
-              {company.name}
+              <div className="flex items-center gap-4">
+                <Switch defaultChecked={company.isVisible} />
+                <div>
+                  {company.name}
+                  <p className="text-xs">{company.identifier}</p>
+                </div>
+              </div>
               <Button variant={'ghost'}>
                 <PenLine size={18} />
               </Button>
             </div>
+            <span className="h-0.5 flex bg-system-950" />
+
+            <div className="text-sm">{company.cnpj}</div>
           </div>
         ))}
       </div>

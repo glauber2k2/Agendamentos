@@ -11,8 +11,17 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Asterisk, Facebook, User2 } from 'lucide-react'
+import {
+  Asterisk,
+  Eye,
+  EyeOff,
+  Facebook,
+  Loader2Icon,
+  LogIn,
+  User2,
+} from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import loginAction from './action'
@@ -29,6 +38,9 @@ const formSchema = z.object({
 })
 
 export default function Login() {
+  const [typePassword, setTypePassword] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,7 +50,9 @@ export default function Login() {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    loginAction(values)
+    setIsLoading(true)
+    await loginAction(values)
+    setIsLoading(false)
   }
 
   return (
@@ -75,10 +89,19 @@ export default function Login() {
               name="password"
               render={({ field }) => (
                 <FormItem className="flex flex-col gap-2">
-                  <FormLabel className="gap-2 flex">Senha</FormLabel>
+                  <FormLabel className="gap-2 flex">
+                    Senha
+                    <button
+                      type="button"
+                      onClick={() => setTypePassword(!typePassword)}
+                    >
+                      {typePassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Insira sua senha"
+                      type={typePassword ? 'password' : 'text'}
                       {...field}
                       icon={Asterisk}
                     />
@@ -96,8 +119,10 @@ export default function Login() {
             >
               <Link href={'/recuperar-senha'}> Esqueci minha senha.</Link>
             </Button>
-
-            <Button type="submit">Enviar</Button>
+            <Button disabled={isLoading}>
+              {isLoading ? <Loader2Icon className="animate-spin" /> : <LogIn />}
+              Logar
+            </Button>
           </form>
         </Form>
 

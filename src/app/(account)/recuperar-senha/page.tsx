@@ -1,7 +1,7 @@
 'use client'
 
 import { AtSign, Loader2Icon, Rocket } from 'lucide-react'
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent } from 'react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -30,8 +30,6 @@ const formSchema = z.object({
 })
 
 const RecuperarSenha: FunctionComponent<RecuperarSenhaProps> = () => {
-  const [isLoading, setIsLoading] = useState(false)
-
   const { toast } = useToast()
   const router = useRouter()
 
@@ -43,25 +41,34 @@ const RecuperarSenha: FunctionComponent<RecuperarSenhaProps> = () => {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true)
     await restApi
       .post('/recover_password', values)
-      .then(() => {
-        toast({
-          title: 'Confira seu email.',
-          description: `Você receberá um link de redefinição de senha em ${values.email}.`,
-          variant: 'success',
-        })
-        setIsLoading(false)
-        router.replace('/login')
+      .then((res) => {
+        if (res.data.success) {
+          toast({
+            title: 'Parabéns!',
+            description: `Email enviado!`,
+            variant: 'success',
+          })
+          router.push('/login')
+          return
+        }
+
+        if (!res.data.success) {
+          toast({
+            title: 'Não foi possivel redefinir senha.',
+            description: res.data.message,
+            variant: 'destructive',
+          })
+        }
       })
       .catch((error) => {
+        console.log(error)
         toast({
-          title: 'Desculpe, algo deu errado.',
-          description: `Tente novamente mais tarde.`,
+          title: 'Erro inesperado.',
+          description: 'Tente novamente mais tarde.',
           variant: 'destructive',
         })
-        console.error('Erro:', error)
       })
   }
 
@@ -96,8 +103,8 @@ const RecuperarSenha: FunctionComponent<RecuperarSenhaProps> = () => {
               )}
             />
 
-            <Button disabled={isLoading}>
-              {isLoading ? (
+            <Button disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? (
                 <Loader2Icon className="animate-spin" />
               ) : (
                 <Rocket />

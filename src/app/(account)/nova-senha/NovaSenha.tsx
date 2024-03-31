@@ -49,29 +49,39 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (values.newPassword === values.confirmNewPassword) {
-      const result = await restApi.post('/new_password', { ...values, token })
+      await restApi
+        .post('/new_password', { ...values, token })
+        .then((res) => {
+          if (res.data.success) {
+            toast({
+              title: 'Parabéns!',
+              description: `Senha redefinida com sucesso.`,
+              variant: 'success',
+            })
+            router.push('/login')
+            return
+          }
 
-      if (result.data.success) {
-        toast({
-          title: 'Parabéns!',
-          description: `Senha redefinida com sucesso.`,
-          variant: 'success',
+          if (!res.data.success) {
+            toast({
+              title: 'Não foi possivel redefinir senha.',
+              description: res.data.message,
+              variant: 'destructive',
+            })
+          }
         })
-        router.push('/login')
-        return
-      }
-
-      if (!result.data.success) {
-        toast({
-          title: 'Não foi possivel redefinir senha.',
-          description: result.data.message,
-          variant: 'destructive',
+        .catch((error) => {
+          console.log(error)
+          toast({
+            title: 'Verifique a confirmação da senha.',
+            description: `Senha e confirmar senha devem ser iguais.`,
+            variant: 'destructive',
+          })
         })
-      }
     } else {
       toast({
-        title: 'Verifique a confirmação da senha.',
-        description: `Senha e confirmar senha devem ser iguais.`,
+        title: 'Erro inesperado.',
+        description: 'Tente novamente mais tarde.',
         variant: 'destructive',
       })
     }

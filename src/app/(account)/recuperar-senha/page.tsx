@@ -41,35 +41,25 @@ const RecuperarSenha: FunctionComponent<RecuperarSenhaProps> = () => {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await restApi
-      .post('/recover_password', values)
-      .then((res) => {
-        if (res.data.success) {
-          toast({
-            title: 'Parabéns!',
-            description: `Email enviado!`,
-            variant: 'success',
-          })
-          router.push('/login')
-          return
-        }
+    const result = await restApi.post('/recover_password', values)
 
-        if (!res.data.success) {
-          toast({
-            title: 'Não foi possivel redefinir senha.',
-            description: res.data.message,
-            variant: 'destructive',
-          })
-        }
+    if (result.data.success) {
+      toast({
+        title: 'Parabéns!',
+        description: `Email enviado!`,
+        variant: 'success',
       })
-      .catch((error) => {
-        console.log(error)
-        toast({
-          title: 'Erro inesperado.',
-          description: 'Tente novamente mais tarde.',
-          variant: 'destructive',
-        })
+      router.push('/login')
+      return
+    }
+
+    if (!result.data.success) {
+      toast({
+        title: 'Não foi possivel redefinir senha.',
+        description: result.data.message,
+        variant: 'destructive',
       })
+    }
   }
 
   return (

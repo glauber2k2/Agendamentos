@@ -51,24 +51,15 @@ export default function Login() {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await loginAction(values)
-      .then((res) => {
-        if (res && !res.success) {
-          toast({
-            title: 'Falha no login',
-            description: res.message,
-            variant: 'destructive',
-          })
-        }
+    const result = await loginAction(values)
+
+    if (result && !result.success) {
+      toast({
+        title: 'Falha no login',
+        description: result.message,
+        variant: 'destructive',
       })
-      .catch((error) => {
-        console.log(error)
-        toast({
-          title: 'Erro inesperado.',
-          description: 'Tente novamente mais tarde.',
-          variant: 'destructive',
-        })
-      })
+    }
   }
 
   return (

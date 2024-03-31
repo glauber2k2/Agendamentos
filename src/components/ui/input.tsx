@@ -39,11 +39,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       >
         {hasIcon && <Icon className="text-system-500" />}
         <input
-          style={{
-            WebkitBoxShadow: '0 0 0px 1000px #00000000 inset',
-            WebkitTextFillColor: '#828282',
-            transition: 'background-color 5000s ease-in-out 0s',
-          }}
+          // style={{
+          //   WebkitBoxShadow: '0 0 0px 1000px #00000000 inset',
+          //   WebkitTextFillColor: '#828282',
+          //   transition: 'background-color 5000s ease-in-out 0s',
+          // }}
           type={type}
           className="bg-transparent w-full outline-none placeholder:text-system-300 text-system-800 dark:text-system-50 font-medium"
           ref={ref}

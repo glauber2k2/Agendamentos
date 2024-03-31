@@ -3,6 +3,7 @@ import AuthButton from '../AuthButton'
 import NavBreadcumb from '../NavBreadcumb'
 import Link from 'next/link'
 import { Building2 } from 'lucide-react'
+import { Button } from '../ui/button'
 
 interface TopBarProps {}
 
@@ -20,13 +21,15 @@ const TopBar: FunctionComponent<TopBarProps> = () => {
         </span>
       </Link>
       <div className="flex items-center gap-4">
-        <div className="hidden md:block">
+        <div className="hidden md:block mr-10">
           <NavBreadcumb />
         </div>
-        <AuthButton />
         <Link href={'/minhas-empresas'}>
-          <Building2 />
+          <Button variant={'ghost'}>
+            <Building2 />
+          </Button>
         </Link>
+        <AuthButton />
       </div>
     </div>
   )

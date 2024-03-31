@@ -26,6 +26,7 @@ import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 import { useRouter } from 'next/navigation'
 import { restApi } from '../../../../services/api'
+import Link from 'next/link'
 
 interface RegistrarUsuarioProps {}
 
@@ -93,11 +94,11 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
 
   return (
     <div className="w-full flex">
-      <div className="m-auto w-full sm:w-4/5 justify-center flex flex-col items-center sm:p-4 lg:w-2/3 gap-8">
+      <div className="m-auto w-4/5 justify-center flex flex-col items-center p-4 lg:w-2/3 gap-8">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className=" flex flex-col w-full bg-system-200 dark:bg-system-darkness sm:rounded-3xl py-20 px-10 lg:px-20 gap-4 h-screen sm:h-auto"
+            className=" flex flex-col w-full bg-system-200 dark:bg-system-darkness rounded-3xl py-20 px-10 lg:px-20 gap-4"
           >
             <h1 className="dark:text-system-50 text-system-600 font-bold text-4xl">
               Registrar-se
@@ -188,6 +189,9 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
               )}
               Registrar-se
             </Button>
+            <Link className="mx-auto text-xs mt-4" href="/login">
+              Ja possuo uma conta.
+            </Link>
           </form>
         </Form>
       </div>

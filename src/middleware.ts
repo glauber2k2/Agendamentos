@@ -12,7 +12,7 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(searchCompanyURL)
   }
 
-  if (pathname.includes('/minhaconta') && !token) {
+  if (pathname.includes('/minha-conta') && !token) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 

@@ -6,6 +6,11 @@ export default async function loginAction(values: {
   username: string
   password: string
 }) {
-  await login(values)
-  redirect('/feed')
+  const result = await login(values)
+
+  if (result.success) {
+    redirect('/feed')
+  } else {
+    return { success: false }
+  }
 }

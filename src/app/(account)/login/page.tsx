@@ -25,6 +25,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import loginAction from './action'
+import { useToast } from '@/components/ui/use-toast'
 
 const formSchema = z.object({
   username: z
@@ -39,7 +40,7 @@ const formSchema = z.object({
 
 export default function Login() {
   const [typePassword, setTypePassword] = useState(true)
-  const [isLoading, setIsLoading] = useState(false)
+  const { toast } = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,9 +51,15 @@ export default function Login() {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true)
-    await loginAction(values)
-    setIsLoading(false)
+    const result = await loginAction(values)
+
+    if (result && !result.success) {
+      toast({
+        title: 'Falha no login',
+        description: 'verifique seu email ou senha.',
+        variant: 'destructive',
+      })
+    }
   }
 
   return (
@@ -119,8 +126,12 @@ export default function Login() {
             >
               <Link href={'/recuperar-senha'}> Esqueci minha senha.</Link>
             </Button>
-            <Button disabled={isLoading}>
-              {isLoading ? <Loader2Icon className="animate-spin" /> : <LogIn />}
+            <Button disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? (
+                <Loader2Icon className="animate-spin" />
+              ) : (
+                <LogIn />
+              )}
               Logar
             </Button>
           </form>

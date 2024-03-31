@@ -26,7 +26,10 @@ export async function login(values: { username: string; password: string }) {
         maxAge: 60 * 60 * 24,
       })
     }
+
+    return { success: true }
   } catch (error) {
     console.log(error)
+    return { success: false }
   }
 }

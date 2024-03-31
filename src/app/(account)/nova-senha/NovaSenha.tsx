@@ -32,7 +32,6 @@ const formSchema = z.object({
 })
 
 const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
-  const [isLoading, setIsLoading] = useState(false)
   const [typePassword, setTypePassword] = useState(true)
 
   const { toast } = useToast()
@@ -50,27 +49,25 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (values.newPassword === values.confirmNewPassword) {
-      setIsLoading(true)
-      await restApi
-        .post('/new_password', { ...values, token })
-        .then(() => {
-          toast({
-            title: 'Senha alterada com sucesso',
-            description: `Você já pode testar sua nova senha.`,
-            variant: 'success',
-          })
-          setIsLoading(false)
-          router.replace('/login')
+      const result = await restApi.post('/new_password', { ...values, token })
+
+      if (result.data.success) {
+        toast({
+          title: 'Parabéns!',
+          description: `Senha redefinida com sucesso.`,
+          variant: 'success',
         })
-        .catch((error) => {
-          toast({
-            title: 'Não foi possivel redefinir sua senha.',
-            description: error.response.data.message,
-            variant: 'destructive',
-          })
-          setIsLoading(false)
-          console.error('Erro:', error)
+        router.push('/login')
+        return
+      }
+
+      if (!result.data.success) {
+        toast({
+          title: 'Não foi possivel redefinir senha.',
+          description: result.data.message,
+          variant: 'destructive',
         })
+      }
     } else {
       toast({
         title: 'Verifique a confirmação da senha.',
@@ -139,8 +136,8 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
               )}
             />
 
-            <Button disabled={isLoading}>
-              {isLoading ? (
+            <Button disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? (
                 <Loader2Icon className="animate-spin" />
               ) : (
                 <Rocket />

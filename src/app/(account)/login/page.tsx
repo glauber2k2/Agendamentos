@@ -56,7 +56,7 @@ export default function Login() {
     if (result && !result.success) {
       toast({
         title: 'Falha no login',
-        description: 'verifique seu email ou senha.',
+        description: result.message,
         variant: 'destructive',
       })
     }

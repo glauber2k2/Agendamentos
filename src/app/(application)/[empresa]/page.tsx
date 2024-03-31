@@ -20,7 +20,7 @@ const CompanyHome: FunctionComponent<CompanyHomeProps> = ({ params }) => {
 
   useEffect(() => {
     restApi.get(`/companies?identifier=${params.empresa}`).then((res) => {
-      setEmpresa(res.data[0])
+      setEmpresa(res.data.data[0])
       setLoading(false)
     })
   }, [])

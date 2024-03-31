@@ -11,6 +11,6 @@ export default async function loginAction(values: {
   if (result.success) {
     redirect('/feed')
   } else {
-    return { success: false }
+    return result
   }
 }

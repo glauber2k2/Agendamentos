@@ -21,7 +21,7 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
   const [companies, setCompanies] = useState<Company[]>([])
 
   useEffect(() => {
-    restApi.get('/user_companies').then((res) => setCompanies(res.data))
+    restApi.get('/user_companies').then((res) => setCompanies(res.data.data))
   }, [])
   return (
     <div className="p-10 flex flex-col gap-8 items-end">

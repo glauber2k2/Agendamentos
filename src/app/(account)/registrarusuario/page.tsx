@@ -53,7 +53,6 @@ const formSchema = z.object({
 })
 
 const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
-  const [isLoading, setIsLoading] = useState(false)
   const [typePassword, setTypePassword] = useState(true)
 
   const { toast } = useToast()
@@ -70,26 +69,24 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true)
-    await restApi
-      .post('/users', values)
-      .then(() => {
-        toast({
-          title: 'Parabéns!',
-          description: `${values.username} criado com sucesso!`,
-          variant: 'success',
-        })
-        setIsLoading(false)
-        router.replace('/login')
+    const result = await restApi.post('/users', values)
+    if (result.data.success) {
+      toast({
+        title: 'Parabéns!',
+        description: `${values.username} criado com sucesso!`,
+        variant: 'success',
       })
-      .catch((error) => {
-        toast({
-          title: 'Algo deu errado.',
-          description: `${values.username} não pode ser criado.`,
-          variant: 'destructive',
-        })
-        console.error('Erro:', error)
+      router.push('/login')
+      return
+    }
+
+    if (!result.data.success) {
+      toast({
+        title: 'Não foi possivel criar conta.',
+        description: result.data.message,
+        variant: 'destructive',
       })
+    }
   }
 
   return (
@@ -181,8 +178,8 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
               )}
             />
 
-            <Button disabled={isLoading}>
-              {isLoading ? (
+            <Button disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? (
                 <Loader2Icon className="animate-spin" />
               ) : (
                 <Rocket />

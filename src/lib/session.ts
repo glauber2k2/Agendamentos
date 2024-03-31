@@ -13,12 +13,14 @@ export async function logout() {
 }
 
 export async function login(values: { username: string; password: string }) {
+  const response = await axios.post(
+    'https://api-agendamentos.onrender.com/auth',
+    values,
+  )
+
   try {
-    const response = await axios.post(
-      'https://api-agendamentos.onrender.com/auth',
-      values,
-    )
-    const { token, user } = response.data
+    const { token, user } = response.data.data
+    console.log(token, user)
 
     if (token && user) {
       cookies().set('nextauth.token', token, { maxAge: 60 * 60 * 24 })
@@ -27,9 +29,9 @@ export async function login(values: { username: string; password: string }) {
       })
     }
 
-    return { success: true }
+    return response.data
   } catch (error) {
     console.log(error)
-    return { success: false }
+    return response.data
   }
 }

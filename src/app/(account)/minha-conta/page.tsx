@@ -15,8 +15,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { restApi } from '../../../../services/api'
-import { useContext } from 'react'
-import { AuthContext } from '@/contexts/AuthContext'
 import { useToast } from '@/components/ui/use-toast'
 import Link from 'next/link'
 
@@ -33,21 +31,24 @@ const formSchema = z.object({
 
 const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
   const [isEditableInput, setIsEditableInput] = useState(false)
-
   const { toast } = useToast()
 
-  const { user } = useContext(AuthContext)
+  // const session = await getSession()
+  const session = {
+    username: 'em breve',
+    name: 'em breve',
+  }
 
   useEffect(() => {
-    form.setValue('name', user?.name || '')
-    form.setValue('username', user?.username || '')
-  }, [user])
+    form.setValue('name', session?.name || '')
+    form.setValue('username', session?.username || '')
+  }, [session])
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: user?.name,
-      username: user?.username,
+      name: session?.name,
+      username: session?.username,
     },
   })
 

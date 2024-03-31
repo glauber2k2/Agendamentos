@@ -1,12 +1,11 @@
 'use client'
 
-import { FunctionComponent, useContext, useEffect, useState } from 'react'
+import { FunctionComponent, useEffect, useState } from 'react'
 
 import { AlertCircle, AtSign, Calendar, Coins, History } from 'lucide-react'
 import PlayerVideo from './components/PlayerVideo'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { AuthContext } from '@/contexts/AuthContext'
 import { restApi } from '../../../../services/api'
 
 interface CompanyHomeProps {
@@ -14,9 +13,10 @@ interface CompanyHomeProps {
 }
 
 const CompanyHome: FunctionComponent<CompanyHomeProps> = ({ params }) => {
-  const { user } = useContext(AuthContext)
   const [empresa, setEmpresa] = useState({ name: '', description: '' })
   const [loading, setLoading] = useState(true)
+
+  const user = true
 
   useEffect(() => {
     restApi.get(`/companies?identifier=${params.empresa}`).then((res) => {

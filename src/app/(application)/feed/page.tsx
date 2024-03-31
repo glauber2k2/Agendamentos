@@ -23,27 +23,28 @@ const Feed: FunctionComponent<FeedProps> = () => {
   }, [])
 
   return (
-    <div className="p-6 md:p-20 grid md:grid-cols-4 gap-4 md:gap-10">
-      {companies.map((company) => (
-        <Link
-          href={`/${company.identifier}`}
-          className="dark:bg-system-darkness bg-system-200 p-8 rounded-md flex flex-col gap-4 hover:opacity-90 transition-all duration-300"
-          key={company.id}
-        >
-          <div className="flex items-center justify-between">
-            <span className="flex items-center gap-2">
-              <Building2 />
-              {company.name}
-            </span>
+    <div className="flex flex-col w-full justify-center gap-4 p-10 md:flex-row">
+      <div className="flex w-full md:w-72 h-96 bg-system-darkness justify-center items-center">
+        Filtro
+      </div>
+      <div className="flex flex-col  gap-4">
+        {companies.map((company) => (
+          <Link href={`/${company.identifier}`} key={company.id}>
+            <div className="dark:bg-system-darkness bg-system-200 flex rounded-md hover:opacity-90 transition-all duration-300 overflow-hidden">
+              <div className="w-52 h-52 bg-violet-500 " />
+              <div className="flex p-4 flex-col flex-1 lg:w-[500px]">
+                {company.name}
+                <p className="text-xs">{company.description}</p>
 
-            <div className="w-10 h-10 bg-violet-400 rounded-full" />
-          </div>
-
-          <span className="h-0.5 bg-system-800" />
-
-          {company.description}
-        </Link>
-      ))}
+                <span className="h-0.5 bg-system-800 w-full my-2" />
+                <p className="px-2 py-1 rounded bg-white/10 w-fit text-xs">
+                  Barbearia
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

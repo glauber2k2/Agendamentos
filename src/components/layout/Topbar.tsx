@@ -20,13 +20,13 @@ const TopBar: FunctionComponent<TopBarProps> = () => {
         </span>
       </Link>
       <div className="flex items-center gap-4">
-        <Link href={'/minhas-empresas'}>
-          <Building2 />
-        </Link>
         <div className="hidden md:block">
           <NavBreadcumb />
         </div>
         <AuthButton />
+        <Link href={'/minhas-empresas'}>
+          <Building2 />
+        </Link>
       </div>
     </div>
   )

@@ -3,8 +3,7 @@
 import { FunctionComponent, useEffect, useState } from 'react'
 import { restApi } from '../../../../services/api'
 import { Button } from '@/components/ui/button'
-import { PenLine } from 'lucide-react'
-import ModalAdicionarEmpresa from './components/ModalAdicionarEmpresa'
+import { PenLine, Users2 } from 'lucide-react'
 import { Switch } from '@/components/ui/switch'
 
 interface MinhasEmpresasProps {}
@@ -26,14 +25,13 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
   }, [])
   return (
     <div className="p-10 flex flex-col gap-8 items-end">
-      <ModalAdicionarEmpresa setCompanies={setCompanies} />
-      <div className="grid md:grid-cols-4 gap-4 w-full ">
+      <div className="grid lg:grid-cols-2 2xl:grid-cols-4 gap-4 w-full ">
         {companies.map((company) => (
           <div
             key={company.identifier}
             className="p-4 bg-system-200 dark:bg-system-darkness rounded-md flex flex-col gap-4"
           >
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between ">
               <div className="flex items-center gap-4">
                 <Switch defaultChecked={company.isVisible} />
                 <div>
@@ -41,9 +39,14 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
                   <p className="text-xs">{company.identifier}</p>
                 </div>
               </div>
-              <Button variant={'ghost'}>
-                <PenLine size={18} />
-              </Button>
+              <div>
+                <Button variant={'ghost'}>
+                  <Users2 size={18} />
+                </Button>
+                <Button variant={'ghost'}>
+                  <PenLine size={18} />
+                </Button>
+              </div>
             </div>
             <span className="h-0.5 flex bg-system-950" />
 

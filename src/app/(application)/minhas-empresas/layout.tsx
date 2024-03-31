@@ -1,5 +1,4 @@
-import SidebarEmpresa from '@/components/SidebarEmpresa'
-import { SidebarProvider } from '@/contexts/SidebarContext'
+import Sidebar from './components/Sidebar'
 
 export default function MinhasEmpresasLayout({
   children,
@@ -7,11 +6,9 @@ export default function MinhasEmpresasLayout({
   children: React.ReactNode
 }) {
   return (
-    <SidebarProvider>
-      <div className="flex">
-        <SidebarEmpresa />
-        <div className="w-full ml-[100px]">{children}</div>
-      </div>
-    </SidebarProvider>
+    <div className="flex h-full flex-col md:flex-row">
+      <Sidebar />
+      <div className="w-full">{children}</div>
+    </div>
   )
 }

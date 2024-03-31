@@ -1,7 +1,6 @@
 'use client'
 import { FunctionComponent, useEffect, useState } from 'react'
 import { restApi } from '../../../../services/api'
-import { Building2 } from 'lucide-react'
 import Link from 'next/link'
 
 interface Company {

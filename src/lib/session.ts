@@ -19,7 +19,7 @@ export async function login(values: { username: string; password: string }) {
   )
 
   try {
-    const { token, user } = response.data.data
+    const { token, user } = response.data.responseData
     console.log(token, user)
 
     if (token && user) {
@@ -28,6 +28,8 @@ export async function login(values: { username: string; password: string }) {
         maxAge: 60 * 60 * 24,
       })
     }
+
+    console.log(response.data)
 
     return response.data
   } catch (error) {

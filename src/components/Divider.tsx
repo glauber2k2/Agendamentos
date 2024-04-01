@@ -1,21 +1,22 @@
+import { cn } from '@/lib/utils'
 import { FunctionComponent, HTMLAttributes } from 'react'
 
 interface DividerProps extends HTMLAttributes<HTMLDivElement> {
-  title: string
-  bgTheme: 'light' | 'dark'
+  title?: string
 }
 
-const Divider: FunctionComponent<DividerProps> = ({ title, bgTheme }) => {
-  const color = {
-    light: 'black',
-    dark: 'bg-white',
-  }
-
+const Divider: FunctionComponent<DividerProps> = ({ title, ...rest }) => {
   return (
-    <div className={`text-white flex items-center gap-4 w-full truncate my-4`}>
-      <span className={`${color[bgTheme]} w-full h-0.5`} />
+    <div
+      className={cn(
+        `text-white flex items-center  w-full truncate`,
+        title ? 'gap-4' : '',
+        rest.className,
+      )}
+    >
+      <span className={`dark:bg-system-900 bg-system-300 w-full h-0.5`} />
       {title}
-      <span className={`bg-${color[bgTheme]} w-full h-0.5`} />
+      <span className={`dark:bg-system-900 bg-system-300 w-full h-0.5`} />
     </div>
   )
 }

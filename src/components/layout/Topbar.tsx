@@ -2,8 +2,9 @@ import { FunctionComponent } from 'react'
 import AuthButton from '../AuthButton'
 import NavBreadcumb from '../NavBreadcumb'
 import Link from 'next/link'
-import { Building2 } from 'lucide-react'
+import { BellDotIcon, Building2 } from 'lucide-react'
 import { Button } from '../ui/button'
+import Notifications from '../Notifications'
 
 interface TopBarProps {}
 
@@ -20,15 +21,19 @@ const TopBar: FunctionComponent<TopBarProps> = () => {
           <h1 className="hidden md:block">TimeAlign</h1>
         </span>
       </Link>
-      <div className="flex items-center gap-4">
-        <div className="hidden md:block mr-10">
-          <NavBreadcumb />
-        </div>
-        <Link href={'/minhas-empresas'}>
-          <Button variant={'ghost'}>
-            <Building2 />
-          </Button>
-        </Link>
+      <div className="flex items-center gap-10">
+        <span className="space-x-4">
+          <Link href={'/minhas-empresas'}>
+            <Button size={'icon'} variant={'outline'}>
+              <Building2 size={18} />
+            </Button>
+          </Link>
+          <Notifications>
+            <Button size={'icon'} variant={'outline'}>
+              <BellDotIcon size={18} />
+            </Button>
+          </Notifications>
+        </span>
         <AuthButton />
       </div>
     </div>

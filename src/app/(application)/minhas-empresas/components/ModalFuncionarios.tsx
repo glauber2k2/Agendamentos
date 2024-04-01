@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { Calendar, Loader2Icon, Send, UserPlus2 } from 'lucide-react'
+import { Loader2Icon, Send, User2, UserPlus2 } from 'lucide-react'
 import { FunctionComponent, useState } from 'react'
 import {
   Form,
@@ -67,13 +67,13 @@ const ModalFuncionarios: FunctionComponent<ModalFuncionariosProps> = ({
     <Dialog open={openModal}>
       <DialogTrigger>
         <Button variant={'ghost'}>
-          <Calendar size={18} /> Convidar contribuidor
+          <UserPlus2 size={18} /> Convidar colaborador
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex gap-2 items-center">
-            <UserPlus2 /> Convidar contribuidor
+            <UserPlus2 /> Convidar colaborador
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
@@ -83,9 +83,9 @@ const ModalFuncionarios: FunctionComponent<ModalFuncionariosProps> = ({
               name="invitedUsername"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Contribuidor</FormLabel>
+                  <FormLabel>Colaborador</FormLabel>
                   <FormControl>
-                    <Input placeholder="username" {...field} />
+                    <Input placeholder="username" {...field} icon={User2} />
                   </FormControl>
                   <FormDescription>
                     Insira o username para convidar

@@ -20,7 +20,6 @@ export async function login(values: { username: string; password: string }) {
 
   try {
     const { token, user } = response.data.responseData
-    console.log(token, user)
 
     if (token && user) {
       cookies().set('nextauth.token', token, { maxAge: 60 * 60 * 24 })
@@ -28,8 +27,6 @@ export async function login(values: { username: string; password: string }) {
         maxAge: 60 * 60 * 24,
       })
     }
-
-    console.log(response.data)
 
     return response.data
   } catch (error) {

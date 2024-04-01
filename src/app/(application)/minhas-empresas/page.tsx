@@ -3,12 +3,19 @@
 import { FunctionComponent, useEffect, useState } from 'react'
 import { restApi } from '../../../../services/api'
 import { Button } from '@/components/ui/button'
-import { PenLine, Users2 } from 'lucide-react'
+import { Calendar, MoreVertical } from 'lucide-react'
 import { Switch } from '@/components/ui/switch'
+import ModalFuncionarios from './components/ModalFuncionarios'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
 interface MinhasEmpresasProps {}
 
 type Company = {
+  id: string
   name: string
   business_name: string
   cnpj: string
@@ -21,7 +28,9 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
   const [companies, setCompanies] = useState<Company[]>([])
 
   useEffect(() => {
-    restApi.get('/user_companies').then((res) => setCompanies(res.data.responseData))
+    restApi
+      .get('/user_companies')
+      .then((res) => setCompanies(res.data.responseData))
   }, [])
   return (
     <div className="p-10 flex flex-col gap-8 items-end">
@@ -41,11 +50,19 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
               </div>
               <div>
                 <Button variant={'ghost'}>
-                  <Users2 size={18} />
+                  <Calendar size={18} />
                 </Button>
-                <Button variant={'ghost'}>
-                  <PenLine size={18} />
-                </Button>
+
+                <Popover>
+                  <PopoverTrigger>
+                    <Button variant={'ghost'}>
+                      <MoreVertical size={18} />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <ModalFuncionarios id_empresa={company.id} />
+                  </PopoverContent>
+                </Popover>
               </div>
             </div>
             <span className="h-0.5 flex bg-system-950" />

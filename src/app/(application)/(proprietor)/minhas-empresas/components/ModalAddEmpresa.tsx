@@ -33,7 +33,7 @@ interface ModalAddEmpresaProps {
 }
 
 const formSchema = z.object({
-  main_company_id: z
+  main_identifier: z
     .string()
     .min(2, {
       message: 'Username must be at least 2 characters.',
@@ -74,15 +74,26 @@ const ModalAddEmpresa: FunctionComponent<ModalAddEmpresaProps> = ({
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await restApi.post('/companies', values).then(() => {
+    const result = await restApi.post('/companies', values)
+
+    if (result.data.success) {
       toast({
         title: 'Parabéns!',
         description: `Você criou a empresa ${values.business_name}.`,
         variant: 'success',
       })
-    })
-    form.reset()
-    handleUpdateList()
+      form.reset()
+      handleUpdateList()
+      return
+    }
+
+    if (!result.data.success) {
+      toast({
+        title: `Não foi possivel criar ${values.business_name}.`,
+        description: result.data.message,
+        variant: 'destructive',
+      })
+    }
   }
 
   return (
@@ -105,7 +116,7 @@ const ModalAddEmpresa: FunctionComponent<ModalAddEmpresaProps> = ({
           <Switch
             onCheckedChange={setHasMainCompany}
             checked={hasMainCompany}
-            onClick={() => form.resetField('main_company_id')}
+            onClick={() => form.resetField('main_identifier')}
           />
           Possui empresa principal.
         </span>
@@ -115,7 +126,7 @@ const ModalAddEmpresa: FunctionComponent<ModalAddEmpresaProps> = ({
             {hasMainCompany && (
               <FormField
                 control={form.control}
-                name="main_company_id"
+                name="main_identifier"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Empresa principal</FormLabel>

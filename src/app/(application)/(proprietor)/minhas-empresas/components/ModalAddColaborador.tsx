@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Loader2Icon, Send, User2, UserPlus2 } from 'lucide-react'
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent } from 'react'
 import {
   Form,
   FormControl,
@@ -39,7 +39,6 @@ const formSchema = z.object({
 const ModalAddColaborador: FunctionComponent<ModalAddColaboradorProps> = ({
   id_empresa,
 }) => {
-  const [openModal, setOpenModal] = useState<boolean>()
   const { toast } = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -50,20 +49,32 @@ const ModalAddColaborador: FunctionComponent<ModalAddColaboradorProps> = ({
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await restApi
-      .post('/invite_member', { ...values, companyId: id_empresa })
-      .then(() => {
-        toast({
-          title: 'Parabéns!',
-          description: `Você convidou ${values.invitedUsername} para sua empresa.`,
-          variant: 'success',
-        })
-        setOpenModal(false)
+    const result = await restApi.post('/invite_member', {
+      ...values,
+      companyId: id_empresa,
+    })
+
+    if (result.data.success) {
+      toast({
+        title: 'Parabéns!',
+        description: `Você convidou ${values.invitedUsername} para sua empresa.`,
+        variant: 'success',
       })
+      form.reset()
+      return
+    }
+
+    if (!result.data.success) {
+      toast({
+        title: `Não foi possivel convidar ${values.invitedUsername}.`,
+        description: result.data.message,
+        variant: 'destructive',
+      })
+    }
   }
 
   return (
-    <Dialog open={openModal}>
+    <Dialog>
       <DialogTrigger>
         <Button variant={'ghost'}>
           <UserPlus2 size={18} /> Convidar colaborador

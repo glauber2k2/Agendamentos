@@ -20,6 +20,7 @@ import {
 import Divider from '@/components/Divider'
 import ModalAddColaborador from './components/ModalAddColaborador'
 import ModalAddEmpresa from './components/ModalAddEmpresa'
+import { Toggle } from '@/components/ui/toggle'
 
 interface MinhasEmpresasProps {}
 
@@ -35,6 +36,17 @@ type Company = {
 
 const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
   const [companies, setCompanies] = useState<Company[]>([])
+
+  const [sortByAlphabetical, setSortByAlphabetical] = useState(false)
+
+  const toggleSortOrder = () => {
+    setSortByAlphabetical((prevState) => !prevState)
+  }
+
+  const sortedCompanies = [...companies]
+  if (sortByAlphabetical) {
+    sortedCompanies.sort((a, b) => a.name.localeCompare(b.name))
+  }
 
   function getCompanies() {
     restApi
@@ -52,9 +64,9 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
           <Search />
         </Button>
         <ModalAddEmpresa handleUpdateList={getCompanies} />
-        <Button variant={'ghost'} size={'icon'}>
+        <Toggle variant={'ghost'} size={'icon'} onClick={toggleSortOrder}>
           <ArrowDownUp />
-        </Button>
+        </Toggle>
       </div>
       <div className="grid xl:grid-cols-2 gap-4">
         <div className="dark:bg-system-darkness bg-system-200 py-8 px-10 rounded-md gap-4 flex flex-col">
@@ -83,7 +95,7 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
         </div>
       </div>
       <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 w-full ">
-        {companies.map((company) => (
+        {sortedCompanies.map((company) => (
           <div
             key={company.identifier}
             className="p-4 bg-system-200 dark:bg-system-darkness rounded-md flex flex-col gap-4"

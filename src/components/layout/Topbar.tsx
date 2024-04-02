@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react'
 import AuthButton from '../AuthButton'
-import NavBreadcumb from '../NavBreadcumb'
 import Link from 'next/link'
 import { BellDotIcon, Building2 } from 'lucide-react'
 import { Button } from '../ui/button'

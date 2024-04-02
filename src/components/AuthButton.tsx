@@ -34,7 +34,7 @@ const AuthButton: FunctionComponent<AuthButtonProps> = async () => {
             </Avatar>
             <span className="hidden sm:block">{session.name}</span>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="mx-2">
             <DropdownMenuLabel>Opções</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <Link href={'/minha-conta'}>

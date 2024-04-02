@@ -3,7 +3,7 @@
 import { FunctionComponent, useEffect, useState } from 'react'
 import { Button } from './ui/button'
 import { AlertCircle, Check, Loader2, X } from 'lucide-react'
-import { restApi } from '../../services/api'
+import { restApi } from '../services/api'
 import Divider from './Divider'
 
 interface ListInvitationsProps {

@@ -20,6 +20,11 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { restApi } from '@/services/api'
+import { useToast } from '@/components/ui/use-toast'
 
 interface ModalFuncionariosProps {
   id_empresa: string
@@ -30,12 +35,6 @@ const formSchema = z.object({
     message: 'Username must be at least 2 characters.',
   }),
 })
-
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { restApi } from '../../../../../services/api'
-import { useToast } from '@/components/ui/use-toast'
 
 const ModalFuncionarios: FunctionComponent<ModalFuncionariosProps> = ({
   id_empresa,

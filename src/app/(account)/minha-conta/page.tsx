@@ -14,7 +14,7 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form'
-import { restApi } from '../../../../services/api'
+import { restApi } from '../../../services/api'
 import { useToast } from '@/components/ui/use-toast'
 import Link from 'next/link'
 

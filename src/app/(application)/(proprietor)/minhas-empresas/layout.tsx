@@ -6,9 +6,9 @@ export default function MinhasEmpresasLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex h-full flex-col md:flex-row">
+    <div className="flex h-full ">
       <Sidebar />
-      <div className="w-full">{children}</div>
+      <div className="w-full overflow-y-auto">{children}</div>
     </div>
   )
 }

@@ -24,8 +24,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import loginAction from './action'
 import { useToast } from '@/components/ui/use-toast'
+import loginAction from './action'
 
 const formSchema = z.object({
   username: z

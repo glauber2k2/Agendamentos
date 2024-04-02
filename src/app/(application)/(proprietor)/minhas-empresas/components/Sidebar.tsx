@@ -7,7 +7,6 @@ import {
   LayoutPanelLeftIcon,
   LineChart,
   MessageSquare,
-  Plus,
 } from 'lucide-react'
 import Link from 'next/link'
 import { FunctionComponent } from 'react'
@@ -30,11 +29,7 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
             <Building2 size={18} /> Minhas empresas
           </Button>
         </Link>
-        <Link href={'/'}>
-          <Button className="w-full justify-start" variant={'ghost'}>
-            <Plus size={18} /> Cadastrar empresa
-          </Button>
-        </Link>
+
         <Link href={'/'}>
           <Button className="w-full justify-start" variant={'ghost'}>
             <LineChart size={18} /> Métricas

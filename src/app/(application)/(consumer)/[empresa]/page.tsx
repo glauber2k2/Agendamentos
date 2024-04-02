@@ -6,7 +6,7 @@ import { AlertCircle, AtSign, Calendar, Coins, History } from 'lucide-react'
 import PlayerVideo from './components/PlayerVideo'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { restApi } from '../../../../services/api'
+import { restApi } from '@/services/api'
 
 interface CompanyHomeProps {
   params: { empresa: string }

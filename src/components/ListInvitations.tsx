@@ -35,7 +35,7 @@ const ListInvitations: FunctionComponent<ListInvitationsProps> = ({
       const response = await restApi.get(
         `/invitations?userId=${user_id}&status=pending`,
       )
-      const updatedInvitations = response.data.invitations.map(
+      const updatedInvitations = response.data.responseData.invitations.map(
         (invitation: InvitationProps) => ({
           ...invitation,
           loading: false, // Inicialmente, a requisição não está em andamento para nenhum convite

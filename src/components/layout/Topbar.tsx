@@ -9,13 +9,13 @@ interface TopBarProps {}
 
 const TopBar: FunctionComponent<TopBarProps> = () => {
   return (
-    <div className="px-10 py-4 bg-system-200 dark:bg-system-darkness shadow dark:shadow-black shadow-system-500 flex justify-between items-center z-50">
+    <div className="p-6 border-b border-neutral-300 dark:border-neutral-800 flex justify-between items-center">
       <Link href={'/feed'}>
-        <span className="flex justify-center items-center text-xl font-medium">
+        <span className="flex justify-center items-center text-2xl font-medium gap-4">
           <img
-            src="/myLogo.png"
+            src="/logo.png"
             alt=""
-            className="w-16 h-16 invert dark:invert-0"
+            className="w-12 h-12 invert dark:invert-0"
           />
           <h1 className="hidden md:block">TimeAlign</h1>
         </span>

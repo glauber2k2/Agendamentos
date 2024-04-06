@@ -96,7 +96,7 @@ const ListInvitations: FunctionComponent<ListInvitationsProps> = ({
           {invitations.map((invitation) => (
             <div
               key={invitation.id}
-              className="py-2 px-4 dark:bg-system-950 bg-system-300 flex items-center gap-4 justify-between rounded-sm text-xs sm:text-sm font-medium h-14 mx-2"
+              className="py-2 px-4 dark:bg-neutral-950 bg-neutral-300 flex items-center gap-4 justify-between rounded-sm text-xs sm:text-sm font-medium h-14 mx-2"
             >
               Juntar-se a {invitation.company.name}?
               <span className="flex items-center gap-2">

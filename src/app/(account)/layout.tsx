@@ -2,9 +2,9 @@
 
 function LayoutAuthRoutes({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen">
-      <div className="hidden lg:flex bg-system-200 dark:bg-system-darkness flex-col items-center justify-center w-1/3 gap-10">
-        <div className="flex items-center text-4xl font-medium dark:text-system-50 text-system-800">
+    <div className="h-screen grid lg:grid-cols-[2fr_3fr]">
+      <div className="hidden lg:flex flex-col items-center justify-center gap-10 dark:bg-neutral-900/30 bg-neutral-200">
+        <div className="flex items-center text-4xl font-medium dark:text-neutral-50 text-neutral-800">
           <img
             src="/myLogo.png"
             alt=""

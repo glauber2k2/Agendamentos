@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <div className="h-screen dark:bg-system-darkness bg-system-200 flex items-center justify-center gap-10">
+    <div className="h-screen dark:bg-neutral-950 bg-neutral-200 flex items-center justify-center gap-10">
       <img src="/sentadoRelogio.png" />
       <div className="flex flex-col items-center justify-center font-semibold text-4xl gap-8">
         404 - Pagina não encontrada.

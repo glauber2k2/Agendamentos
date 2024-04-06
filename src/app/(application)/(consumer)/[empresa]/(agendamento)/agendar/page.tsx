@@ -91,7 +91,7 @@ function Agendar() {
                             alt={`Image ${item}`}
                           />
                         </HoverCardTrigger>
-                        <HoverCardContent className="w-80 text-system-600">
+                        <HoverCardContent className="w-80 text-neutral-600">
                           <div className="flex justify-between">
                             <Avatar>
                               <AvatarImage src="https://media.jornaldooeste.com.br/2023/04/bbe17fee-imagem-do-whatsapp-de-2023-04-11-as-17.02.51.jpg" />
@@ -133,7 +133,7 @@ function Agendar() {
                 mode="single"
                 selected={date}
                 onSelect={setDate}
-                className="border dark:border-system-950 col-span-1 flex justify-center min-h-[350px] items-start"
+                className="border dark:border-neutral-950 col-span-1 flex justify-center min-h-[350px] items-start"
               />
               <Card className="p-4 flex flex-col gap-4">
                 <FormField

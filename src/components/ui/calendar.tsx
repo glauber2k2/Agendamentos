@@ -30,16 +30,16 @@ function Calendar({
         table: 'w-full border-collapse space-y-1',
         head_row: 'flex',
         head_cell:
-          'text-system-900 dark:text-system-50 rounded-md w-6 sm:w-9 font-normal text-[0.8rem]',
+          'text-neutral-900 dark:text-neutral-50 rounded-md w-6 sm:w-9 font-normal text-[0.8rem]',
         row: 'flex w-full mt-2',
-        cell: 'h-9 w-6 sm:w-9 text-center text-sm p-0 relative rounded-xl [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-system-50/50 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
-        day: 'sm:rounded-xl rounded hover:bg-violet-600 hover:text-system-50 h-6 w-6 sm:h-9 sm:w-9 p-0 font-normal aria-selected:opacity-100',
+        cell: 'h-9 w-6 sm:w-9 text-center text-sm p-0 relative rounded-xl [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-neutral-50/50 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
+        day: 'sm:rounded-xl rounded hover:bg-violet-600 hover:text-neutral-50 h-6 w-6 sm:h-9 sm:w-9 p-0 font-normal aria-selected:opacity-100',
         day_range_end: 'day-range-end',
         day_selected:
-          'bg-violet-600 text-system-50 dark:text-system-50 hover:bg-system-900 ',
-        day_today: 'bg-red-500 text-system-50',
+          'bg-violet-600 text-neutral-50 dark:text-neutral-50 hover:bg-neutral-900 ',
+        day_today: 'bg-red-500 text-neutral-50',
         day_outside:
-          'day-outside text-system-800 aria-selected:bg-system-800 aria-selected:text-system-50 aria-selected:opacity-100 opacity-30 hidden',
+          'day-outside text-neutral-800 aria-selected:bg-neutral-800 aria-selected:text-neutral-50 aria-selected:opacity-100 opacity-30 hidden',
         day_disabled: 'opacity-20 ',
         day_range_middle:
           'aria-selected:bg-accent aria-selected:text-accent-foreground',

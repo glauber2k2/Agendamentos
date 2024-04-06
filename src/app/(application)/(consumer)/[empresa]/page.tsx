@@ -28,7 +28,7 @@ const CompanyHome: FunctionComponent<CompanyHomeProps> = ({ params }) => {
     <>
       {!loading && (
         <div className="flex flex-col md:flex-row h-full">
-          <div className="dark:bg-system-950 bg-system-200 p-8 md:w-96">
+          <div className="dark:bg-neutral-950 bg-neutral-200 p-8 md:w-96">
             <span className="flex  flex-col mb-10">
               <h1 className="font-semibold text-2xl tracking-widest">
                 {empresa.name}

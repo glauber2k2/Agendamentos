@@ -69,7 +69,7 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
         </Toggle>
       </div>
       <div className="grid xl:grid-cols-2 gap-4">
-        <div className="dark:bg-system-darkness bg-system-200 py-8 px-10 rounded-md gap-4 flex flex-col">
+        <div className="dark:bg-neutral-900 bg-neutral-200 py-8 px-10 rounded-md gap-4 flex flex-col">
           <span className="flex items-center justify-between text-lg">
             Faturamento Janeiro
             <BadgeDollarSign />
@@ -80,7 +80,7 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
             +25% comparado ao ultimo mês
           </small>
         </div>
-        <div className="dark:bg-system-darkness bg-system-200 py-8 px-10 rounded-md text-6xl gap-4 flex flex-col">
+        <div className="dark:bg-neutral-900 bg-neutral-200 py-8 px-10 rounded-md text-6xl gap-4 flex flex-col">
           <span className="flex items-center justify-between text-lg">
             Agendamentos Janeiro
             <Calendar />
@@ -98,7 +98,7 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
         {sortedCompanies.map((company) => (
           <div
             key={company.identifier}
-            className="p-4 bg-system-200 dark:bg-system-darkness rounded-md flex flex-col gap-4"
+            className="p-4 dark:border-neutral-800 border-neutral-300 border rounded-lg flex flex-col gap-4"
           >
             <div className="flex items-center justify-between ">
               <div className="flex items-center gap-4">

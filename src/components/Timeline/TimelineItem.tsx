@@ -14,13 +14,13 @@ const TimelineItem: FunctionComponent<TimelineItemProps> = ({
 }) => {
   return (
     <li className="mb-10 ms-6 group" data-status={status}>
-      <span className='absolute flex items-center justify-center w-8 h-8 bg-system-400 group-data-[status="concluido"]:bg-system-800 group-data-[status="cancelado"]:bg-rose-400 rounded-full -start-4 ring-4 ring-system-200 dark:ring-system-700'>
+      <span className='absolute flex items-center justify-center w-8 h-8 bg-neutral-400 group-data-[status="concluido"]:bg-neutral-800 group-data-[status="cancelado"]:bg-rose-400 rounded-full -start-4 ring-4 ring-neutral-200 dark:ring-neutral-700'>
         {status === 'concluido' ? (
-          <Check className="w-3.5 h-3.5 text-system-50" />
+          <Check className="w-3.5 h-3.5 text-neutral-50" />
         ) : status === 'aguardando' ? (
-          <Timer className="w-3.5 h-3.5 text-system-50" />
+          <Timer className="w-3.5 h-3.5 text-neutral-50" />
         ) : (
-          <X className="w-3.5 h-3.5 text-system-50" />
+          <X className="w-3.5 h-3.5 text-neutral-50" />
         )}
       </span>
       <h3 className='font-medium leading-tight group-data-[status="cancelado"]:line-through'>

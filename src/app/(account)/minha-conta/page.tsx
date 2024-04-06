@@ -71,13 +71,13 @@ const MinhaConta: FunctionComponent<MinhaContaProps> = () => {
 
   return (
     <div className="h-full flex justify-center items-center w-full">
-      <div className="px-10 py-10 flex flex-col gap-8 bg-system-darkness rounded-lg relative">
-        <h1 className="dark:text-system-50 text-system-600 font-bold text-4xl">
+      <div className="px-10 py-10 flex flex-col gap-8 bg-neutral-950 rounded-lg relative">
+        <h1 className="dark:text-neutral-50 text-neutral-600 font-bold text-4xl">
           Minha conta
         </h1>
 
         <div className="flex items-center gap-4 mb-10">
-          <div className="w-14 h-14 flex items-center justify-center bg-system-300 rounded-full">
+          <div className="w-14 h-14 flex items-center justify-center bg-neutral-300 rounded-full">
             <User2 />
           </div>
           <Form {...form}>

@@ -83,9 +83,9 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col w-full bg-system-200 dark:bg-system-darkness sm:rounded-3xl py-20 px-10 lg:px-20 gap-4"
+            className="flex flex-col w-full sm:rounded-3xl gap-4"
           >
-            <h1 className="dark:text-system-50 text-system-600 font-bold text-4xl">
+            <h1 className="dark:text-neutral-50 text-neutral-600 font-bold text-4xl">
               Criar senha
             </h1>
 

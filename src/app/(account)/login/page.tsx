@@ -68,9 +68,9 @@ export default function Login() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className=" flex flex-col w-full bg-system-200 dark:bg-system-darkness rounded-3xl py-20 px-10 lg:px-20 gap-4"
+            className=" flex flex-col w-full border dark:border-neutral-800 border-neutral-300 rounded-3xl py-20 px-10 lg:px-20 gap-4"
           >
-            <h1 className="dark:text-system-50 text-system-600 font-bold text-4xl">
+            <h1 className="dark:text-neutral-50 text-neutral-600 font-bold text-4xl">
               Fazer login
             </h1>
             <FormField
@@ -121,7 +121,7 @@ export default function Login() {
 
             <Button
               variant={'link'}
-              className="ml-auto text-red-400"
+              className="ml-auto text-red-400 text-xs"
               size={'slim'}
             >
               <Link href={'/recuperar-senha'}> Esqueci minha senha.</Link>
@@ -137,9 +137,9 @@ export default function Login() {
           </form>
         </Form>
 
-        <div className="flex justify-between items-center w-full dark:bg-system-darkness bg-system-200 m-auto rounded-3xl gap-1 p-12">
+        <div className="flex justify-between items-center w-full border dark:border-neutral-800 border-neutral-300 m-auto rounded-3xl gap-1 p-12">
           <div>
-            <h1 className="text-xl font-bold dark:text-system-100 text-system-600">
+            <h1 className="text-xl font-bold dark:text-neutral-100 text-neutral-600">
               Ainda nao possui conta?
             </h1>
             <Button

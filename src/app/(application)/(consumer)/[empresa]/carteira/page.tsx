@@ -36,22 +36,22 @@ const Pontos: FunctionComponent<PontosProps> = () => {
 
       <div className="grid grid-cols-6 gap-8">
         <Card className="border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20">
-          <Plus className="text-system-500" />
+          <Plus className="text-neutral-500" />
         </Card>
         <Card className="border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20 ">
-          <Plus className="text-system-500" />
+          <Plus className="text-neutral-500" />
         </Card>
         <Card className="border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20">
-          <Plus className="text-system-500" />
+          <Plus className="text-neutral-500" />
         </Card>
         <Card className="border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20">
-          <Plus className="text-system-500" />
+          <Plus className="text-neutral-500" />
         </Card>
         <Card className="border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20">
-          <Plus className="text-system-500" />
+          <Plus className="text-neutral-500" />
         </Card>
         <Card className="border-dashed flex justify-center items-center p-8 bg-transparent dark:bg-transparent border-2 border-black/20 dark:border-white/20">
-          <Plus className="text-system-500" />
+          <Plus className="text-neutral-500" />
         </Card>
       </div>
     </div>

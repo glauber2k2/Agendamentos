@@ -55,7 +55,7 @@ async function Home() {
               <Clock size={32} className="hidden xl:block shrink-0" />
               Evite a correria dos atendimentos!
             </h1>
-            <h3 className="font-bold text-xl text-system-600">
+            <h3 className="font-bold text-xl text-neutral-600">
               Tenha seus atendimentos todos organizados
             </h3>
             <p className="mt-10">
@@ -73,7 +73,7 @@ async function Home() {
           </div>
         </div>
         <div className="h-full gap-8 flex-col md:flex-row grid xl:grid-cols-3">
-          <Card className="flex flex-col p-4 bg-system-200 dark:bg-system-darkness ">
+          <Card className="flex flex-col p-4 bg-neutral-200 dark:bg-neutral-950 ">
             <CardHeader>
               <CardTitle>
                 Sou cliente
@@ -84,7 +84,7 @@ async function Home() {
               </CardTitle>
             </CardHeader>
             <CardContent className="gap-2 h-full grid grid-rows-3">
-              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
+              <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200">
                 <CardHeader>
                   <CardTitle>
                     <Calendar /> Agende onde e quando quiser.
@@ -97,7 +97,7 @@ async function Home() {
                 </CardHeader>
               </Card>
 
-              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
+              <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200">
                 <CardHeader>
                   <CardTitle>
                     <Coins /> Acomule pontos!
@@ -110,7 +110,7 @@ async function Home() {
                 </CardHeader>
               </Card>
 
-              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
+              <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200">
                 <CardHeader>
                   <CardTitle>
                     <Gift /> Obtenha prêmios!
@@ -124,7 +124,7 @@ async function Home() {
               </Card>
             </CardContent>
           </Card>
-          <Card className="p-4 bg-system-200 dark:bg-system-darkness ">
+          <Card className="p-4 bg-neutral-200 dark:bg-neutral-950 ">
             <CardHeader>
               <CardTitle>Plano empresa</CardTitle>
               <CardDescription>
@@ -135,7 +135,7 @@ async function Home() {
             <CardContent className="grid grid-rows-3 gap-2">
               <HoverCard>
                 <HoverCardTrigger className="select-none cursor-pointer">
-                  <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200 hover:bg-black/20 transition-all duration-300">
+                  <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200 hover:bg-black/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle>
                         <Badge /> Assinatura Básica
@@ -159,7 +159,7 @@ async function Home() {
                         <li>2. Personalizar empresa</li>
                         <li>3. Acesso a 1 unidade.</li>
                       </ul>
-                      <div className="flex items-center pt-2 text-system-400">
+                      <div className="flex items-center pt-2 text-neutral-400">
                         <CalendarIcon className="mr-2 h-4 w-4" />
                         <span className="text-xs ">
                           R$500 após o terceiro mês.
@@ -173,7 +173,7 @@ async function Home() {
 
               <HoverCard>
                 <HoverCardTrigger className="select-none cursor-pointer">
-                  <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200 hover:bg-black/20 transition-all duration-300">
+                  <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200 hover:bg-black/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle>
                         <BadgePlus /> Assinatura Plus+
@@ -199,7 +199,7 @@ async function Home() {
                         <li>4. Sistema de pontos.</li>
                         <li>5. Sistema de prêmios.</li>
                       </ul>
-                      <div className="flex items-center pt-2 text-system-400">
+                      <div className="flex items-center pt-2 text-neutral-400">
                         <CalendarIcon className="mr-2 h-4 w-4" />
                         <span className="text-xs ">
                           R$700 após o terceiro mês.
@@ -212,7 +212,7 @@ async function Home() {
               </HoverCard>
               <HoverCard>
                 <HoverCardTrigger className="select-none cursor-pointer">
-                  <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200 hover:bg-black/20 transition-all duration-300">
+                  <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200 hover:bg-black/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle>
                         <BadgeCheck /> Assinatura Tripla
@@ -238,7 +238,7 @@ async function Home() {
                         <li>4. Sistema de pontos.</li>
                         <li>5. Sistema de prêmios.</li>
                       </ul>
-                      <div className="flex items-center pt-2 text-system-400">
+                      <div className="flex items-center pt-2 text-neutral-400">
                         <CalendarIcon className="mr-2 h-4 w-4" />
                         <span className="text-xs ">
                           R$900 após o terceiro mês.
@@ -251,7 +251,7 @@ async function Home() {
               </HoverCard>
             </CardContent>
           </Card>
-          <Card className="p-4  flex flex-col bg-system-200 dark:bg-system-darkness">
+          <Card className="p-4  flex flex-col bg-neutral-200 dark:bg-neutral-950">
             <CardHeader>
               <CardTitle>Sou empreendedor</CardTitle>
               <CardDescription>
@@ -260,7 +260,7 @@ async function Home() {
               </CardDescription>
             </CardHeader>
             <CardContent className="grid grid-rows-4 h-full gap-2">
-              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
+              <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200">
                 <CardHeader>
                   <CardTitle>
                     <Paintbrush /> Personalize sua empresa.
@@ -271,7 +271,7 @@ async function Home() {
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
+              <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200">
                 <CardHeader>
                   <CardTitle>
                     <Rocket /> Aumente seu faturamento.
@@ -283,7 +283,7 @@ async function Home() {
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
+              <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200">
                 <CardHeader>
                   <CardTitle>
                     <PlusCircleIcon /> Integre varias unidades.
@@ -294,7 +294,7 @@ async function Home() {
                   </CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-system-300 dark:bg-system-950 text-system-600 dark:text-system-200">
+              <Card className="bg-neutral-300 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-200">
                 <CardHeader>
                   <CardTitle>
                     <CloudLightningIcon /> Tenha velocidade

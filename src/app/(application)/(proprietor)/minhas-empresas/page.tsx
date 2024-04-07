@@ -21,6 +21,7 @@ import Divider from '@/components/Divider'
 import ModalAddColaborador from './components/ModalAddColaborador'
 import ModalAddEmpresa from './components/ModalAddEmpresa'
 import { Toggle } from '@/components/ui/toggle'
+import ModalDeleteEmpresa from './components/ModalDeleteEmpresa'
 
 interface MinhasEmpresasProps {}
 
@@ -115,8 +116,9 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
                     <MoreVertical size={18} />
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent>
+                <PopoverContent className="flex flex-col">
                   <ModalAddColaborador id_empresa={company.id} />
+                  <ModalDeleteEmpresa handleUpdateList={getCompanies} />
                 </PopoverContent>
               </Popover>
             </div>

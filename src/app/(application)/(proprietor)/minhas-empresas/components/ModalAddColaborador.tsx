@@ -76,7 +76,7 @@ const ModalAddColaborador: FunctionComponent<ModalAddColaboradorProps> = ({
   return (
     <Dialog>
       <DialogTrigger>
-        <Button variant={'ghost'}>
+        <Button variant={'ghost'} className="justify-start">
           <UserPlus2 size={18} /> Convidar colaborador
         </Button>
       </DialogTrigger>

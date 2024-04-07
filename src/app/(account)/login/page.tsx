@@ -68,7 +68,7 @@ export default function Login() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className=" flex flex-col w-full border dark:border-neutral-800 border-neutral-300 rounded-3xl py-20 px-10 lg:px-20 gap-4"
+            className=" flex flex-col w-full rounded-3xl gap-4"
           >
             <h1 className="dark:text-neutral-50 text-neutral-600 font-bold text-4xl">
               Fazer login
@@ -137,7 +137,7 @@ export default function Login() {
           </form>
         </Form>
 
-        <div className="flex justify-between items-center w-full border dark:border-neutral-800 border-neutral-300 m-auto rounded-3xl gap-1 p-12">
+        <div className="flex justify-between items-center w-full border dark:border-neutral-800 border-neutral-300 m-auto rounded-lg gap-1 p-8">
           <div>
             <h1 className="text-xl font-bold dark:text-neutral-100 text-neutral-600">
               Ainda nao possui conta?
@@ -150,7 +150,7 @@ export default function Login() {
               <Link href={'registrarusuario'}>Registre-se</Link>
             </Button>
           </div>
-          <div
+          {/* <div
             className="flex justify-center gap-4
         "
           >
@@ -160,7 +160,7 @@ export default function Login() {
             <Button size={'icon'} className="text-xl rounded-full">
               <Facebook />
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

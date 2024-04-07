@@ -9,7 +9,7 @@ export interface TextareaProps
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {
     return (
-      <div className="bg-neutral-50 dark:bg-neutral-950 rounded-lg py-2 px-4 w-full flex items-start gap-2">
+      <div className="border border-neutral-300 dark:border-neutral-800 rounded-lg py-2 px-4 w-full flex items-start gap-2">
         <CaseSensitive className="text-neutral-500" />
         <textarea
           className={cn(

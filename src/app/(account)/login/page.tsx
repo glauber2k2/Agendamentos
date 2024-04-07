@@ -11,15 +11,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  Asterisk,
-  Eye,
-  EyeOff,
-  Facebook,
-  Loader2Icon,
-  LogIn,
-  User2,
-} from 'lucide-react'
+import { Asterisk, Eye, EyeOff, Loader2Icon, LogIn, User2 } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'

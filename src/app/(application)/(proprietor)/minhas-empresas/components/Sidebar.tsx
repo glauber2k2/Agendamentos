@@ -1,5 +1,5 @@
+import { ActiveRoute } from '@/components/ActiveRoute'
 import Divider from '@/components/Divider'
-import { Button } from '@/components/ui/button'
 import {
   BadgeCheck,
   Building2,
@@ -8,7 +8,6 @@ import {
   LineChart,
   MessageSquare,
 } from 'lucide-react'
-import Link from 'next/link'
 import { FunctionComponent } from 'react'
 
 interface SidebarProps {}
@@ -23,36 +22,26 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
 
       <Divider />
 
-      <div className="flex flex-col  py-4 px-2">
-        <Link href={'/'}>
-          <Button className="w-full justify-start" variant={'ghost'}>
-            <Building2 size={18} /> Minhas empresas
-          </Button>
-        </Link>
+      <div className="flex flex-col gap-2 py-4 px-2">
+        <ActiveRoute href={'/minhas-empresas'}>
+          <Building2 size={18} /> Minhas empresas
+        </ActiveRoute>
 
-        <Link href={'/'}>
-          <Button className="w-full justify-start" variant={'ghost'}>
-            <LineChart size={18} /> Métricas
-          </Button>
-        </Link>
-        <Link href={'/'}>
-          <Button className="w-full justify-start" variant={'ghost'}>
-            <BadgeCheck size={18} /> Meu plano
-          </Button>
-        </Link>
+        <ActiveRoute href={'/'}>
+          <LineChart size={18} /> Métricas
+        </ActiveRoute>
+        <ActiveRoute href={'/'}>
+          <BadgeCheck size={18} /> Meu plano
+        </ActiveRoute>
       </div>
       <Divider className="mt-auto" />
       <div className="px-2 py-4">
-        <Link href={'/'}>
-          <Button className="w-full justify-start" variant={'ghost'}>
-            <HelpCircle size={16} /> Ajuda
-          </Button>
-        </Link>
-        <Link href={'/'}>
-          <Button className="w-full justify-start" variant={'ghost'}>
-            <MessageSquare size={16} /> Fale conosco
-          </Button>
-        </Link>
+        <ActiveRoute href={'/'}>
+          <HelpCircle size={16} /> Ajuda
+        </ActiveRoute>
+        <ActiveRoute href={'/'}>
+          <MessageSquare size={16} /> Fale conosco
+        </ActiveRoute>
       </div>
     </div>
   )

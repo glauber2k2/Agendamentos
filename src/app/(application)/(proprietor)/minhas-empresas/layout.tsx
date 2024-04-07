@@ -1,37 +1,18 @@
-'use client'
-
-import React, { useState, useEffect, ReactNode } from 'react'
+import ResponsiveMenu from './components/ResponsiveMenu'
 import Sidebar from './components/Sidebar'
-import MobileMenu from './components/MobileMenu'
-
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  return isMobile
-}
+import { ReactNode } from 'react'
 
 export default function MinhasEmpresasLayout({
   children,
 }: {
   children: ReactNode
 }) {
-  const isMobile = useIsMobile()
-
   return (
-    <div
-      className={`grid ${isMobile ? 'grid-cols-1' : 'sm:grid-cols-[20rem_1fr]'} h-full`}
-    >
-      {!isMobile && <Sidebar />}
-      {isMobile && <MobileMenu />}
+    <div className={`grid md:grid-cols-[20rem_1fr] h-full`}>
+      <ResponsiveMenu>
+        <Sidebar />
+      </ResponsiveMenu>
+
       <div className="w-full md:overflow-y-auto">{children}</div>
     </div>
   )

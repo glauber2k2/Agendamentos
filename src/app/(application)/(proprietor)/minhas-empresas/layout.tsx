@@ -14,7 +14,7 @@ export default function MinhasEmpresasLayout({
 
   if (viewport === 'mobile') {
     return (
-      <div className={` h-full`}>
+      <div className={`h-full`}>
         <ResponsiveMenu>
           <Sidebar />
         </ResponsiveMenu>
@@ -24,7 +24,7 @@ export default function MinhasEmpresasLayout({
     )
   } else {
     return (
-      <div className={`grid md:grid-cols-[20rem_1fr] h-full`}>
+      <div className={`grid grid-cols-[20rem_1fr] h-full`}>
         <Sidebar />
 
         <div className="w-full md:overflow-y-auto">{children}</div>

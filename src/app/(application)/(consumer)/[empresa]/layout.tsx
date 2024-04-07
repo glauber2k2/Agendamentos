@@ -1,17 +1,32 @@
 import { ReactNode } from 'react'
 import SidebarEmpresa from './components/SidebarEmpresa'
 import ResponsiveMenu from '../../(proprietor)/minhas-empresas/components/ResponsiveMenu'
+import { headers } from 'next/headers'
+import { userAgent } from 'next/server'
 
 function LayoutClienteRoutes({ children }: { children: ReactNode }) {
-  return (
-    <div className={`md:grid grid-cols-[26rem_1fr] h-full`}>
-      <ResponsiveMenu>
-        <SidebarEmpresa />
-      </ResponsiveMenu>
+  const ua = userAgent({ headers: headers() })
+  const viewport = ua.device.type === 'mobile' ? 'mobile' : 'desktop'
 
-      {children}
-    </div>
-  )
+  if (viewport == 'mobile') {
+    return (
+      <div className={`h-full`}>
+        <ResponsiveMenu>
+          <SidebarEmpresa />
+        </ResponsiveMenu>
+
+        {children}
+      </div>
+    )
+  } else {
+    return (
+      <div className={`grid grid-cols-[26rem_1fr] h-full`}>
+        <SidebarEmpresa />
+
+        {children}
+      </div>
+    )
+  }
 }
 
 export default LayoutClienteRoutes

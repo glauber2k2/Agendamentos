@@ -14,8 +14,8 @@ interface SidebarProps {}
 
 const Sidebar: FunctionComponent<SidebarProps> = () => {
   return (
-    <div className="flex flex-col md:border-r dark:border-neutral-800 border-neutral-300">
-      <h1 className="truncate text-lg tracking-wider p-6 flex items-center gap-4">
+    <div className="flex flex-col md:border-r dark:border-neutral-800 border-neutral-300 h-dvh">
+      <h1 className="truncate text-lg  tracking-wider p-6 flex items-center gap-4">
         <LayoutPanelLeftIcon />
         Painel de empresas
       </h1>

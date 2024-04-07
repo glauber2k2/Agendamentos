@@ -1,12 +1,6 @@
-import { NextRequest, NextResponse, userAgent } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 export default function middleware(request: NextRequest) {
-  const url = request.nextUrl
-  const { device } = userAgent(request)
-  const viewport = device.type === 'mobile' ? 'mobile' : 'desktop'
-  url.searchParams.set('viewport', viewport)
-  console.log(request.nextUrl.searchParams.get('viewport'))
-
   const token = request.cookies.get('nextauth.token')?.value
   const pathname = request.nextUrl.pathname
   const tokenpass = request.nextUrl.searchParams.get('token')

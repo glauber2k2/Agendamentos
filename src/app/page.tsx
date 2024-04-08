@@ -1,4 +1,4 @@
-import AuthButton from '@/components/AuthButton'
+import TopBar from '@/components/layout/Topbar'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -32,19 +32,7 @@ import {
 async function Home() {
   return (
     <div className="w-full h-svh flex flex-col">
-      <nav className="flex justify-between items-center gap-8 py-2 px-4 ">
-        <div className="flex items-center text-xl font-medium">
-          <img
-            src="myLogo.png"
-            alt=""
-            className="w-16 h-16 invert dark:invert-0"
-          />
-          TimeAlign
-        </div>
-        <div className="flex items-center gap-2">
-          <AuthButton />
-        </div>
-      </nav>
+      <TopBar />
       <div className="p-6 md:p-12 flex flex-col gap-20">
         <div className="flex h-full justify-center md:items-center flex-col md:flex-row md: gap-10">
           <div className="flex justify-center items-center">

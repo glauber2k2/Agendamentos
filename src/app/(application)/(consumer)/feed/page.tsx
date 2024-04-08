@@ -1,6 +1,4 @@
-'use client'
-import { FunctionComponent, useEffect, useState } from 'react'
-import { restApi } from '../../../../services/api'
+import { FunctionComponent } from 'react'
 import Link from 'next/link'
 import Divider from '@/components/Divider'
 
@@ -13,14 +11,11 @@ interface Company {
 
 interface FeedProps {}
 
-const Feed: FunctionComponent<FeedProps> = () => {
-  const [companies, setCompanies] = useState<Company[]>([])
-
-  useEffect(() => {
-    restApi
-      .get('/companies?visibleCompanies=true')
-      .then((res) => setCompanies(res.data.responseData))
-  }, [])
+const Feed: FunctionComponent<FeedProps> = async () => {
+  const response = await fetch(
+    'https://api-agendamentos.onrender.com/companies?visibleCompanies=true',
+  )
+  const data = await response.json()
 
   return (
     <div className="flex flex-col w-full justify-center gap-4 p-10 md:flex-row">
@@ -28,7 +23,7 @@ const Feed: FunctionComponent<FeedProps> = () => {
         Filtro
       </div>
       <div className="flex flex-col  gap-4">
-        {companies.map((company) => (
+        {data.responseData.map((company: Company) => (
           <Link href={`/${company.identifier}`} key={company.id}>
             <div className="dark:bg-neutral-900/50 bg-neutral-200 flex rounded-md hover:opacity-90 transition-all duration-300 overflow-hidden">
               <div className="w-52 h-52 bg-violet-500 " />

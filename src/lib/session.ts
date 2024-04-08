@@ -1,4 +1,5 @@
-import axios from 'axios'
+import { fetchServer } from '@/services/serverReq'
+import console from 'console'
 import { cookies } from 'next/headers'
 
 export async function getSession() {
@@ -13,13 +14,13 @@ export async function logout() {
 }
 
 export async function login(values: { username: string; password: string }) {
-  const response = await axios.post(
-    'https://api-agendamentos.onrender.com/auth',
-    values,
-  )
+  const response = await fetchServer('/auth', {
+    method: 'POST',
+    body: JSON.stringify(values),
+  })
 
   try {
-    const { token, user } = response.data.responseData
+    const { token, user } = response.responseData
 
     if (token && user) {
       cookies().set('nextauth.token', token, { maxAge: 60 * 60 * 24 })
@@ -28,9 +29,29 @@ export async function login(values: { username: string; password: string }) {
       })
     }
 
-    return response.data
+    return response
   } catch (error) {
     console.log(error)
-    return response.data
+    return response
+  }
+}
+
+export async function updateSession() {
+  const response = await fetchServer('/users')
+
+  console.log(response.responseData)
+
+  try {
+    if (response.responseData) {
+      await cookies().delete('nextauth.user')
+      cookies().set('nextauth.user', JSON.stringify(response.responseData), {
+        maxAge: 60 * 60 * 24,
+      })
+    }
+
+    return response
+  } catch (error) {
+    console.log(error)
+    return response
   }
 }

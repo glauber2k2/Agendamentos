@@ -1,11 +1,9 @@
-'use client'
-
 import { ActiveRoute } from '@/components/ActiveRoute'
 import { Skeleton } from '@/components/ui/skeleton'
-import { restApi } from '@/services/api'
 import { AtSign, Calendar, Coins, AlertCircle, History } from 'lucide-react'
-import { usePathname } from 'next/navigation'
-import { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent } from 'react'
+import { headers } from 'next/headers'
+import { fetchServer } from '@/services/serverReq'
 
 interface SidebarEmpresaProps {}
 
@@ -15,19 +13,13 @@ interface empresaProps {
   identifier: string
 }
 
-const SidebarEmpresa: FunctionComponent<SidebarEmpresaProps> = () => {
-  const pathname = usePathname()
-  const company = pathname.split('/')[1]
+const SidebarEmpresa: FunctionComponent<SidebarEmpresaProps> = async () => {
+  const headersList = headers()
+  const company = headersList.get('next-url')?.replace('/', '') || ''
 
-  const [empresa, setEmpresa] = useState<empresaProps | null>(null)
-
+  const data = await fetchServer(`/companies?identifier=${company}`)
+  const empresa: empresaProps = data.responseData[0]
   const user = true
-
-  useEffect(() => {
-    restApi.get(`/companies?identifier=${company}`).then((res) => {
-      setEmpresa(res.data.responseData[0])
-    })
-  }, [])
 
   return (
     <div className="md:border-r border-neutral-300 dark:border-neutral-800 p-8">

@@ -1,128 +1,81 @@
-'use client'
-
-import { FunctionComponent, useEffect, useState } from 'react'
-import { Button } from './ui/button'
-import { AlertCircle, Check, Loader2, X } from 'lucide-react'
-import { restApi } from '../services/api'
+import { FunctionComponent } from 'react'
+import { AlertCircle, Check, X } from 'lucide-react'
 import Divider from './Divider'
+import { fetchServer } from '@/services/serverReq'
+import { revalidateTag } from 'next/cache'
+import SubmitingButton from './SubmitButton'
 
 interface ListInvitationsProps {
-  user_id: string
-}
-
-interface InvitationProps {
-  id: string
-  company: {
+  invitations: {
     id: string
-    name: string
-  }
-  user: {
-    id: string
-    name: string
-  }
-  loading: boolean // Novo campo para indicar se a requisição está em andamento
+    company: {
+      id: string
+      name: string
+    }
+    user: {
+      id: string
+      name: string
+    }
+  }[]
 }
 
 const ListInvitations: FunctionComponent<ListInvitationsProps> = ({
-  user_id,
+  invitations,
 }) => {
-  const [invitations, setInvitations] = useState<InvitationProps[]>([])
-  const [loadingInvitation, setLoadingInvitation] = useState(false)
-
-  async function getInvitations() {
-    setLoadingInvitation(true)
-    try {
-      const response = await restApi.get(
-        `/invitations?userId=${user_id}&status=pending`,
-      )
-      const updatedInvitations = response.data.responseData.invitations.map(
-        (invitation: InvitationProps) => ({
-          ...invitation,
-          loading: false, // Inicialmente, a requisição não está em andamento para nenhum convite
-        }),
-      )
-      setInvitations(updatedInvitations)
-    } catch (error) {
-      console.log('Error fetching invitations:', error)
-    } finally {
-      setLoadingInvitation(false)
-    }
-  }
-
-  async function actionInvitation(action: string, invitationId: string) {
-    try {
-      // Atualiza o estado do convite para indicar que a requisição está em andamento
-      const updatedInvitations = invitations.map((invitation) => {
-        if (invitation.id === invitationId) {
-          return { ...invitation, loading: true }
-        }
-        return invitation
-      })
-      setInvitations(updatedInvitations)
-
-      await restApi.post('invite_action', {
-        userId: user_id,
-        invitationId: invitationId,
-        status: action,
-      })
-
-      // Remove o convite da lista após a requisição ser concluída
-      const updatedInvitationsAfterAction = invitations.filter(
-        (invitation) => invitation.id !== invitationId,
-      )
-      setInvitations(updatedInvitationsAfterAction)
-    } catch (error) {
-      console.log('Error handling invitation action:', error)
-    }
-  }
-
-  useEffect(() => {
-    getInvitations()
-  }, [])
-
-  if (loadingInvitation) {
-    return (
-      <div className="w-full pb-8 pt-4 flex items-center justify-center">
-        <Loader2 className="animate-spin" />
-      </div>
-    )
-  }
-
   return (
     <main className=" flex flex-col gap-2">
-      {invitations.length > 0 && (
+      {invitations && invitations.length > 0 && (
         <div className=" flex flex-col gap-2">
           <Divider title="Convites" />
           {invitations.map((invitation) => (
             <div
               key={invitation.id}
-              className="py-2 px-4 dark:bg-neutral-950 bg-neutral-300 flex items-center gap-4 justify-between rounded-sm text-xs sm:text-sm font-medium h-14 mx-2"
+              className="py-2 px-4 border border-neutral-800 flex items-center gap-4 justify-between rounded-sm text-xs sm:text-sm font-medium h-12 mx-2"
             >
               Juntar-se a {invitation.company.name}?
               <span className="flex items-center gap-2">
-                {invitation.loading ? (
-                  <Loader2 className="animate-spin" />
-                ) : (
-                  <>
-                    <Button
-                      size={'icon'}
-                      onClick={() =>
-                        actionInvitation('accepted', invitation.id)
-                      }
-                    >
-                      <Check size={18} />
-                    </Button>
-                    <Button
-                      variant={'outline'}
-                      size={'icon'}
-                      onClick={() =>
-                        actionInvitation('rejected', invitation.id)
-                      }
-                    >
-                      <X size={18} />
-                    </Button>
-                  </>
-                )}
+                <form
+                  method="POST"
+                  action={async () => {
+                    'use server'
+
+                    await fetchServer('/invite_action', {
+                      method: 'POST',
+                      body: JSON.stringify({
+                        invitationId: invitation.id,
+                        status: 'accepted',
+                      }),
+                    })
+                    revalidateTag('invitations')
+                  }}
+                >
+                  <SubmitingButton className="h-7 w-7" size={'icon'}>
+                    <Check size={16} />
+                  </SubmitingButton>
+                </form>
+                <form
+                  method="POST"
+                  action={async () => {
+                    'use server'
+
+                    await fetchServer('/invite_action', {
+                      method: 'POST',
+                      body: JSON.stringify({
+                        invitationId: invitation.id,
+                        status: 'rejected',
+                      }),
+                    })
+                    revalidateTag('invitations')
+                  }}
+                >
+                  <SubmitingButton
+                    className="h-7 w-7"
+                    variant={'outline'}
+                    size={'icon'}
+                  >
+                    <X size={16} />
+                  </SubmitingButton>
+                </form>
               </span>
             </div>
           ))}

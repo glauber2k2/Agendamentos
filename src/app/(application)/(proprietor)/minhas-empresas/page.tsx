@@ -1,31 +1,14 @@
-'use client'
-
-import { FunctionComponent, useEffect, useState } from 'react'
-import { restApi } from '@/services/api'
+import { FunctionComponent } from 'react'
 import { Button } from '@/components/ui/button'
-import {
-  ArrowDownUp,
-  BadgeDollarSign,
-  Calendar,
-  ChevronUp,
-  MoreVertical,
-  Search,
-} from 'lucide-react'
-import { Switch } from '@/components/ui/switch'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
-import Divider from '@/components/Divider'
-import ModalAddColaborador from './components/ModalAddColaborador'
+import { BadgeDollarSign, Calendar, ChevronUp, Search } from 'lucide-react'
+
+import CardCompany from './components/CardCompany'
+import { fetchServer } from '@/services/serverReq'
 import ModalAddEmpresa from './components/ModalAddEmpresa'
-import { Toggle } from '@/components/ui/toggle'
-import ModalDeleteEmpresa from './components/ModalDeleteEmpresa'
 
 interface MinhasEmpresasProps {}
 
-type Company = {
+interface Company {
   id: string
   name: string
   business_name: string
@@ -35,39 +18,18 @@ type Company = {
   isVisible?: boolean
 }
 
-const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
-  const [companies, setCompanies] = useState<Company[]>([])
+const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = async () => {
+  const data = await fetchServer('/user_companies', {
+    next: { tags: ['getUserCompanies'] },
+  })
 
-  const [sortByAlphabetical, setSortByAlphabetical] = useState(false)
-
-  const toggleSortOrder = () => {
-    setSortByAlphabetical((prevState) => !prevState)
-  }
-
-  const sortedCompanies = [...companies]
-  if (sortByAlphabetical) {
-    sortedCompanies.sort((a, b) => a.name.localeCompare(b.name))
-  }
-
-  function getCompanies() {
-    restApi
-      .get('/user_companies')
-      .then((res) => setCompanies(res.data.responseData))
-  }
-
-  useEffect(() => {
-    getCompanies()
-  }, [])
   return (
     <div className="md:p-10 p-4 flex flex-col gap-8">
       <div className="flex items-center justify-center gap-4">
         <Button variant={'ghost'} size={'icon'}>
           <Search />
         </Button>
-        <ModalAddEmpresa handleUpdateList={getCompanies} />
-        <Toggle variant={'ghost'} size={'icon'} onClick={toggleSortOrder}>
-          <ArrowDownUp />
-        </Toggle>
+        <ModalAddEmpresa />
       </div>
       <div className="grid xl:grid-cols-2 gap-4">
         <div className="dark:bg-neutral-900 bg-neutral-200 py-8 px-10 rounded-md gap-4 flex flex-col">
@@ -96,35 +58,8 @@ const MinhasEmpresas: FunctionComponent<MinhasEmpresasProps> = () => {
         </div>
       </div>
       <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 w-full ">
-        {sortedCompanies.map((company) => (
-          <div
-            key={company.identifier}
-            className="p-4 dark:border-neutral-800 border-neutral-300 border rounded-lg flex flex-col gap-4"
-          >
-            <div className="flex items-center justify-between ">
-              <div className="flex items-center gap-4">
-                <Switch defaultChecked={company.isVisible} />
-                <div className="text-sm">
-                  {company.name}
-                  <p className="text-xs">{company.identifier}</p>
-                </div>
-              </div>
-
-              <Popover>
-                <PopoverTrigger>
-                  <Button variant={'ghost'}>
-                    <MoreVertical size={18} />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="flex flex-col">
-                  <ModalAddColaborador id_empresa={company.id} />
-                  <ModalDeleteEmpresa handleUpdateList={getCompanies} />
-                </PopoverContent>
-              </Popover>
-            </div>
-            <Divider />
-            <div className="text-sm">{company.cnpj}</div>
-          </div>
+        {data.responseData.map((company: Company) => (
+          <CardCompany key={company.identifier} company={company} />
         ))}
       </div>
     </div>

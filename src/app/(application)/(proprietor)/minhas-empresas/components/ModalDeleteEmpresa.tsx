@@ -29,10 +29,9 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { restApi } from '@/services/api'
 import { useToast } from '@/components/ui/use-toast'
+import revalidateUserCompanies from '../actions'
 
-interface ModalDeleteEmpresaProps {
-  handleUpdateList: () => void
-}
+interface ModalDeleteEmpresaProps {}
 
 const formSchema = z.object({
   finalCNPJ: z.string().min(6, {
@@ -40,9 +39,7 @@ const formSchema = z.object({
   }),
 })
 
-const ModalDeleteEmpresa: FunctionComponent<ModalDeleteEmpresaProps> = ({
-  handleUpdateList,
-}) => {
+const ModalDeleteEmpresa: FunctionComponent<ModalDeleteEmpresaProps> = () => {
   const { toast } = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -62,7 +59,7 @@ const ModalDeleteEmpresa: FunctionComponent<ModalDeleteEmpresaProps> = ({
         variant: 'success',
       })
       form.reset()
-      handleUpdateList()
+      revalidateUserCompanies()
       return
     }
 

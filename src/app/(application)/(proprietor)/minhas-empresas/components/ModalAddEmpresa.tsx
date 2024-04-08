@@ -27,10 +27,9 @@ import { restApi } from '@/services/api'
 import { useToast } from '@/components/ui/use-toast'
 import { Switch } from '@/components/ui/switch'
 import { Textarea } from '@/components/ui/textarea'
+import revalidateUserCompanies from '../actions'
 
-interface ModalAddEmpresaProps {
-  handleUpdateList: () => void
-}
+interface ModalAddEmpresaProps {}
 
 const formSchema = z.object({
   main_identifier: z
@@ -56,9 +55,7 @@ const formSchema = z.object({
   }),
 })
 
-const ModalAddEmpresa: FunctionComponent<ModalAddEmpresaProps> = ({
-  handleUpdateList,
-}) => {
+const ModalAddEmpresa: FunctionComponent<ModalAddEmpresaProps> = () => {
   const [hasMainCompany, setHasMainCompany] = useState(false)
   const { toast } = useToast()
 
@@ -83,7 +80,7 @@ const ModalAddEmpresa: FunctionComponent<ModalAddEmpresaProps> = ({
         variant: 'success',
       })
       form.reset()
-      handleUpdateList()
+      revalidateUserCompanies()
       return
     }
 

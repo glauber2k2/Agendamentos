@@ -26,7 +26,9 @@ const Feed: FunctionComponent<FeedProps> = async () => {
         {data.responseData.map((company: Company) => (
           <Link href={`/${company.identifier}`} key={company.id}>
             <div className="dark:bg-neutral-900/50 bg-neutral-200 grid sm:grid-cols-[12rem_1fr] h-52 rounded-md hover:opacity-90 transition-all duration-300">
-              <div className="min-w-40 min-h-40 bg-violet-500 " />
+              <div className=" bg-violet-700 p-12">
+                <img src="/logo.png" />
+              </div>
               <div className="flex p-4 flex-col flex-1 lg:w-[500px]">
                 {company.name}
                 <p className="text-xs">{company.description}</p>

@@ -25,8 +25,8 @@ const Feed: FunctionComponent<FeedProps> = async () => {
       <div className="flex flex-col  gap-4">
         {data.responseData.map((company: Company) => (
           <Link href={`/${company.identifier}`} key={company.id}>
-            <div className="dark:bg-neutral-900/50 bg-neutral-200 flex rounded-md hover:opacity-90 transition-all duration-300 overflow-hidden">
-              <div className="w-52 h-52 bg-violet-500 " />
+            <div className="dark:bg-neutral-900/50 bg-neutral-200 grid sm:grid-cols-[12rem_1fr] h-52 rounded-md hover:opacity-90 transition-all duration-300">
+              <div className="min-w-40 min-h-40 bg-violet-500 " />
               <div className="flex p-4 flex-col flex-1 lg:w-[500px]">
                 {company.name}
                 <p className="text-xs">{company.description}</p>

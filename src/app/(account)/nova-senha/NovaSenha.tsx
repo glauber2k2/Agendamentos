@@ -55,7 +55,6 @@ const NovaSenha: FunctionComponent<NovaSenhaProps> = () => {
         toast({
           title: 'Parabéns!',
           description: `Senha redefinida com sucesso.`,
-          variant: 'success',
         })
         router.push('/login')
         return

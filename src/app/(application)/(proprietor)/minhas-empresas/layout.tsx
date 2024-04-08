@@ -1,4 +1,4 @@
-import ResponsiveMenu from './components/ResponsiveMenu'
+import ResponsiveMenu from '../../../../components/ResponsiveMenu'
 import Sidebar from './components/Sidebar'
 import { ReactNode } from 'react'
 import { headers } from 'next/headers'

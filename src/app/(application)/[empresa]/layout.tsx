@@ -1,8 +1,9 @@
 import { ReactNode } from 'react'
 import SidebarEmpresa from './components/SidebarEmpresa'
-import ResponsiveMenu from '../../(proprietor)/minhas-empresas/components/ResponsiveMenu'
+
 import { headers } from 'next/headers'
 import { userAgent } from 'next/server'
+import ResponsiveMenu from '@/components/ResponsiveMenu'
 
 function LayoutClienteRoutes({ children }: { children: ReactNode }) {
   const ua = userAgent({ headers: headers() })

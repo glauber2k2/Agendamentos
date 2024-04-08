@@ -77,7 +77,6 @@ const ModalAddEmpresa: FunctionComponent<ModalAddEmpresaProps> = () => {
       toast({
         title: 'Parabéns!',
         description: `Você criou a empresa ${values.business_name}.`,
-        variant: 'success',
       })
       form.reset()
       revalidateUserCompanies()

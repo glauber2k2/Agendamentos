@@ -12,7 +12,7 @@ import {
 import { useToast } from '@/components/ui/use-toast'
 import { restApi } from '@/services/api'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Loader2, PenLine, Send, User2 } from 'lucide-react'
+import { PenLine, Send, User2 } from 'lucide-react'
 import { FunctionComponent, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -43,9 +43,8 @@ const formSchema = z.object({
 const UpdateUserForm: FunctionComponent<UpdateUserFormProps> = ({
   userData,
 }) => {
-  const { toast } = useToast()
   const [isEditableInput, setIsEditableInput] = useState(false)
-
+  const { toast } = useToast()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   })
@@ -56,13 +55,22 @@ const UpdateUserForm: FunctionComponent<UpdateUserFormProps> = ({
       return
     }
     if (isEditableInput) {
-      await restApi.put('/users', values)
-      setIsEditableInput(false)
-      toast({
-        title: 'Parabéns!',
-        description: `${values.username} editado com sucesso!`,
-        variant: 'success',
+      await restApi.put('/users', values).then((res) => {
+        if (res.data.success) {
+          toast({
+            title: 'Dados alterados.',
+            description: res.data.message,
+          })
+          setIsEditableInput(false)
+        } else {
+          toast({
+            title: 'Erro!',
+            description: res.data.message,
+            variant: 'destructive',
+          })
+        }
       })
+
       await updateUserSession()
       return
     }
@@ -119,23 +127,16 @@ const UpdateUserForm: FunctionComponent<UpdateUserFormProps> = ({
               />
             </div>
           </div>
-          <Button disabled={form.formState.isSubmitting}>
-            {!form.formState.isSubmitting ? (
-              !isEditableInput ? (
-                <>
-                  <PenLine size={16} />
-                  Editar dados
-                </>
-              ) : (
-                <>
-                  <Send size={16} />
-                  Enviar
-                </>
-              )
-            ) : (
-              <Loader2 size={16} className="animate-spin" />
-            )}
-          </Button>
+
+          {isEditableInput ? (
+            <Button className="ml-auto">
+              <Send size={16} /> Salvar dados
+            </Button>
+          ) : (
+            <Button variant={'outline'} className="ml-auto">
+              <PenLine size={16} /> Editar dados
+            </Button>
+          )}
         </form>
       </Form>
     </>

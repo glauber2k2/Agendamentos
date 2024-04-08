@@ -47,7 +47,6 @@ const RecuperarSenha: FunctionComponent<RecuperarSenhaProps> = () => {
       toast({
         title: 'Parabéns!',
         description: `Email enviado!`,
-        variant: 'success',
       })
       router.push('/login')
       return

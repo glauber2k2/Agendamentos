@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
 } from './ui/dropdown-menu'
 import { Avatar, AvatarFallback } from './ui/avatar'
-import { Calendar, LogIn, LogOut, User2, Wallet2Icon } from 'lucide-react'
+import { Calendar, LogIn, LogOut, Settings, Wallet2Icon } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { getSession, logout } from '@/lib/session'
@@ -37,10 +37,10 @@ const AuthButton: FunctionComponent<AuthButtonProps> = async () => {
           <DropdownMenuContent className="mx-2">
             <DropdownMenuLabel>Opções</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link href={'/minha-conta'}>
+            <Link href={'/ajustes'}>
               <DropdownMenuItem className="cursor-pointer">
-                <User2 size={16} />
-                Perfil
+                <Settings size={16} />
+                Ajustes
               </DropdownMenuItem>
             </Link>
             <Link href={'/'}>

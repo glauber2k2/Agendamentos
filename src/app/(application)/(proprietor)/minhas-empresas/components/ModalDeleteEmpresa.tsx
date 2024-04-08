@@ -56,7 +56,6 @@ const ModalDeleteEmpresa: FunctionComponent<ModalDeleteEmpresaProps> = () => {
       toast({
         title: 'Parabéns!',
         description: `Você criou a empresa ${values.finalCNPJ}.`,
-        variant: 'success',
       })
       form.reset()
       revalidateUserCompanies()

@@ -56,7 +56,6 @@ const ModalFuncionarios: FunctionComponent<ModalFuncionariosProps> = ({
         toast({
           title: 'Parabéns!',
           description: `Você convidou ${values.invitedUsername} para sua empresa.`,
-          variant: 'success',
         })
         setOpenModal(false)
       })

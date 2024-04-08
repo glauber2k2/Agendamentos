@@ -74,7 +74,6 @@ const RegistrarUsuario: FunctionComponent<RegistrarUsuarioProps> = () => {
       toast({
         title: 'Parabéns!',
         description: `${values.username} criado com sucesso!`,
-        variant: 'success',
       })
       router.push('/login')
       return

@@ -58,7 +58,6 @@ const ModalAddColaborador: FunctionComponent<ModalAddColaboradorProps> = ({
       toast({
         title: 'Parabéns!',
         description: `Você convidou ${values.invitedUsername} para sua empresa.`,
-        variant: 'success',
       })
       form.reset()
       return

@@ -39,11 +39,8 @@ export async function login(values: { username: string; password: string }) {
 export async function updateSession() {
   const response = await fetchServer('/users')
 
-  console.log(response.responseData)
-
   try {
     if (response.responseData) {
-      await cookies().delete('nextauth.user')
       cookies().set('nextauth.user', JSON.stringify(response.responseData), {
         maxAge: 60 * 60 * 24,
       })

@@ -134,11 +134,7 @@ export default function Login() {
             <h1 className="text-xl font-bold dark:text-neutral-100 text-neutral-600">
               Ainda nao possui conta?
             </h1>
-            <Button
-              variant={'link'}
-              className="mr-auto text-violet-500"
-              size={'slim'}
-            >
+            <Button variant={'link'} className="mr-auto" size={'slim'}>
               <Link href={'registrarusuario'}>Registre-se</Link>
             </Button>
           </div>

@@ -8,9 +8,9 @@ interface SettingsSidebarProps {}
 const SettingsSidebar: FunctionComponent<SettingsSidebarProps> = () => {
   return (
     <div className="flex flex-col md:border-r dark:border-neutral-800 border-neutral-300">
-      <h1 className="truncate text-lg  tracking-wider p-6 flex items-center gap-4">
+      <h1 className="truncate text-lg tracking-wider p-6 flex items-center gap-4 font-semibold">
         <Settings />
-        Meus Ajustes
+        Ajustes
       </h1>
       <Divider />
       <div className="flex flex-col gap-2 py-4 px-2">

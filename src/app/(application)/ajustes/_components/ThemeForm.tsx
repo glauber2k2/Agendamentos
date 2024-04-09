@@ -17,6 +17,7 @@ import { PenLine } from 'lucide-react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { useTheme } from 'next-themes'
 
 const appearanceFormSchema = z.object({
   theme: z.enum(['light', 'dark'], {
@@ -31,12 +32,18 @@ const defaultValues: Partial<AppearanceFormValues> = {
 }
 
 export default function ThemeForm() {
+  const theme = useTheme()
+
+  console.log(theme.theme)
+
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues,
   })
 
   function onSubmit(data: AppearanceFormValues) {
+    theme.setTheme(data.theme)
+
     toast({
       title: 'You submitted the following values:',
       description: (

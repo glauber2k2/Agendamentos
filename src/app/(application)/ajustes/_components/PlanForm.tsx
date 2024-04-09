@@ -6,24 +6,44 @@ export default function PlanForm() {
   return (
     <div className="space-y-4">
       <Card>
-        <div className=" p-4 md:p-10 font-semibold">
-          <div className="flex items-center gap-2">
-            <CheckCircle2 />
+        <div className=" p-4 md:p-10 font-semibold flex items-center gap-4">
+          <CheckCircle2 />
+          <span className="">
             Plano Gratis
-          </div>
-          <p>10 funcionarios</p>
+            <p className="text-xs opacity-70">
+              Agendamentos ilimitados como cliente.
+            </p>
+          </span>
         </div>
       </Card>
       <Card>
-        <div className="flex items-center gap-2 p-4 md:p-10 font-semibold">
-          <CheckCircle2 />
-          Plano Pro
+        <div className=" p-4 md:p-10 font-semibold flex items-center gap-4">
+          <span className="">
+            Plano Simples
+            <p className="text-xs opacity-70">
+              1 Empresa + 5 Vagas funcionários.
+            </p>
+          </span>
         </div>
       </Card>
       <Card>
-        <div className="flex items-center gap-2 p-4 md:p-10 font-semibold">
-          <CheckCircle2 />
-          Plano Advanced
+        <div className=" p-4 md:p-10 font-semibold flex items-center gap-4">
+          <span className="">
+            Plano Intermediário
+            <p className="text-xs opacity-70">
+              1 Empresa + 15 Vagas funcionários.
+            </p>
+          </span>
+        </div>
+      </Card>
+      <Card>
+        <div className=" p-4 md:p-10 font-semibold flex items-center gap-4">
+          <span className="">
+            Plano Avançado
+            <p className="text-xs opacity-70">
+              2 Empresa + 15 Vagas funcionários.
+            </p>
+          </span>
         </div>
       </Card>
     </div>

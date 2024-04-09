@@ -11,9 +11,8 @@ import {
   FormItem,
 } from '@/components/ui/form'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { toast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { PenLine } from 'lucide-react'
+import { Loader2, PenLine } from 'lucide-react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -27,31 +26,18 @@ const appearanceFormSchema = z.object({
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
 
-const defaultValues: Partial<AppearanceFormValues> = {
-  theme: 'light',
-}
-
 export default function ThemeForm() {
   const theme = useTheme()
 
-  console.log(theme.theme)
-
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
-    defaultValues,
+    defaultValues: {
+      theme: theme.theme as 'light' | 'dark',
+    },
   })
 
   function onSubmit(data: AppearanceFormValues) {
     theme.setTheme(data.theme)
-
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-neutral-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    })
   }
 
   return (
@@ -130,8 +116,13 @@ export default function ThemeForm() {
             )}
           />
 
-          <Button className="sm:ml-auto">
-            <PenLine size={16} /> Salvar dados
+          <Button className="sm:ml-auto" disabled={form.formState.isSubmitting}>
+            {form.formState.isSubmitting ? (
+              <Loader2 size={16} className="animate-spin" />
+            ) : (
+              <PenLine size={16} />
+            )}
+            Salvar dados
           </Button>
         </form>
       </Form>

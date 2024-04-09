@@ -22,10 +22,10 @@ const Feed: FunctionComponent<FeedProps> = async () => {
       <div className="flex w-full md:w-72 h-96 bg-neutral-900 justify-center items-center">
         Filtro
       </div>
-      <div className="flex flex-col  gap-4">
+      <div className="flex flex-col gap-4">
         {data.responseData.map((company: Company) => (
           <Link href={`/${company.identifier}`} key={company.id}>
-            <div className="dark:bg-neutral-900/50 bg-neutral-200 grid sm:grid-cols-[12rem_1fr] h-52 rounded-md hover:opacity-90 transition-all duration-300">
+            <div className="dark:bg-neutral-900/50 bg-neutral-200 grid sm:grid-cols-[12rem_1fr] sm:h-52 rounded-md hover:opacity-90 transition-all duration-300">
               <div className=" bg-violet-700 p-12">
                 <img src="/logo.png" />
               </div>

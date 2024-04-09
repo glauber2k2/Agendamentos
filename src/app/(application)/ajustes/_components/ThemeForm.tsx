@@ -43,7 +43,10 @@ export default function ThemeForm() {
   return (
     <Card className="p-10">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col space-y-8"
+        >
           <FormField
             control={form.control}
             name="theme"

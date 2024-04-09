@@ -78,8 +78,11 @@ const UpdateUserForm: FunctionComponent<UpdateUserFormProps> = ({
   return (
     <Card className="p-10">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col">
-          <div className="md:w-1/2 space-y-8">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col space-y-8"
+        >
+          <div className="md:w-3/5 space-y-8">
             <FormField
               control={form.control}
               name="name"

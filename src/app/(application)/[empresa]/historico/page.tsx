@@ -1,9 +1,10 @@
 import { Timeline } from '@/components/Timeline'
+import { Card } from '@/components/ui/card'
 
 function Historico() {
   return (
-    <div className="flex w-full flex-col p-8">
-      <div className="flex pl-4 mt-4">
+    <div className="p-4 md:p-10">
+      <Card className="flex w-full flex-col md:p-10">
         <Timeline.Root>
           <Timeline.Item
             title="Corte e Barba"
@@ -26,7 +27,7 @@ function Historico() {
             status="concluido"
           />
         </Timeline.Root>
-      </div>
+      </Card>
     </div>
   )
 }

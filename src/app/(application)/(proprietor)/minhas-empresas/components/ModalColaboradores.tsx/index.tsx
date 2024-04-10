@@ -18,6 +18,7 @@ interface ModalColaboradoresProps {
 }
 
 const ModalColaboradores: FunctionComponent<ModalColaboradoresProps> = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   id_empresa,
 }) => {
   const data = [

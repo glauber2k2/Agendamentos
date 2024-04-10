@@ -10,6 +10,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
+import ModalColaboradores from './ModalColaboradores.tsx'
 
 interface CardCompanyProps {
   company: {
@@ -46,6 +47,7 @@ const CardCompany: FunctionComponent<CardCompanyProps> = ({ company }) => {
           </PopoverTrigger>
           <PopoverContent className="flex flex-col">
             <ModalAddColaborador id_empresa={company.id} />
+            <ModalColaboradores id_empresa={company.id} />
             <ModalDeleteEmpresa />
           </PopoverContent>
         </Popover>

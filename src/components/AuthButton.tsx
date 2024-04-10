@@ -8,7 +8,14 @@ import {
   DropdownMenuSeparator,
 } from './ui/dropdown-menu'
 import { Avatar, AvatarFallback } from './ui/avatar'
-import { Calendar, LogIn, LogOut, Settings, Wallet2Icon } from 'lucide-react'
+import {
+  Calendar,
+  LogIn,
+  LogOut,
+  Menu,
+  Settings,
+  Wallet2Icon,
+} from 'lucide-react'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { getSession, logout } from '@/lib/session'
@@ -34,8 +41,11 @@ const AuthButton: FunctionComponent<AuthButtonProps> = async () => {
             </Avatar>
             <span className="hidden sm:block">{session.name}</span>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="mx-2">
-            <DropdownMenuLabel>Opções</DropdownMenuLabel>
+          <DropdownMenuContent className="mx-2 min-w-[200px] flex flex-col gap-1">
+            <DropdownMenuLabel className="flex items-center gap-2 font-bold">
+              <Menu size={18} />
+              Menu
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <Link href={'/ajustes'}>
               <DropdownMenuItem className="cursor-pointer">

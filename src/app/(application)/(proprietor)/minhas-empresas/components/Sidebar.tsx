@@ -27,7 +27,7 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
           <Building2 size={18} /> Minhas empresas
         </ActiveRoute>
 
-        <ActiveRoute href={'/'}>
+        <ActiveRoute href={'/minhas-empresas/metricas'}>
           <LineChart size={18} /> Métricas
         </ActiveRoute>
         <ActiveRoute href={'/'}>

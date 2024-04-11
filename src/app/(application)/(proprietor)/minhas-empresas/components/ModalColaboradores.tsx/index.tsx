@@ -24,7 +24,7 @@ const ModalColaboradores: FunctionComponent<ModalColaboradoresProps> = ({
   const data = [
     {
       id: '728ed52f',
-      qtdServices: null,
+      qtdServices: 0,
       name: 'Glauber',
       role: 'Gerente',
     },

@@ -55,7 +55,7 @@ export default function ListCompanies({ companies }: { companies: Company[] }) {
             </Button>
           </PopoverTrigger>
 
-          <PopoverContent className="border-none">
+          <PopoverContent className="border-none mx-2">
             <Input
               icon={Search}
               placeholder="Buscar empresa..."

@@ -28,6 +28,7 @@ import {
   Rocket,
   User2,
 } from 'lucide-react'
+import Link from 'next/link'
 
 async function Home() {
   return (
@@ -65,10 +66,11 @@ async function Home() {
             <CardHeader>
               <CardTitle>
                 Sou cliente
-                <Button className=" flex items-center ml-auto bg-emerald-500 text-emerald-50 hover:bg-emerald-400/90 gap-2">
+                <Link href={'/login'} children className='ml-auto'>
+                <Button className=" flex items-center  bg-emerald-500 text-emerald-50 hover:bg-emerald-400/90 gap-2">
                   <User2 />
                   Entre grátis
-                </Button>
+                </Button></Link>
               </CardTitle>
             </CardHeader>
             <CardContent className="gap-2 h-full grid grid-rows-3">

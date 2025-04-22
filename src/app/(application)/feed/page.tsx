@@ -13,9 +13,10 @@ interface FeedProps {}
 
 const Feed: FunctionComponent<FeedProps> = async () => {
   const response = await fetch(
-    'https://api-agendamentos.onrender.com/companies?visibleCompanies=true',
+    'https://api-agendamentos.onrender.com/companies?visibleCompanies',
   )
   const data = await response.json()
+  console.log(data)
 
   return (
     <div className="flex flex-col w-full justify-center gap-4 p-10 md:flex-row">
